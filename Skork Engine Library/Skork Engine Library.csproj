@@ -49,6 +49,8 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="exception\SkorkDrawException.cs" />
+    <Compile Include="exception\SkorkException.cs" />
     <Compile Include="parse\SkorkParser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
