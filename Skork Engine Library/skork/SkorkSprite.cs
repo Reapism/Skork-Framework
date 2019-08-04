@@ -24,8 +24,10 @@ namespace Skork_Engine_Library.skork {
             this.position = position;
             this.spriteImg = new Image();
 
-            if (ACTIVE_SPRITE_INSTANCES ==) {
+            if (ACTIVE_SPRITE_INSTANCES != Properties.Settings.Default.max_sprite_instances) {
                 Interlocked.Increment(ref ACTIVE_SPRITE_INSTANCES);
+            } else {
+                throw 
             }
         }
 

@@ -55,6 +55,7 @@
     <Compile Include="exception\SkorkDrawException.cs" />
     <Compile Include="exception\SkorkException.cs" />
     <Compile Include="exception\SkorkInvalidNameException.cs" />
+    <Compile Include="exception\SkorkSpriteOverflowException.cs" />
     <Compile Include="parse\SkorkParser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
@@ -76,6 +77,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="app.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
