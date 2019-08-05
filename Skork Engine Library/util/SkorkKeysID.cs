@@ -9,11 +9,11 @@
     /// create more 'id's'.
     /// </summary>
 
-    public class SkorkKeysID {
+    public class SkorkKeysID<T> {
 
         // The unique id.
         private long id;
-        private object type;
+        private T type;
 
         /// <summary>
         /// Default constructor which increments
@@ -26,10 +26,18 @@
         }
 
         /// <summary>
+        /// Gets the type.
+        /// </summary>
+        /// <typeparam name="T">Gets the type as an object.</typeparam>
+        /// <returns></returns>
+        public object GetType<T>() {
+            return type.GetType();
+        }
+
+        /// <summary>
         /// Returns the current id.
         /// </summary>
         /// <returns></returns>
-
         public override string ToString() {
             return $"The id is { this.id.ToString()} of type {this.type.GetType().ToString() }";
         }

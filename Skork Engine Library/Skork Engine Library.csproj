@@ -60,7 +60,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="draw\SkorkPlace.cs" />
+    <Compile Include="draw\SkorkPlane.cs" />
     <Compile Include="draw\GeneratePlane.cs" />
     <Compile Include="exception\SkorkDrawException.cs" />
     <Compile Include="exception\SkorkException.cs" />
@@ -87,7 +87,9 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <None Include="app.config" />
+    <None Include="app.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

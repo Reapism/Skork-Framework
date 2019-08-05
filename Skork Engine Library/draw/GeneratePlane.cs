@@ -1,5 +1,4 @@
 ﻿using System.Windows.Controls;
-using System.Windows.Media;
 using System.Windows.Media.Imaging;
 
 namespace Skork_Engine_Library.draw {
@@ -13,34 +12,43 @@ namespace Skork_Engine_Library.draw {
             DPI_Y = 300;
         }
 
-        public static Image GenerateSingleGrid(SkorkPlace plane) {
-            WriteableBitmap bitmap = new WriteableBitmap(plane.Width, plane.Height, DPI_X, DPI_Y, PixelFormats.Indexed4, BitmapPalettes.WebPalette);
+        public static Image GenerateSingleGrid(SkorkPlane plane) {
+            WriteableBitmap bitmap = BitmapFactory.New(plane.Width, plane.Height);
 
-            byte[,] pixels = new byte[plane.Height, plane.Width];
-            for (int i = 0; i < plane.Height; i++) {
+            int x = 0;
+            for (int y = 0; y < plane.Height; y++) {
+                bitmap.SetPixel(x, y, plane.ColorSecondary);
 
-                    for (int j = 0; j < plane.Width; j++) {
-
-                    pixels[i, j] = 0;
-                        if (j+1 < plane.Width) {
-
-                        }
-                    }
+                for (x = 0; x < plane.Width; x++) {
+                    bitmap.SetPixel(x, y, plane.ColorPrimary);
                 }
-            bitmap.Unlock();
-            return null;
+            }
+
+            Image img = new Image {
+                Source = bitmap
+            };
+
+            return img;
         }
 
-        public static Image GenerateDoubleGrid(SkorkPlace plane) {
-            using (System.Drawing.Bitmap bitmap = new System.Drawing.Bitmap(plane.Width, plane.Height)) {
-                for (int i = 0; i < plane.Height; i += 2) {
+        public static Image GenerateDoubleGrid(SkorkPlane plane) {
+            WriteableBitmap bitmap = BitmapFactory.New(plane.Width, plane.Height);
 
-                    for (int j = 0; j < plane.Width; j += 2) {
+            int x = 0;
+            for (int y = 0; y < plane.Height; y++) {
+                bitmap.SetPixel(x, y, plane.ColorSecondary);
 
-                    }
+                for (x = 0; x < plane.Width; x++) {
+                    bitmap.SetPixel(x, y, plane.ColorPrimary);
                 }
-                return null;
             }
+
+            Image img = new Image {
+                Source = bitmap
+            };
+
+            return img;
+
         }
     }
 }
