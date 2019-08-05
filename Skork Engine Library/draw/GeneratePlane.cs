@@ -13,7 +13,7 @@ namespace Skork_Engine_Library.draw {
             DPI_Y = 300;
         }
 
-        public static Image GenerateSingleGrid(DrawPlane plane) {
+        public static Image GenerateSingleGrid(SkorkPlace plane) {
             WriteableBitmap bitmap = new WriteableBitmap(plane.Width, plane.Height, DPI_X, DPI_Y, PixelFormats.Indexed4, BitmapPalettes.WebPalette);
 
             byte[,] pixels = new byte[plane.Height, plane.Width];
@@ -31,7 +31,7 @@ namespace Skork_Engine_Library.draw {
             return null;
         }
 
-        public static Image GenerateDoubleGrid(DrawPlane plane) {
+        public static Image GenerateDoubleGrid(SkorkPlace plane) {
             using (System.Drawing.Bitmap bitmap = new System.Drawing.Bitmap(plane.Width, plane.Height)) {
                 for (int i = 0; i < plane.Height; i += 2) {
 

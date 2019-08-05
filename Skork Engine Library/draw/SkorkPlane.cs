@@ -4,11 +4,11 @@ using System.Windows.Media;
 
 namespace Skork_Engine_Library.draw {
     /// <summary>
-    /// The <see cref="DrawPlane"/> class.
+    /// The <see cref="SkorkPlace"/> class.
     /// <para>Contains an instance of a plane
     /// and its properties.</para>
     /// </summary>
-    public class DrawPlane {
+    public class SkorkPlace {
 
         private int width;
         private int height;
@@ -16,11 +16,11 @@ namespace Skork_Engine_Library.draw {
         /// <summary>
         /// Default constructor initializing a plane to 
         /// </summary>
-        public DrawPlane() : this(50, 50, Colors.DarkGray, Colors.GhostWhite) {
+        public SkorkPlace() : this(50, 50, Colors.DarkGray, Colors.GhostWhite) {
 
         }
 
-        public DrawPlane(int width, int height, Color color1, Color color2) {
+        public SkorkPlace(int width, int height, Color color1, Color color2) {
             if (width < 1 || height < 1) {
                 throw new SkorkDrawException("The width and height must both be positive numbers greater than 0!");
             }
@@ -55,7 +55,7 @@ namespace Skork_Engine_Library.draw {
         /// </summary>
         public Color ColorSecondary { get; set; }
 
-        public static Image GeneratePlane(DrawPlane plane) {
+        public static Image GeneratePlane(SkorkPlace plane) {
             using (System.Drawing.Bitmap bitmap = new System.Drawing.Bitmap(plane.Width, plane.Height)) {
                 
             }
