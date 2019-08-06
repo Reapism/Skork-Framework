@@ -2,6 +2,21 @@
 
 namespace SkorkEngine.exception {
 
+    public enum ExceptionDetails {
+
+        EXISTING_TYPE,
+
+        INVALID_FIELD_NAME,
+
+        INVALID_KEYWORD,
+
+        INVAL
+
+
+
+    }
+
+
     /// <summary>
     /// The root exception class for the <see cref="SkorkEngine"/>.
     /// <para>All other Skork exceptions are derived from this class.</para>

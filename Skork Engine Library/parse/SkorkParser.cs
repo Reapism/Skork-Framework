@@ -15,21 +15,6 @@ namespace Skork_Engine_Library.parse {
     public class SkorkParser {
 
         /// <summary>
-        /// Invoke this method to parse potential Skork code
-        /// into SkorkReadable format.
-        /// 
-        /// <para>Invoke the <see cref="CompileSkorkCode"/> function if you are
-        /// attempting to compile.</para>
-        /// </summary>
-        /// <param name="code">The code in the form of a <see cref="List{T}"/>.</param>
-        /// <returns></returns>
-        private List<string> ParseCode(List<string> code) {
-            code.TrimExcess();
-            code = CleanCode(code);
-            return ConsolidateCode(code);
-        }
-
-        /// <summary>
         /// Attempts to parse potential Skork code into it's native
         /// SkorkReadableFormat.
         /// 
@@ -45,6 +30,21 @@ namespace Skork_Engine_Library.parse {
             List<string> compiledCode = ParseCode(code);
             compiledCode.TrimExcess();
             return 1;
+        }
+
+        /// <summary>
+        /// Invoke this method to parse potential Skork code
+        /// into SkorkReadable format.
+        /// 
+        /// <para>Invoke the <see cref="CompileSkorkCode"/> function if you are
+        /// attempting to compile.</para>
+        /// </summary>
+        /// <param name="code">The code in the form of a <see cref="List{T}"/>.</param>
+        /// <returns></returns>
+        public List<string> ParseCode(List<string> code) {
+            code.TrimExcess();
+            code = CleanCode(code);
+            return ConsolidateCode(code);
         }
 
         /// <summary>

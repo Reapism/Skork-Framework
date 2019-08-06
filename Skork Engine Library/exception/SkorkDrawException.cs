@@ -11,7 +11,7 @@
         /// </summary>
         /// <param name="msg">The exception.</param>
         public SkorkDrawException(string msg) : base(msg) {
-
+            
         }
 
         /// <summary>
