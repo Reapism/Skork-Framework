@@ -1,4 +1,5 @@
-﻿using SkorkEngine.exception;
+﻿using Skork_Engine_Library.Draw;
+using SkorkEngine.exception;
 using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
@@ -9,7 +10,7 @@ namespace Skork_Engine_Library.draw {
     /// <para>Contains an instance of a plane
     /// and its properties.</para>
     /// </summary>
-    public class SkorkPlane {
+    public class SkorkPlane : I2DPlane {
 
         private int width;
         private int height;
