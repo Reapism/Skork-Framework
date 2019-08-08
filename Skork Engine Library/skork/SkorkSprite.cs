@@ -1,9 +1,10 @@
 ﻿using Skork_Engine_Library.Skork;
 using SkorkEngine.exception;
 using System.Threading;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
 
 namespace Skork_Engine_Library.skork {
     /// <summary>
@@ -28,8 +29,14 @@ namespace Skork_Engine_Library.skork {
 
         /// <summary>
         /// The name of the sprite.
+        /// <para>Implemented from <see cref="ISkorkEntity"/></para>
         /// </summary>
-        public string z { get; set; }
+        public string Name { get; set; }
+
+        /// <summary>
+        /// The name of the sprite.
+        /// <para>Implemented from <see cref="ISkorkEntity"/></para>
+        /// </summary>
         public Point Position { get; set; }
         public Image SpriteImage { get; set; }
 
@@ -48,7 +55,7 @@ namespace Skork_Engine_Library.skork {
         /// When the garbage collector <see cref="SkorkSprite"/> invokes
         /// this destructor, it decrements the number of active sprite instances.
         /// </summary>
-       ~SkorkSprite() {
+        ~SkorkSprite() {
             Interlocked.Decrement(ref ACTIVE_SPRITE_INSTANCES);
         }
 
@@ -66,10 +73,10 @@ namespace Skork_Engine_Library.skork {
         /// </summary>
         /// <param name="name">The name of the sprite.</param>
         /// <param name="position">The position of the sprite.</param>
-        public SkorkSprite(string name, Point position) {
+        public SkorkSprite(string name, Point position, Color color) {
             this.Name = name;
             this.Position = position;
-            this.spriteImg = new Image();
+            this.SpriteImage = new Image(new WriteableBitmap());
 
             if (ACTIVE_SPRITE_INSTANCES != Properties.Settings.Default.max_sprite_instances) {
                 Interlocked.Increment(ref ACTIVE_SPRITE_INSTANCES);
@@ -85,22 +92,16 @@ namespace Skork_Engine_Library.skork {
         /// <summary>
         /// Returns the current number of active sprite instances.
         /// </summary>
-        public int GetActiveSpriteInstances {
-            get => ACTIVE_SPRITE_INSTANCES;
-        }
+        public int GetActiveSpriteInstances => ACTIVE_SPRITE_INSTANCES;
 
         #endregion
 
         #region Instance methods
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="entity"></param>
-        /// <param name="units"></param>
-        public void Up(ISkorkEntity entity, int units) {
-            if (entity is SkorkSprite) {
 
+        public void Up(ISkorkEntity entity, int units) {
+            if (entity is SkorkSprite sprite) {
+                
             }
         }
 
@@ -114,6 +115,34 @@ namespace Skork_Engine_Library.skork {
 
         public void Right(ISkorkEntity entity, int units) {
             throw new System.NotImplementedException();
+        }
+
+        /// <summary>
+        /// Returns a string describing this <see cref="SkorkSprite"/>
+        /// instance.
+        /// </summary>
+        /// <returns></returns>
+        public override string ToString() {
+            return $"I am a {SpriteImage} Sprite named {Name} located at {Position.ToString()}";
+        }
+
+        /// <summary>
+        /// If the <see cref="Name"/>, <see cref="Position"/>, 
+        /// and <see cref="SpriteImage"/> are the same, then the two sprites
+        /// are equal.
+        /// </summary>
+        /// <param name="obj">The object to compare to this instance.</param>
+        /// <returns></returns>
+        public override bool Equals(object obj) {
+            if (obj is SkorkSprite sprite) {
+                if (this.Name.Equals(sprite.Name) &&
+                        this.Position.Equals(sprite.Position) &&
+                        this.SpriteImage.Equals(sprite.SpriteImage)) {
+                    return true;
+                }
+            }
+
+            return false;
         }
 
         #endregion
