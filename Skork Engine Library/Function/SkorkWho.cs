@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Skork_Engine_Library.Skork;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,15 +9,35 @@ namespace Skork_Engine_Library.Function {
 
     /// <summary>
     /// The <see cref="SkorkWho"/> class.
-    /// <para></para>
+    /// <para>When invoked on an <see cref="ISkorkEntity"/>, invokes the objects
+    /// ToString() method and returns it.</para>
     /// </summary>
-    public class SkorkWho {
+    public class SkorkWho : ISkorkFunction{
 
 
-
-        public string InvokeWho(object o) {
-            Task.Run(return o.ToString());
+        /// <summary>
+        /// If the incoming <paramref name="obj"/> is of 
+        /// type <see cref="ISkorkEntity"/>, it will return
+        /// the result of it's <see langword="object.ToString()"/>.
+        /// </summary>
+        /// <param name="obj">The object to get its string information.</param>
+        /// <returns></returns>
+        public object Invoke(object obj) {
+            if (o is ISkorkEntity) {
+                return InvokeHelper(obj);
+            } else {
+               return null; 
+            }
+             
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="obj">An optional object.</param>
+        /// <returns></returns>
+        private async Task<object> InvokeHelper(object obj) {
+            return Task.FromResult<string>(obj.ToString());
+        }
     }
 }
