@@ -14,7 +14,7 @@ namespace Skork_Engine_Library.Function {
         /// 
         /// </summary>
         /// <param name="o">An optional object to pass.</param>
-        void Invoke(object o);
+        void Invoke(object o = null);
 
         void InvokeHelper();
 
