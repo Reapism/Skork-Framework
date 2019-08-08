@@ -10,13 +10,14 @@ using System.Threading.Tasks;
 /// </summary>
 namespace Skork_Engine_Library.Function {
     public interface ISkorkFunction {
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="o">An optional object to pass.</param>
-        void Invoke(object o = null);
 
-        void InvokeHelper();
+        /// <summary>
+        /// Invoke optionally takes a parameter and returns
+        /// an object.
+        /// </summary>
+        /// <param name="obj">An optional object parameter.</param>
+        /// <returns></returns>
+        object Invoke(object obj = null);
 
 
     }
