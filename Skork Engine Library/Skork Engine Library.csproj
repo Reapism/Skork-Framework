@@ -79,6 +79,7 @@
     <Compile Include="Database\DatabaseController.cs" />
     <Compile Include="Database\DatabaseInstance.cs" />
     <Compile Include="Debug\SkorkDebug.cs" />
+    <Compile Include="Draw\I2DPlane.cs" />
     <Compile Include="Draw\SkorkPlane.cs" />
     <Compile Include="Draw\GeneratePlane.cs" />
     <Compile Include="Exception\SkorkDrawException.cs" />
@@ -102,6 +103,8 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="Skork\ISkorkMovable.cs" />
+    <Compile Include="Skork\ISkorkEntity.cs" />
     <Compile Include="Skork\SkorkSprite.cs" />
     <Compile Include="Util\SkorkColors.cs" />
     <Compile Include="Util\SkorkKeysID.cs" />
