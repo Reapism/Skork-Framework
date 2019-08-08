@@ -10,10 +10,7 @@ namespace SkorkEngine.exception {
 
         INVALID_KEYWORD,
 
-        INVAL
-
-
-
+        INVALID_TYPE_CAST
     }
 
 
