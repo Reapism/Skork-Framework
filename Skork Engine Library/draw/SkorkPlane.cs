@@ -10,7 +10,7 @@ namespace Skork_Engine_Library.draw {
     /// <para>Contains an instance of a plane
     /// and its properties.</para>
     /// </summary>
-    public class SkorkPlane : I2DPlane {
+    public sealed class SkorkPlane : I2DPlane {
 
         private int width;
         private int height;
@@ -26,7 +26,7 @@ namespace Skork_Engine_Library.draw {
 
         /// <summary>
         /// Instantiates a new instance of the <see cref="SkorkPlane"/>
-        /// class with a new width, height, and a twotone color.
+        /// class with a new width, height, and a two-tone color for the grid.
         /// </summary>
         /// <param name="width">The width of the <see cref="SkorkPlane"/>.</param>
         /// <param name="height">The height of the <see cref="SkorkPlane"/>.</param>

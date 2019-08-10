@@ -6,6 +6,7 @@ using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 
+
 namespace Skork_Engine_Library.skork {
     /// <summary>
     /// The <see cref="SkorkSprite"/> class.
@@ -22,6 +23,9 @@ namespace Skork_Engine_Library.skork {
         #region Static Fields
 
         private static int ACTIVE_SPRITE_INSTANCES;
+        private static int SPRITE_WIDTH;
+        private static int SPRITE_HEIGHT;
+
 
         #endregion
 
@@ -38,6 +42,11 @@ namespace Skork_Engine_Library.skork {
         /// <para>Implemented from <see cref="ISkorkEntity"/></para>
         /// </summary>
         public Point Position { get; set; }
+
+        /// <summary>
+        /// The display image for the sprite. Can be colors or
+        /// any extension of the <see cref="Image"/> type.
+        /// </summary>
         public Image SpriteImage { get; set; }
 
         #endregion
@@ -49,6 +58,8 @@ namespace Skork_Engine_Library.skork {
         /// </summary>
         static SkorkSprite() {
             ACTIVE_SPRITE_INSTANCES = 0;
+            SPRITE_WIDTH = 30;
+            SPRITE_HEIGHT = 30;
         }
 
         /// <summary>
@@ -63,7 +74,7 @@ namespace Skork_Engine_Library.skork {
         /// Default constructor.
         /// </summary>
         /// <param name="name"></param>
-        public SkorkSprite(string name) : this(name, new Point(0, 0)) {
+        public SkorkSprite(string name) : this(name, new Point(0, 0), Colors.Blue) {
 
         }
 
@@ -76,7 +87,8 @@ namespace Skork_Engine_Library.skork {
         public SkorkSprite(string name, Point position, Color color) {
             this.Name = name;
             this.Position = position;
-            this.SpriteImage = new Image(new WriteableBitmap());
+            var bitmap = new WriteableBitmap(SPRITE_WIDTH, SPRITE_HEIGHT, 30, 30, PixelFormats.Rgb24, BitmapPalettes.WebPalette);
+            
 
             if (ACTIVE_SPRITE_INSTANCES != Properties.Settings.Default.max_sprite_instances) {
                 Interlocked.Increment(ref ACTIVE_SPRITE_INSTANCES);
@@ -100,21 +112,27 @@ namespace Skork_Engine_Library.skork {
 
 
         public void Up(ISkorkEntity entity, int units) {
-            if (entity is SkorkSprite sprite) {
-                
+            if (entity is SkorkSprite sprite) {     
+                sprite.Position = new Point(sprite.Position.X, sprite.Position.Y + units);
             }
         }
 
         public void Down(ISkorkEntity entity, int units) {
-            throw new System.NotImplementedException();
+            if (entity is SkorkSprite sprite) {
+                sprite.Position = new Point(sprite.Position.X, sprite.Position.Y - units);
+            }
         }
 
         public void Left(ISkorkEntity entity, int units) {
-            throw new System.NotImplementedException();
+            if (entity is SkorkSprite sprite) {
+                sprite.Position = new Point(sprite.Position.X - units, sprite.Position.Y);
+            }
         }
 
         public void Right(ISkorkEntity entity, int units) {
-            throw new System.NotImplementedException();
+            if (entity is SkorkSprite sprite) {
+                sprite.Position = new Point(sprite.Position.X + units, sprite.Position.Y);
+            }
         }
 
         /// <summary>
