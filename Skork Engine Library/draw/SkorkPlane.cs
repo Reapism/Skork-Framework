@@ -1,5 +1,6 @@
 ﻿using Skork_Engine_Library.Draw;
 using SkorkEngine.exception;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
@@ -92,6 +93,19 @@ namespace Skork_Engine_Library.draw {
             return img;
         }
 
+        /// <summary>
+        /// Returns whether this instances <see cref="ColorPrimary"/> color is located
+        /// at the <paramref name="point"/>.
+        /// </summary>
+        /// <param name="point">The point to check</param>
+        /// <returns>Whether the color located at the point is the primary color.</returns>
+        /// <exception cref=""></exception>
+        public bool IsPrimary(Point point) {
 
+        }
+
+        public bool IsSecondary() {
+
+        }
     }
 }

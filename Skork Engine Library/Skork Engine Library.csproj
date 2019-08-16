@@ -85,6 +85,7 @@
     <Compile Include="Exception\SkorkDrawException.cs" />
     <Compile Include="Exception\SkorkException.cs" />
     <Compile Include="Exception\SkorkInvalidNameException.cs" />
+    <Compile Include="Exception\SkorkOutOfBoundsException.cs" />
     <Compile Include="Exception\SkorkSpriteOverflowException.cs" />
     <Compile Include="Exception\SkorkSyntaxException.cs" />
     <Compile Include="Function\ISkorkFunction.cs" />

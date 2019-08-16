@@ -23,7 +23,7 @@ namespace Skork_Engine_Library.Function {
         /// <param name="obj">The object to get its string information.</param>
         /// <returns></returns>
         public object Invoke(object obj) {
-            if (o is ISkorkEntity) {
+            if (obj is ISkorkEntity) {
                 return InvokeHelper(obj);
             } else {
                return null; 

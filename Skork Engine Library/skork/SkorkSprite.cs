@@ -1,4 +1,5 @@
-﻿using Skork_Engine_Library.Skork;
+﻿using Skork_Engine_Library.draw;
+using Skork_Engine_Library.Skork;
 using SkorkEngine.exception;
 using System.Threading;
 using System.Windows;
@@ -17,6 +18,8 @@ namespace Skork_Engine_Library.skork {
     public class SkorkSprite : ISkorkEntity, ISkorkMovable<ISkorkEntity> {
 
         #region Instance member(s)
+
+        private readonly SkorkPlane plane;
 
         #endregion
 
@@ -37,7 +40,7 @@ namespace Skork_Engine_Library.skork {
         /// </summary>
         public string Name { get; set; }
 
-        /// <summary>
+        /// <summary>s
         /// The name of the sprite.
         /// <para>Implemented from <see cref="ISkorkEntity"/></para>
         /// </summary>
@@ -71,22 +74,17 @@ namespace Skork_Engine_Library.skork {
         }
 
         /// <summary>
-        /// Default constructor.
-        /// </summary>
-        /// <param name="name"></param>
-        public SkorkSprite(string name) : this(name, new Point(0, 0), Colors.Blue) {
-
-        }
-
-        /// <summary>
         /// Initializes the a <see cref="SkorkSprite"/> instance with a
         /// <paramref name="name"/> and <paramref name="position"/>.
         /// </summary>
         /// <param name="name">The name of the sprite.</param>
         /// <param name="position">The position of the sprite.</param>
-        public SkorkSprite(string name, Point position, Color color) {
+        /// <param name="color">The color of the sprite to add.</param>
+        /// <param name="plane">A reference to a <see cref="SkorkPlane"/>.</param>
+        public SkorkSprite(string name, Point position, Color color, ref SkorkPlane plane) {
             this.Name = name;
             this.Position = position;
+            this.plane = plane;
             var bitmap = new WriteableBitmap(SPRITE_WIDTH, SPRITE_HEIGHT, 30, 30, PixelFormats.Rgb24, BitmapPalettes.WebPalette);
             
 
@@ -112,7 +110,8 @@ namespace Skork_Engine_Library.skork {
 
 
         public void Up(ISkorkEntity entity, int units) {
-            if (entity is SkorkSprite sprite) {     
+            if (entity is SkorkSprite sprite) {
+                
                 sprite.Position = new Point(sprite.Position.X, sprite.Position.Y + units);
             }
         }
@@ -163,6 +162,11 @@ namespace Skork_Engine_Library.skork {
             return false;
         }
 
+        public override int GetHashCode() {
+            int prime = 17;
+            int prime2 = 23;
+            return (prime * prime2 + this.Name.GetHashCode()) + (prime * prime2 + this.SpriteImage.GetHashCode());
+        }
         #endregion
     }
 }
