@@ -13,36 +13,14 @@ namespace Skork_Engine_Library.draw {
     /// </summary>
     public sealed class SkorkPlane : I2DPlane {
 
+        #region Instance members
+
         private int width;
         private int height;
 
-        /// <summary>
-        /// Default constructor initializing a <see cref="SkorkPlane"/> to 50x50
-        /// using blank as a primary color, and blank as a 
-        /// secondary color.
-        /// </summary>
-        public SkorkPlane() : this(50, 50, Colors.DarkGray, Colors.GhostWhite) {
+        #endregion
 
-        }
-
-        /// <summary>
-        /// Instantiates a new instance of the <see cref="SkorkPlane"/>
-        /// class with a new width, height, and a two-tone color for the grid.
-        /// </summary>
-        /// <param name="width">The width of the <see cref="SkorkPlane"/>.</param>
-        /// <param name="height">The height of the <see cref="SkorkPlane"/>.</param>
-        /// <param name="color1">The primary color of the <see cref="SkorkPlane"/>.</param>
-        /// <param name="color2">The secondary color of the <see cref="SkorkPlane"/>.</param>
-        public SkorkPlane(int width, int height, Color color1, Color color2) {
-            if (width < 1 || height < 1) {
-                throw new SkorkDrawException("The width and height must both be positive numbers greater than 0!");
-            }
-
-            this.Width = width;
-            this.Height = height;
-            this.ColorPrimary = color1;
-            this.ColorSecondary = color2;
-        }
+        #region Properties
 
         /// <summary>
         /// The width of the plane.
@@ -69,38 +47,54 @@ namespace Skork_Engine_Library.draw {
         public Color ColorSecondary { get; set; }
 
         /// <summary>
-        /// Generates a <see cref="SkorkPlane"/> and returns an
-        /// Image containing it.
+        /// The internal image representing the Skork grid pattern.
         /// </summary>
-        /// <param name="plane"></param>
-        /// <returns></returns>
-        public static Image GeneratePlane(SkorkPlane plane) {
-            WriteableBitmap bitmap = BitmapFactory.New(plane.Width, plane.Height);
+        public BitmapImage Image { get; set; }
 
-            int x = 0;
-            for (int y = 0; y < plane.Height; y++) {
-                bitmap.SetPixel(x, y, plane.ColorSecondary);
+        #endregion
 
-                for (x = 0; x < plane.Width; x++) {
-                    bitmap.SetPixel(x, y, plane.ColorPrimary);
-                }
+        #region Contructor(s).
+
+        /// <summary>
+        /// Default constructor initializing a <see cref="SkorkPlane"/> to 50x50
+        /// using blank as a primary color, and blank as a 
+        /// secondary color.
+        /// </summary>
+        public SkorkPlane() : this(50, 50, Colors.DarkGray, Colors.GhostWhite) {
+
+        }
+
+        /// <summary>
+        /// Instantiates a new instance of the <see cref="SkorkPlane"/>
+        /// class with a new width, height, and a two-tone color for the grid.
+        /// </summary>
+        /// <param name="width">The width of the <see cref="SkorkPlane"/>.</param>
+        /// <param name="height">The height of the <see cref="SkorkPlane"/>.</param>
+        /// <param name="color1">The primary color of the <see cref="SkorkPlane"/>.</param>
+        /// <param name="color2">The secondary color of the <see cref="SkorkPlane"/>.</param>
+        /// <exception cref="SkorkDrawException">Thrown when the width or height are less than 1.</exception>
+        public SkorkPlane(int width, int height, Color color1, Color color2) {
+            if (width < 1 || height < 1) {
+                throw new SkorkDrawException("The width and height must both be positive numbers greater than 0!");
             }
 
-            Image img = new Image {
-                Source = bitmap
-            };
-
-            return img;
+            this.Width = width;
+            this.Height = height;
+            this.ColorPrimary = color1;
+            this.ColorSecondary = color2;
+            this.Image = null;
         }
+
+        #endregion
 
         /// <summary>
         /// Returns whether this instances <see cref="ColorPrimary"/> color is located
         /// at the <paramref name="point"/>.
         /// </summary>
+        /// <param name="plane">The <see cref="SkorkPlane"/> reference.</param>
         /// <param name="point">The point to check</param>
         /// <returns>Whether the color located at the point is the primary color.</returns>
-        /// <exception cref=""></exception>
-        public bool IsPrimary(Point point) {
+        public bool IsPrimary(SkorkPlane plane, Point point) {
 
         }
 

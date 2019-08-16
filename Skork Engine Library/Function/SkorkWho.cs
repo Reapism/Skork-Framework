@@ -1,8 +1,4 @@
 ﻿using Skork_Engine_Library.Skork;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace Skork_Engine_Library.Function {
@@ -12,8 +8,7 @@ namespace Skork_Engine_Library.Function {
     /// <para>When invoked on an <see cref="ISkorkEntity"/>, invokes the objects
     /// ToString() method and returns it.</para>
     /// </summary>
-    public class SkorkWho : ISkorkFunction{
-
+    public class SkorkWho : ISkorkFunction {
 
         /// <summary>
         /// If the incoming <paramref name="obj"/> is of 
@@ -26,18 +21,18 @@ namespace Skork_Engine_Library.Function {
             if (obj is ISkorkEntity) {
                 return InvokeHelper(obj);
             } else {
-               return null; 
+                return null;
             }
-             
+
         }
 
         /// <summary>
-        /// 
+        /// Helper function for <see cref="Invoke(object)"/>.
         /// </summary>
         /// <param name="obj">An optional object.</param>
         /// <returns></returns>
         private async Task<object> InvokeHelper(object obj) {
-            return Task.FromResult<string>(obj.ToString());
+            return await Task.FromResult<string>(obj.ToString());
         }
     }
 }

@@ -23,6 +23,7 @@ namespace Skork_Engine_Library.parse {
         /// 
         /// <para>Returns compilation notes using ints. 0 is successful.</para>
         /// </summary>
+        /// <exception cref="SkorkSyntaxException"></exception>
         /// <exception cref="SkorkInvalidNameException"></exception>
         /// <exception cref="SkorkException"></exception>
         /// <returns></returns>

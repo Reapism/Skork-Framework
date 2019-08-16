@@ -25,10 +25,9 @@ namespace Skork_Engine_Library.Compile {
         /// <returns></returns>
         public int CompileSkorkCode() {
             List<string> compiledCode = new List<string>();
-
+            int compileReturn;
             try {
-                parser.CompileSkorkCode(compiledCode);
-                compiledCode.TrimExcess();
+                compileReturn = parser.CompileSkorkCode(compiledCode);
                 return 0;
             } catch (SkorkInvalidNameException sine) {
                 return 3;
