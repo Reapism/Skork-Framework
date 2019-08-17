@@ -2,7 +2,7 @@
 using System.Windows.Controls;
 using System.Windows.Media.Imaging;
 
-namespace Skork_Engine_Library.draw {
+namespace Skork_Engine_Library.Draw {
 
     /// <summary>
     /// 

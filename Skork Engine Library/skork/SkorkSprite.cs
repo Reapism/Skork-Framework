@@ -1,5 +1,4 @@
-﻿using Skork_Engine_Library.draw;
-using Skork_Engine_Library.Skork;
+﻿using Skork_Engine_Library.Draw;
 using SkorkEngine.exception;
 using System.Threading;
 using System.Windows;
@@ -8,7 +7,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 
 
-namespace Skork_Engine_Library.skork {
+namespace Skork_Engine_Library.Skork {
     /// <summary>
     /// The <see cref="SkorkSprite"/> class.
     /// <para>Represents a single instance of a Sprite.</para>

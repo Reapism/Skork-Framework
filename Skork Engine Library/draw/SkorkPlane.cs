@@ -5,7 +5,7 @@ using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 
-namespace Skork_Engine_Library.draw {
+namespace Skork_Engine_Library.Draw {
     /// <summary>
     /// The <see cref="SkorkPlane"/> class.
     /// <para>Contains an instance of a plane
@@ -72,10 +72,14 @@ namespace Skork_Engine_Library.draw {
         /// <param name="height">The height of the <see cref="SkorkPlane"/>.</param>
         /// <param name="color1">The primary color of the <see cref="SkorkPlane"/>.</param>
         /// <param name="color2">The secondary color of the <see cref="SkorkPlane"/>.</param>
-        /// <exception cref="SkorkDrawException">Thrown when the width or height are less than 1.</exception>
+        /// <exception cref="SkorkDrawException">Thrown when the width or height are less than 1 or if a color is null.</exception>
         public SkorkPlane(int width, int height, Color color1, Color color2) {
             if (width < 1 || height < 1) {
                 throw new SkorkDrawException("The width and height must both be positive numbers greater than 0!");
+            }
+
+            if (color1 == null || color2 == null) {
+                throw new SkorkDrawException("The primary and secondary color must be non-null!");
             }
 
             this.Width = width;
@@ -95,11 +99,11 @@ namespace Skork_Engine_Library.draw {
         /// <param name="point">The point to check</param>
         /// <returns>Whether the color located at the point is the primary color.</returns>
         public bool IsPrimary(SkorkPlane plane, Point point) {
-
+            return true;
         }
 
         public bool IsSecondary() {
-
+            return true;
         }
     }
 }

@@ -4,7 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Net;
 
-namespace Skork_Engine_Library.parse {
+namespace Skork_Engine_Library.Parse {
     /// <summary>
     /// The <see cref="SkorkParser"/> class.
     /// 

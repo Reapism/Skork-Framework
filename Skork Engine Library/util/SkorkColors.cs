@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Media;
-
-namespace Skork_Engine_Library.util {
+﻿namespace Skork_Engine_Library.Util {
 
     /// <summary>
     /// The <see cref="SkorkColors"/> class.
@@ -16,8 +9,8 @@ namespace Skork_Engine_Library.util {
 
         public enum SkorkColor {
 
-         
-           
+
+
         }
     }
 }

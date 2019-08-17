@@ -1,13 +1,9 @@
-﻿using Skork_Engine_Library.parse;
+﻿using Skork_Engine_Library.Parse;
 using SkorkEngine.exception;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Skork_Engine_Library.Compile {
-    class SkorkCompile {
+    public class SkorkCompile {
 
         private SkorkParser parser;
 
@@ -27,15 +23,15 @@ namespace Skork_Engine_Library.Compile {
             List<string> compiledCode = new List<string>();
             int compileReturn;
             try {
-                compileReturn = parser.CompileSkorkCode(compiledCode);
+                compileReturn = this.parser.CompileSkorkCode(compiledCode);
                 return 0;
-            } catch (SkorkInvalidNameException sine) {
+            } catch (SkorkInvalidNameException) {
                 return 3;
-            } catch (SkorkSyntaxException sse) {
+            } catch (SkorkSyntaxException) {
                 return 2;
-            } catch (SkorkException se) {
+            } catch (SkorkException) {
                 return 1;
-            } 
+            }
         }
 
 

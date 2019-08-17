@@ -1,4 +1,4 @@
-﻿namespace Skork_Engine_Library.util {
+﻿namespace Skork_Engine_Library.Util {
 
     /// <summary>
     /// <para>Adds a unique number to separate every
@@ -31,7 +31,7 @@
         /// <typeparam name="T">Gets the type as an object.</typeparam>
         /// <returns></returns>
         public object GetType<T>() {
-            return type.GetType();
+            return this.type.GetType();
         }
 
         /// <summary>
