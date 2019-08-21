@@ -1,4 +1,4 @@
-﻿namespace SkorkEngine.exception {
+﻿namespace SkorkEngine.Exception {
     /// <summary>
     /// The <see cref="SkorkInvalidNameException"/> class.
     /// <para>Thrown when an theres an invalid name for a variable

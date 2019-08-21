@@ -1,4 +1,4 @@
-﻿namespace SkorkEngine.exception {
+﻿namespace SkorkEngine.Exception {
     /// <summary>
     /// The <see cref="SkorkSpriteOverflowException"/> class.
     /// <para>Thrown when attempting to create more than the

@@ -1,4 +1,4 @@
-﻿using SkorkEngine.exception;
+﻿using SkorkEngine.Exception;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -27,8 +27,8 @@ namespace Skork_Engine_Library.Parse {
         /// <exception cref="SkorkInvalidNameException"></exception>
         /// <exception cref="SkorkException"></exception>
         /// <returns></returns>
-        public int CompileSkorkCode(List<string> code) {
-            List<string> compiledCode = ParseCode(code);
+        public int CompileSkorkCode(ref List<string> code) {
+            List<string> compiledCode = ParseCode(ref code);
             compiledCode.TrimExcess();
             return 1;
         }
@@ -42,10 +42,10 @@ namespace Skork_Engine_Library.Parse {
         /// </summary>
         /// <param name="code">The code in the form of a <see cref="List{T}"/>.</param>
         /// <returns></returns>
-        public List<string> ParseCode(List<string> code) {
+        public List<string> ParseCode(ref List<string> code) {
             code.TrimExcess();
-            code = CleanCode(code);
-            return ConsolidateCode(code);
+            code = CleanCode(ref code);
+            return ConsolidateCode(ref code);
         }
 
         /// <summary>
@@ -75,7 +75,7 @@ namespace Skork_Engine_Library.Parse {
         /// </summary>
         /// <param name="code">The code in the form of a <see cref="List{T}"/>.</param>
         /// <returns></returns>
-        private List<string> CleanCode(List<string> code) {
+        private List<string> CleanCode(ref List<string> code) {
             List<string> newCode = new List<string>();
 
             foreach (string line in code) {
@@ -95,7 +95,7 @@ namespace Skork_Engine_Library.Parse {
         /// reference to the consolidated code of type <see cref="List{T}"/>.
         /// </summary>
         /// <param name="code"></param>
-        private List<string> ConsolidateCode(List<string> code) {
+        private List<string> ConsolidateCode(ref List<string> code) {
             List<string> newCode = new List<string>();
             string multiLine = string.Empty; //represents a line concatonated from different lines.
 
@@ -254,7 +254,7 @@ namespace Skork_Engine_Library.Parse {
         /// </summary>
         /// <param name="path">The path of the file to read from.</param>
         /// <returns>All the contents of the file as type string.</returns>
-        public string ReadFile(string path) {
+        public static string ReadFile(string path) {
             string s;
 
             try {
@@ -270,7 +270,7 @@ namespace Skork_Engine_Library.Parse {
         /// </summary>
         /// <param name="url">The url to download from.</param>
         /// <returns></returns>
-        public byte[] GetOnlineFile(string url) {
+        public static byte[] GetOnlineFile(string url) {
             byte[] b;
 
             using (WebClient client = new WebClient()) {

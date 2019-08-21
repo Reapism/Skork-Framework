@@ -1,4 +1,4 @@
-﻿namespace SkorkEngine.exception {
+﻿namespace SkorkEngine.Exception {
     /// <summary>
     /// The <see cref="SkorkSyntaxException"/> class.
     /// <para>Thrown when a syntax error is catched

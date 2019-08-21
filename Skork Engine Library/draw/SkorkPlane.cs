@@ -1,5 +1,5 @@
 ﻿using Skork_Engine_Library.Draw;
-using SkorkEngine.exception;
+using SkorkEngine.Exception;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;

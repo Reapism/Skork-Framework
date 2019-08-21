@@ -1,6 +1,6 @@
 ﻿using Skork_Engine_Library.Draw;
 
-namespace SkorkEngine.exception {
+namespace SkorkEngine.Exception {
     /// <summary>
     /// The <see cref="SkorkOutOfBoundsException"/> class.
     /// <para>Thrown when attempting to access a point that is

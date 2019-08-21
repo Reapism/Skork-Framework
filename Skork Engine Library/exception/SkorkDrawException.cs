@@ -1,4 +1,4 @@
-﻿namespace SkorkEngine.exception {
+﻿namespace SkorkEngine.Exception {
     /// <summary>
     /// The <see cref="SkorkDrawException"/> class.
     /// <para>Thrown when an error occurs in drawing

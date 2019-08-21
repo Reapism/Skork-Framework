@@ -1,5 +1,5 @@
 ﻿using Skork_Engine_Library.Parse;
-using SkorkEngine.exception;
+using SkorkEngine.Exception;
 using System.Collections.Generic;
 
 namespace Skork_Engine_Library.Compile {

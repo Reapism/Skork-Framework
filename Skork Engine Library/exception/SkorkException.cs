@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace SkorkEngine.exception {
+namespace SkorkEngine.Exception {
 
     public enum ExceptionDetails {
 
@@ -18,7 +18,7 @@ namespace SkorkEngine.exception {
     /// The root exception class for the <see cref="SkorkEngine"/>.
     /// <para>All other Skork exceptions are derived from this class.</para>
     /// </summary>
-    public class SkorkException : Exception {
+    public class SkorkException : System.Exception {
 
         private string exceptionMsg;
 
