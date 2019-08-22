@@ -23,7 +23,7 @@ namespace Skork_Engine_Library.Compile {
             List<string> compiledCode = new List<string>();
             int compileReturn;
             try {
-                compileReturn = this.parser.CompileSkorkCode(compiledCode);
+                compileReturn = this.parser.CompileSkorkCode(ref compiledCode);
                 return 0;
             } catch (SkorkInvalidNameException) {
                 return 3;

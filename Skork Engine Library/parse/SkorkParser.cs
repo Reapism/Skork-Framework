@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net;
+using System.Text;
 
 namespace Skork_Engine_Library.Parse {
     /// <summary>
@@ -13,6 +14,19 @@ namespace Skork_Engine_Library.Parse {
     /// various helper functions.</para>
     /// </summary>
     public class SkorkParser {
+
+        /// <summary>
+        /// A <see cref="List{T}"/> containing valid code lines.
+        /// </summary>
+        private List<string> code;
+
+        /// <summary>
+        /// Instantiates the parser with clean code lines.
+        /// </summary>
+        /// <param name="code">The code lines in a <see cref="List{T}"/></param>
+        public SkorkParser(ref List<string> code) {
+            CleanCode(ref code);
+        }
 
         /// <summary>
         /// Attempts to parse potential Skork code into it's native
@@ -27,57 +41,26 @@ namespace Skork_Engine_Library.Parse {
         /// <exception cref="SkorkInvalidNameException"></exception>
         /// <exception cref="SkorkException"></exception>
         /// <returns></returns>
-        public int CompileSkorkCode(ref List<string> code) {
-            List<string> compiledCode = ParseCode(ref code);
-            compiledCode.TrimExcess();
+        public int CompileSkorkCode() {
+
+
             return 1;
         }
 
         /// <summary>
-        /// Invoke this method to parse potential Skork code
-        /// into SkorkReadable format.
-        /// 
-        /// <para>Invoke the <see cref="CompileSkorkCode"/> function if you are
-        /// attempting to compile.</para>
-        /// </summary>
-        /// <param name="code">The code in the form of a <see cref="List{T}"/>.</param>
-        /// <returns></returns>
-        public List<string> ParseCode(ref List<string> code) {
-            code.TrimExcess();
-            code = CleanCode(ref code);
-            return ConsolidateCode(ref code);
-        }
-
-        /// <summary>
         /// Cleans the code whether it's needed or not and returns a new 
         /// reference to the clean code of type <see cref="List{T}"/>.
-        /// </summary>
-        /// <param name="code">The code in the form of a parameterized string array.</param>
-        /// <returns></returns>
-        private List<string> CleanCode(params string[] code) {
-            List<string> newCode = new List<string>();
-
-            foreach (string line in code) {
-                int pos = line.IndexOf(' ');
-
-                if (pos != -1) { // Checks if there is a space.
-                    string subStr = line.Substring(pos, line.IndexOf(' ', pos));
-                    newCode.Add(subStr);
-                }
-            }
-
-            return newCode;
-        }
-
-        /// <summary>
-        /// Cleans the code whether it's needed or not and returns a new 
-        /// reference to the clean code of type <see cref="List{T}"/>.
+        /// <para>The attempt is to remove trailing spaces and new lines
+        /// from the code and then putting each potentially valid code line
+        /// on its own line.</para>
+        /// <para>E.g. <see langword=""/></para>
         /// </summary>
         /// <param name="code">The code in the form of a <see cref="List{T}"/>.</param>
         /// <returns></returns>
         private List<string> CleanCode(ref List<string> code) {
             List<string> newCode = new List<string>();
 
+            // finds trailing spaces and ignores them.
             foreach (string line in code) {
                 int pos = line.IndexOf(' ');
 
@@ -87,28 +70,21 @@ namespace Skork_Engine_Library.Parse {
                 }
             }
 
-            return newCode;
-        }
+            // combine mutliple lines into a single one terminating
+            // into a semicolon.
+            List<string> codeSplit = new List<string>();
+            StringBuilder appendedLine = new StringBuilder(string.Empty);
 
-        /// <summary>
-        /// Consolidates the code whether it's needed or not and returns a new 
-        /// reference to the consolidated code of type <see cref="List{T}"/>.
-        /// </summary>
-        /// <param name="code"></param>
-        private List<string> ConsolidateCode(ref List<string> code) {
-            List<string> newCode = new List<string>();
-            string multiLine = string.Empty; //represents a line concatonated from different lines.
+            foreach (string s in newCode) {
+                appendedLine.Append(s);
 
-            foreach (string line in code) {
-                multiLine += line;
-
-                if (multiLine.Contains(";")) {
-                    newCode.Add(multiLine);
-                    multiLine = string.Empty;
+                if (appendedLine.ToString().Contains(";")) {
+                    codeSplit.Add(appendedLine.ToString());
+                    appendedLine.Clear();
                 }
-
             }
-            return newCode;
+
+            return codeSplit;
         }
 
         /// <summary> 
@@ -204,7 +180,7 @@ namespace Skork_Engine_Library.Parse {
             if (s == null) { return false; }
 
             for (int i = 0; i < s.Length; i++) {
-                if (s.ElementAt<char>(i) != c) {
+                if (s.ElementAt(i) != c) {
                     return false;
                 }
             }
@@ -247,63 +223,6 @@ namespace Skork_Engine_Library.Parse {
 
             sr.Close();
             return sc;
-        }
-
-        /// <summary>
-        /// Return the contents of the entire file as a string.
-        /// </summary>
-        /// <param name="path">The path of the file to read from.</param>
-        /// <returns>All the contents of the file as type string.</returns>
-        public static string ReadFile(string path) {
-            string s;
-
-            try {
-                s = System.IO.File.ReadAllText(path);
-                return s;
-            } catch {
-                return null;
-            }
-        }
-
-        /// <summary>
-        /// Gets a file online in a byte array.
-        /// </summary>
-        /// <param name="url">The url to download from.</param>
-        /// <returns></returns>
-        public static byte[] GetOnlineFile(string url) {
-            byte[] b;
-
-            using (WebClient client = new WebClient()) {
-
-                try {
-                    b = client.DownloadData(url);
-                    return b;
-                } catch {
-                    return null;
-                }
-            }
-        }
-
-        /// <summary>
-        /// Returns a string from converting a byte array.
-        /// </summary>
-        /// <param name="arr">The byte array to convert.</param>
-        /// <returns>Returns a string from a byte array.</returns>
-        public string GetString(byte[] arr) {
-            return System.Text.Encoding.ASCII.GetString(arr);
-        }
-
-        /// <summary>
-        /// Returns a byte array from converting a string.
-        /// </summary>
-        /// <param name="s">The string to convert.</param>
-        /// <returns>Returns a byte array from a string.</returns>
-        public byte[] GetBytes(string s) {
-            try {
-                return System.Text.Encoding.ASCII.GetBytes(s);
-            } catch {
-                return null;
-            }
         }
 
         /// <summary>
