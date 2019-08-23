@@ -3,6 +3,11 @@ using SkorkEngine.Exception;
 using System.Collections.Generic;
 
 namespace Skork_Engine_Library.Compile {
+    /// <summary>
+    /// The <see cref="SkorkCompile"/> class.
+    /// <para>This class uses a <see cref="SkorkParser"/> instance
+    /// to compile Skork code.</para>
+    /// </summary>
     public class SkorkCompile {
 
         private SkorkParser parser;
@@ -16,22 +21,15 @@ namespace Skork_Engine_Library.Compile {
         /// 
         /// <para>Returns compilation notes using ints. 0 is successful.</para>
         /// </summary>
+        /// <exception cref="SkorkSyntaxException"></exception>
         /// <exception cref="SkorkInvalidNameException"></exception>
         /// <exception cref="SkorkException"></exception>
         /// <returns></returns>
-        public int CompileSkorkCode() {
-            List<string> compiledCode = new List<string>();
-            int compileReturn;
-            try {
-                compileReturn = this.parser.CompileSkorkCode(ref compiledCode);
-                return 0;
-            } catch (SkorkInvalidNameException) {
-                return 3;
-            } catch (SkorkSyntaxException) {
-                return 2;
-            } catch (SkorkException) {
-                return 1;
-            }
+        public static int CompileSkorkCode(SkorkParser parser) {
+            
+
+            return 0;
+
         }
 
 

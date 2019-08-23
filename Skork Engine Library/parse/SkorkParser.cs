@@ -1,50 +1,44 @@
-﻿using SkorkEngine.Exception;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Net;
 using System.Text;
 
 namespace Skork_Engine_Library.Parse {
     /// <summary>
     /// The <see cref="SkorkParser"/> class.
     /// 
-    /// <para>Contains a lot of functions for
-    /// parsing text into Skork format and other
-    /// various helper functions.</para>
+    /// <para>Contains skork code in <see langword="SkorkReadableFormat"/>
+    /// ready to be compiled.</para>
+    /// 
+    /// <para>Use: Instantiate a <see cref="SkorkParser"/> instance with
+    /// your formatted or unformatted code in a <see cref="List{T}"/> object.
+    /// </para>
+    /// 
+    /// <para>Finally, invoke the <see cref="Compile.SkorkCompile.CompileSkorkCode(SkorkParser)"/>
+    /// function.</para>
+    /// 
     /// </summary>
     public class SkorkParser {
 
         /// <summary>
-        /// A <see cref="List{T}"/> containing valid code lines.
+        /// Gets the formatted code in a <see cref="List{T}"/>.
+        /// <para>The code in this instance cannot be set once again.</para>
+        /// <para>You must reinstantiate this instance or use another one in order
+        /// to set the Code by invoking the constructor.</para>
         /// </summary>
-        private List<string> code;
+        public List<string> Code { get; internal set; }
 
         /// <summary>
-        /// Instantiates the parser with clean code lines.
+        /// Instantiates the <see cref="SkorkParser"/> instance with clean code lines.
+        /// <para>Cleans the code whether it's needed or not and returns a new 
+        /// reference to the clean code of type <see cref="List{T}"/>.
+        /// <para>The attempt is to remove trailing spaces and new lines
+        /// from the code and then putting each potentially valid code line
+        /// on its own line.</para></para>
         /// </summary>
-        /// <param name="code">The code lines in a <see cref="List{T}"/></param>
+        /// <param name="code">The formatted/unformatted code lines in a <see cref="List{T}"/></param>
         public SkorkParser(ref List<string> code) {
-            CleanCode(ref code);
-        }
-
-        /// <summary>
-        /// Attempts to parse potential Skork code into it's native
-        /// SkorkReadableFormat.
-        /// 
-        /// <para>Invoking this method will clean the code, format it for the compiler to understand,
-        /// and attempt to compile.</para>
-        /// 
-        /// <para>Returns compilation notes using ints. 0 is successful.</para>
-        /// </summary>
-        /// <exception cref="SkorkSyntaxException"></exception>
-        /// <exception cref="SkorkInvalidNameException"></exception>
-        /// <exception cref="SkorkException"></exception>
-        /// <returns></returns>
-        public int CompileSkorkCode() {
-
-
-            return 1;
+            Code = CleanCode(ref code);
         }
 
         /// <summary>
@@ -53,7 +47,6 @@ namespace Skork_Engine_Library.Parse {
         /// <para>The attempt is to remove trailing spaces and new lines
         /// from the code and then putting each potentially valid code line
         /// on its own line.</para>
-        /// <para>E.g. <see langword=""/></para>
         /// </summary>
         /// <param name="code">The code in the form of a <see cref="List{T}"/>.</param>
         /// <returns></returns>
@@ -94,7 +87,7 @@ namespace Skork_Engine_Library.Parse {
         /// <param name="c1">Inclusive begining character.</param>
         /// <param name="c2">Exclusive ending character.</param>
         /// <returns>The substring from c1(incl.) - c2(excl.), else; null</returns>
-        public string ReadUntil(string s, char c1, char c2 = '\n') {
+        private string ReadUntil(string s, char c1, char c2 = '\n') {
             return (s.Contains(c1) && s.Contains(c2)) ? s.Substring(s.IndexOf(c1),
                 s.IndexOf(c2) - s.IndexOf(c1)) : null;
         }
@@ -106,7 +99,7 @@ namespace Skork_Engine_Library.Parse {
         /// <param name="s1">Inclusive begining string.</param>
         /// <param name="c2">Exclusive ending character.</param>
         /// <returns>The substring from c1(incl.) - c2(excl.), else; null</returns>
-        public string ReadUntil(string s, string s1, char c2 = '\n') {
+        private string ReadUntil(string s, string s1, char c2 = '\n') {
             return (s.Contains(s1) && s.Contains(c2)) ? s.Substring(s.IndexOf(s1),
                 s.IndexOf(c2) - s.IndexOf(s1)) : null;
         }
@@ -118,7 +111,7 @@ namespace Skork_Engine_Library.Parse {
         /// <param name="c1">Inclusive begining character.</param>
         /// <param name="s2">Exclusive ending string.</param>
         /// <returns>The substring from c1(incl.) - c2(excl.), else; null</returns>
-        public string ReadUntil(string s, char c1, string s2 = "\n") {
+        private string ReadUntil(string s, char c1, string s2 = "\n") {
             return (s.Contains(c1) && s.Contains(s2)) ? s.Substring(s.IndexOf(c1),
                 s.IndexOf(s2) - s.IndexOf(c1)) : null;
         }
@@ -130,7 +123,7 @@ namespace Skork_Engine_Library.Parse {
         /// <param name="s1">Inclusive begining string.</param>
         /// <param name="s2">Exclusive ending string.</param>
         /// <returns>The substring from s1(incl.) - s2(excl.), else; null</returns>
-        public string ReadUntil(string s, string s1, string s2 = "\n") {
+        private string ReadUntil(string s, string s1, string s2 = "\n") {
             return (s.Contains(s1) && s.Contains(s2)) ? s.Substring(s.IndexOf(s1),
                 s.IndexOf(s2) - s.IndexOf(s1)) : null;
         }
@@ -142,7 +135,7 @@ namespace Skork_Engine_Library.Parse {
         /// <param name="c1">The first character to encounter</param>
         /// <param name="c2">The second character to encounter</param>
         /// <returns>The substring between the two characters</returns>
-        public string ReadBetween(string s, char c1, char c2) {
+        private string ReadBetween(string s, char c1, char c2) {
             return (s.Contains(c1) && s.Contains(c2)) ? s.Substring(s.IndexOf(c1) + 1,
                 s.IndexOf(c2) - s.IndexOf(c1) - 1) : null;
         }
@@ -152,7 +145,7 @@ namespace Skork_Engine_Library.Parse {
         /// </summary>
         /// <param name="s">The string.</param>
         /// <returns>Returns a substring from s where a new line is contained.</returns>
-        public string GetLine(string s) {
+        private string GetLine(string s) {
             int i = s.LastIndexOf('\n');
             return (i != -1) ? s.Substring(0, i) : s + "\n";
         }
@@ -165,7 +158,7 @@ namespace Skork_Engine_Library.Parse {
         /// <param name="s">The string.</param>
         /// <param name="c">The character to terminate the string.</param>
         /// <returns>Returns a substring from s where c is contained.</returns>
-        public string SplitString(string s, char c) {
+        private string SplitString(string s, char c) {
             int i = s.LastIndexOf(c);
             return (i != -1) ? s.Substring(0, i) : s + "\n";
         }
@@ -176,7 +169,7 @@ namespace Skork_Engine_Library.Parse {
         /// <param name="s">The string to search.</param>
         /// <param name="c">The character to compare.</param>
         /// <returns>Returns true if the string contains only the character, false otherwise.</returns>
-        public bool ContainsOnly(string s, char c) {
+        private bool ContainsOnly(string s, char c) {
             if (s == null) { return false; }
 
             for (int i = 0; i < s.Length; i++) {
@@ -193,7 +186,7 @@ namespace Skork_Engine_Library.Parse {
         /// <param name="s">The string to search.</param>
         /// <param name="c">The character to compare.</param>
         /// <returns></returns>
-        public bool DoesNotContain(string s, char c) {
+        private bool DoesNotContain(string s, char c) {
             if (s == null) { return false; }
 
             for (int i = 0; i < s.Length; i++) {
@@ -207,7 +200,7 @@ namespace Skork_Engine_Library.Parse {
         /// </summary>
         /// <param name="s">The string to get lines from.</param>
         /// <returns>A string collection of substrings.</returns>
-        public List<string> GetLines(string s) {
+        private List<string> GetLines(string s) {
             if (s == null) { return null; }
 
             List<string> sc = new List<string>();

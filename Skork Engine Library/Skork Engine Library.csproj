@@ -90,6 +90,7 @@
     <Compile Include="Exception\SkorkSyntaxException.cs" />
     <Compile Include="Function\ISkorkFunction.cs" />
     <Compile Include="Function\SkorkWho.cs" />
+    <Compile Include="Parse\SkorkKeywordParser.cs" />
     <Compile Include="Parse\SkorkParser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
