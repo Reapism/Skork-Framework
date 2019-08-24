@@ -14,7 +14,7 @@ namespace Skork_Engine_Library.Skork {
     /// Implements <seealso cref="ISkorkEntity"/>,
     /// <seealso cref="ISkorkMovable{Entity}"/>.
     /// </summary>
-    public class SkorkSprite : ISkorkEntity, ISkorkMovable<ISkorkEntity> {
+    public class SkorkSprite : ISkorkMovable<ISkorkEntity> {
 
         #region Instance member(s)
 

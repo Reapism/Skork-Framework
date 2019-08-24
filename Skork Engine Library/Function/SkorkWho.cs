@@ -23,7 +23,6 @@ namespace Skork_Engine_Library.Function {
             } else {
                 return null;
             }
-
         }
 
         /// <summary>
