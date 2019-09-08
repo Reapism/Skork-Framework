@@ -14,7 +14,7 @@ namespace Skork_Engine_Library.Skork {
     /// Implements <seealso cref="ISkorkEntity"/>,
     /// <seealso cref="ISkorkMovable{Entity}"/>.
     /// </summary>
-    public class SkorkSprite : ISkorkMovable<ISkorkEntity> {
+    public class SkorkSprite : ISkorkEntity, ISkorkMovable<ISkorkEntity> {
 
         #region Instance member(s)
 
@@ -28,20 +28,19 @@ namespace Skork_Engine_Library.Skork {
         private static int SPRITE_WIDTH;
         private static int SPRITE_HEIGHT;
 
-
         #endregion
 
         #region Properties
 
         /// <summary>
         /// The name of the sprite.
-        /// <para>Implemented from <see cref="ISkorkEntity"/></para>
+        /// <para>Implemented from <see cref="ISkorkEntity"/>.</para>
         /// </summary>
         public string Name { get; set; }
 
-        /// <summary>s
-        /// The name of the sprite.
-        /// <para>Implemented from <see cref="ISkorkEntity"/></para>
+        /// <summary>
+        /// The postion of the sprite as a <see cref="Point"/> type.
+        /// <para>Implemented from <see cref="ISkorkEntity"/>.</para>
         /// </summary>
         public Point Position { get; set; }
 
@@ -107,7 +106,6 @@ namespace Skork_Engine_Library.Skork {
 
         #region Instance methods
 
-
         public void Up(ISkorkEntity entity, int units) {
             if (entity is SkorkSprite sprite) {
                 
@@ -164,8 +162,9 @@ namespace Skork_Engine_Library.Skork {
         public override int GetHashCode() {
             int prime = 17;
             int prime2 = 23;
-            return (prime * prime2 + this.Name.GetHashCode()) + (prime * prime2 + this.SpriteImage.GetHashCode());
+            return prime * prime2 + this.Name.GetHashCode() + prime * prime2 + this.SpriteImage.GetHashCode();
         }
+
         #endregion
     }
 }

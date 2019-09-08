@@ -10,7 +10,10 @@ namespace Skork_Engine_Library.Database {
         public bool Login(string username, string password) {
             try {
                 LoginHelper(username, password);
+            } catch {
+
             }
+            return false;
         }
 
         private void LoginHelper(string username, string password) {

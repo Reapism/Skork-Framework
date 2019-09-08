@@ -12,9 +12,7 @@
 
         internal DatabaseInstance() {
 
-        }
-
-        
+        }     
 
     }
 }
