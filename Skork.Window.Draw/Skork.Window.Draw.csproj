@@ -21,6 +21,8 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <DocumentationFile>bin\Debug\Skork.Window.Draw.xml</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -46,6 +48,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Helpers\CoordinateHelper.cs" />
     <Compile Include="Plane\GeneratePlane.cs" />
     <Compile Include="Interfaces\I2DPlane.cs" />
     <Compile Include="Plane\SkorkPlaneProperties.cs" />
@@ -59,6 +62,18 @@
     <ProjectReference Include="..\Skork.Exceptions\Skork.Exceptions.csproj">
       <Project>{A44FBC2F-8F80-4FA4-B4B5-B7C2B4CFFF33}</Project>
       <Name>Skork.Exceptions</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Skork.Language.Configurations\Skork.Language.Configurations.csproj">
+      <Project>{105fc504-2030-4c77-b931-9faa26667a97}</Project>
+      <Name>Skork.Language.Configurations</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Skork.Language.Entities\Skork.Language.Entities.csproj">
+      <Project>{93762cc5-3772-4c19-8cec-899fab94c2e6}</Project>
+      <Name>Skork.Language.Entities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Skork.Language.Util\Skork.Language.Util.csproj">
+      <Project>{3d89cece-56d4-4da6-be0e-941bdf87082a}</Project>
+      <Name>Skork.Language.Util</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

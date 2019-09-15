@@ -21,6 +21,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Debug\Skork.Language.Entities.xml</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -60,10 +61,6 @@
     <ProjectReference Include="..\Skork.Language.Configurations\Skork.Language.Configurations.csproj">
       <Project>{105fc504-2030-4c77-b931-9faa26667a97}</Project>
       <Name>Skork.Language.Configurations</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Skork.Window.Draw\Skork.Window.Draw.csproj">
-      <Project>{B84E20DC-0AA4-4111-8FE2-E1D6973325B0}</Project>
-      <Name>Skork.Window.Draw</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

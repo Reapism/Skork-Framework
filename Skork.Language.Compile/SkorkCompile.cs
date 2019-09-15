@@ -1,4 +1,6 @@
-﻿namespace SkorkEngineAPI.Language.Compile {
+﻿using Skork.Language.Parse;
+
+namespace SkorkEngineAPI.Language.Compile {
     /// <summary>
     /// The <see cref="SkorkCompile"/> class.
     /// <para>This class uses a <see cref="SkorkParser"/> instance

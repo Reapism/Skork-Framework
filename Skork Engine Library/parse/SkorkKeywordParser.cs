@@ -12,7 +12,7 @@ namespace Skork_Engine_Library.Parse {
         }
 
         public static bool IsSkorkKeyword(string value) {
-            if (value == )
+            throw new NotImplementedException();
         }
 
     }

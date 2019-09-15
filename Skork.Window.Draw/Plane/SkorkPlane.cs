@@ -1,10 +1,7 @@
-﻿using Skork.Window.Draw.Interfaces;
-using SkorkEngine.Exceptions.Runtime.Draw;
+﻿using Skork.Language.Configurations;
+using Skork.Language.Entities.Template;
 using System.Collections.Generic;
-using System.Windows;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System;
 
 namespace Skork.Window.Draw.Plane
 {
@@ -15,9 +12,28 @@ namespace Skork.Window.Draw.Plane
     /// </summary>
     public sealed class SkorkPlane
     {
-        public SkorkPlaneProperties Properties { get; set; }
+        /// <summary>
+        /// The properties of the plane.
+        /// </summary>
+        public SkorkPlaneProperties PlaneProperties { get; set; }
 
-        public List<ISkorkEntity>
+        public Queue<ISkorkEntity> ActiveEntities { get; private set; }
+
+        public SkorkPlane()
+        {
+            PlaneProperties = new SkorkPlaneProperties
+            {
+                ColorPrimary = Colors.Black,
+                ColorSecondary = Colors.White,
+                Width = SkorkProperties.SpriteWidth,
+                Height = SkorkProperties.SpriteHeight,
+                Image = null
+            };
+
+            ActiveEntities = new Queue<ISkorkEntity>(SkorkProperties.MaximumEntityInstances);           
+        }
+
+
 
     }
 }

@@ -1,5 +1,4 @@
 ﻿using Skork.Language.Entities.Template;
-using Skork_Engine_Library.Draw;
 using SkorkEngine.Exceptions.Runtime.Entity;
 using System.Threading;
 using System.Windows;
@@ -38,8 +37,6 @@ namespace Skork.Language.Entities.Controllable
         /// </summary>
         public Image SpriteImage { get; set; }
 
-        private SkorkPlane Plane { get; set; }
-
         #endregion
 
         #region Contructors & Destructors
@@ -62,11 +59,10 @@ namespace Skork.Language.Entities.Controllable
         /// <param name="position">The position of the sprite.</param>
         /// <param name="color">The color of the sprite to add.</param>
         /// <param name="plane">A reference to a <see cref="SkorkPlane"/>.</param>
-        public SkorkSprite(string name, Point position, Color color, ref SkorkPlane plane)
+        public SkorkSprite(string name, Point position, Color color)
         {
             Name = name;
             Position = position;
-            Plane = plane;
 
             var bitmap = new WriteableBitmap(SkorkProperties.SpriteWidth, 
                 SkorkProperties.SpriteHeight, 30, 30, PixelFormats.Rgb24,

@@ -1,94 +1,61 @@
-﻿using System.IO;
+﻿using Skork.Language.Util.Draw;
+using Skork.Window.Draw.Helpers;
+using System;
+using System.IO;
+using System.Windows;
 using System.Windows.Media.Imaging;
 
 namespace Skork.Window.Draw.Plane
 {
     /// <summary>
-    /// Generates <see cref="SkorkPlane"/>.
+    /// Contains functions for generating images for the 
+    /// <see cref="SkorkPlaneProperties"/>.
     /// </summary>
     public sealed class GeneratePlane
     {
-        private static double DPI_X;
-        private static double DPI_Y;
-
-        static GeneratePlane()
-        {
-            DPI_X = 300;
-            DPI_Y = 300;
-        }
-
         /// <summary>
         /// Generates an image using the virtual <see cref="SkorkPlane"/> 
         /// and returns an <see cref="Image"/> containing it.
         /// </summary>
         /// <param name="plane">The <see cref="SkorkPlane"/> instance.</param>
         /// <returns></returns>
-        public static void GenerateSingleGrid(SkorkPlane plane)
+        public static void GenerateSingleGrid(SkorkPlaneProperties planeProperties)
         {
-            WriteableBitmap bitmap = BitmapFactory.New(plane.Width, plane.Height);
-
-            int x = 0;
-            for (int y = 0; y < plane.Height; y++)
-            {
-                bitmap.SetPixel(x, y, plane.ColorSecondary);
-
-                for (x = 0; x < plane.Width; x++)
-                {
-                    bitmap.SetPixel(x, y, plane.ColorPrimary);
-                }
-            }
-
-            plane.Image = ConvertWriteableBitmapToBitmapImage(bitmap);
+            planeProperties = null;
+            throw new NotImplementedException();
         }
 
-        public static void GenerateDoubleGrid(SkorkPlane plane)
+        public unsafe static void GenerateDoubleGrid(SkorkPlaneProperties planeProperties)
         {
-            WriteableBitmap bitmap = BitmapFactory.New(plane.Width, plane.Height);
+            WriteableBitmap writableBitmap = BitmapFactory.New(planeProperties.Width, planeProperties.Height);
+            writableBitmap.Clear(planeProperties.ColorSecondary);
 
-            int x = 0;
-            for (int y = 0; y < plane.Height; y++)
+            Point pt1 = new Point(0, 0);
+            Point pt2 = new Point(0, 0);
+            Point offsetPoint = new Point(0, 4);
+
+            int colorAsInt = planeProperties.ColorPrimary.A +
+                planeProperties.ColorPrimary.R +
+                planeProperties.ColorPrimary.G +
+                planeProperties.ColorPrimary.B;
+
+            int numberOfLines = planeProperties.Height / 2;
+
+            using (var context = writableBitmap.GetBitmapContext())
             {
-                bitmap.SetPixel(x, y, plane.ColorSecondary);
+                int* pixels = context.Pixels;
 
-                for (x = 0; x < plane.Width; x++)
+                for (int currentLine = 0; currentLine < numberOfLines; currentLine++)
                 {
-                    bitmap.SetPixel(x, y, plane.ColorPrimary);
+                    WriteableBitmapExtensions.DrawLine(context, planeProperties.Width, planeProperties.Height, (int)pt1.X, (int)pt1.Y, (int)pt2.X, (int)pt2.Y, colorAsInt);
+                    CoordinateHelper.AdvanceLineVerticalCoordinates(ref pt1, ref pt2, offsetPoint);
                 }
-            }
 
-            plane.Image = ConvertWriteableBitmapToBitmapImage(bitmap);
+                planeProperties.Image = BitmapUtil.ConvertWriteableBitmapToBitmapImage(writableBitmap);
+            }
 
         }
 
-        /// <summary>
-        /// Converts a WritableBitmap instance into a BitmapImage.
-        /// <para>Returns null if something exceptional occurs.</para>
-        /// </summary>
-        /// <param name="wbm">The <see cref="WriteableBitmap"/> instance.</param>
-        /// <returns></returns>
-        public static BitmapImage ConvertWriteableBitmapToBitmapImage(WriteableBitmap wbm)
-        {
-            BitmapImage bmImage = new BitmapImage();
 
-            try
-            {
-                using (MemoryStream stream = new MemoryStream())
-                {
-                    PngBitmapEncoder encoder = new PngBitmapEncoder();
-                    encoder.Frames.Add(BitmapFrame.Create(wbm));
-                    encoder.Save(stream);
-                    bmImage.BeginInit();
-                    bmImage.CacheOption = BitmapCacheOption.OnLoad;
-                    bmImage.StreamSource = stream;
-                    bmImage.EndInit();
-                    bmImage.Freeze();
-                    return bmImage;
-                }
-            }
-            catch
-            {
-                return null;
-            }
-        }
     }
 }

@@ -21,6 +21,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Debug\Skork.Language.Compile.xml</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -48,6 +49,12 @@
     <Folder Include="Execute\" />
     <Folder Include="Helpers\" />
     <Folder Include="Manage\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Skork.Language.Parse\Skork.Language.Parse.csproj">
+      <Project>{3E37CCC7-C9F1-413E-AF0F-6BD44908BE0A}</Project>
+      <Name>Skork.Language.Parse</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
