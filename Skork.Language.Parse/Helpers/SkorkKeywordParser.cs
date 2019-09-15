@@ -4,15 +4,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Skork_Engine_Library.Parse {
-    public class SkorkKeywordParser {
-
-        public SkorkKeywordParser() {
+namespace Skork.Language.Parse.Helpers
+{
+    public class SkorkKeywordParser
+    {
+        public SkorkKeywordParser()
+        {
 
         }
 
-        public static bool IsSkorkKeyword(string value) {
-            if (value == )
+        public static bool IsSkorkKeyword(string value)
+        {
+            throw new NotImplementedException();
         }
 
     }

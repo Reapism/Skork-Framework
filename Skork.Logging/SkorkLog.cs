@@ -1,7 +1,7 @@
 ﻿using Serilog;
 using Serilog.Events;
 
-namespace Skork_Engine_Library.Debug
+namespace Skork.Logging
 {
     public class SkorkLog
     {

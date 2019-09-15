@@ -68,7 +68,9 @@ namespace Skork.Language.Entities.Controllable
             Position = position;
             Plane = plane;
 
-            var bitmap = new WriteableBitmap(SPRITE_WIDTH, SPRITE_HEIGHT, 30, 30, PixelFormats.Rgb24, BitmapPalettes.WebPalette);
+            var bitmap = new WriteableBitmap(SkorkProperties.SpriteWidth, 
+                SkorkProperties.SpriteHeight, 30, 30, PixelFormats.Rgb24,
+                BitmapPalettes.WebPalette);
 
             if (SkorkProperties.ActiveSpriteInstances != SkorkProperties.MaximumEntityInstances)
             {

@@ -48,6 +48,7 @@
   <ItemGroup>
     <Compile Include="Plane\GeneratePlane.cs" />
     <Compile Include="Interfaces\I2DPlane.cs" />
+    <Compile Include="Plane\SkorkPlaneProperties.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Plane\SkorkPlane.cs" />
   </ItemGroup>

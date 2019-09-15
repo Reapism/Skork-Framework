@@ -1,4 +1,4 @@
-﻿namespace Skork_Engine_Library.Draw
+﻿namespace Skork.Window.Draw.Interfaces
 {
     /// <summary>
     /// <para>Represents a 2D plane

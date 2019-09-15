@@ -49,5 +49,11 @@
     <Folder Include="Internal\" />
     <Folder Include="Programmatically\" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Skork.Language.Entities\Skork.Language.Entities.csproj">
+      <Project>{93762CC5-3772-4C19-8CEC-899FAB94C2E6}</Project>
+      <Name>Skork.Language.Entities</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

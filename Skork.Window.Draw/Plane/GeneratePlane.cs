@@ -1,14 +1,13 @@
 ﻿using System.IO;
 using System.Windows.Media.Imaging;
 
-namespace Skork_Engine_Library.Draw
+namespace Skork.Window.Draw.Plane
 {
     /// <summary>
     /// Generates <see cref="SkorkPlane"/>.
     /// </summary>
     public sealed class GeneratePlane
     {
-
         private static double DPI_X;
         private static double DPI_Y;
 
