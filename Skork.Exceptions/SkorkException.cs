@@ -1,13 +1,15 @@
 ﻿using System;
 
-namespace SkorkEngine.Exceptions {
-
+namespace Skork.Exceptions
+{
     /// <summary>
-    /// The root exception class for the <see cref="SkorkEngine"/>.
-    /// <para>All other Skork exceptions are derived from this class.</para>
+    /// The root exception class for the <see langword="SkorkEngine"/>.
+    /// <para>All other Skork related exception classes are derived from 
+    /// <see cref="SkorkException"/>.</para>
+    /// <para><see cref="SkorkException"/> is derived from <see cref="Exception"/></para>
     /// </summary>
-    public class SkorkException : System.Exception {
-
+    public class SkorkException : Exception
+    {
         private string exceptionMsg;
 
         /// <summary>
@@ -15,7 +17,8 @@ namespace SkorkEngine.Exceptions {
         /// <para>The root level skork exception.</para>
         /// </summary>
         /// <param name="msg">The exception.</param>
-        public SkorkException(string msg) {
+        public SkorkException(string msg)
+        {
             this.exceptionMsg = msg;
         }
 
@@ -23,20 +26,9 @@ namespace SkorkEngine.Exceptions {
         /// Returns the exception message.
         /// </summary>
         /// <returns></returns>
-        public override string ToString() {
+        public override string ToString()
+        {
             return this.exceptionMsg;
         }
-
-    }
-
-    public enum ExceptionDetails {
-
-        EXISTING_TYPE,
-
-        INVALID_FIELD_NAME,
-
-        INVALID_KEYWORD,
-
-        INVALID_TYPE_CAST
     }
 }

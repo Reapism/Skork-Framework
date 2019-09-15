@@ -1,8 +1,4 @@
-﻿using Skork_Engine_Library.Parse;
-using SkorkEngine.Exceptions;
-using System.Collections.Generic;
-
-namespace SkorkEngineAPI.Compile {
+﻿namespace SkorkEngineAPI.Language.Compile {
     /// <summary>
     /// The <see cref="SkorkCompile"/> class.
     /// <para>This class uses a <see cref="SkorkParser"/> instance
