@@ -1,4 +1,5 @@
-﻿namespace Skork_Engine_Library.Util {
+﻿namespace Skork_Engine_Library.Util
+{
 
     /// <summary>
     /// <para>Adds a unique number to separate every
@@ -9,7 +10,8 @@
     /// create more 'id's'.
     /// </summary>
 
-    public class SkorkKeysID<T> {
+    public class SkorkKeysID<T>
+    {
 
         // The unique id.
         private long id;
@@ -20,9 +22,11 @@
         /// id by 1.
         /// </summary>
 
-        public SkorkKeysID() {
-            if (this.id == 0) { this.id = 1; }
-            this.id += 1;
+        public SkorkKeysID()
+        {
+            if (id == 0)
+            { id = 1; }
+            id += 1;
         }
 
         /// <summary>
@@ -30,16 +34,18 @@
         /// </summary>
         /// <typeparam name="T">Gets the type as an object.</typeparam>
         /// <returns></returns>
-        public object GetType<T>() {
-            return this.type.GetType();
+        public object GetType<T>()
+        {
+            return type.GetType();
         }
 
         /// <summary>
         /// Returns the current id.
         /// </summary>
         /// <returns></returns>
-        public override string ToString() {
-            return $"The id is { this.id.ToString()} of type {this.type.GetType().ToString() }";
+        public override string ToString()
+        {
+            return $"The id is { id.ToString()} of type {type.GetType().ToString() }";
         }
     }
 }

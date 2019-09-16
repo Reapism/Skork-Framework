@@ -1,5 +1,7 @@
 ﻿
-namespace Skork_Engine_Library.Debug {
-    public class SkorkDebug {    
+namespace Skork_Engine_Library.Debug
+{
+    public class SkorkDebug
+    {
     }
 }

@@ -1,14 +1,16 @@
 ﻿using Skork_Engine_Library.Skork;
 using System.Threading.Tasks;
 
-namespace Skork_Engine_Library.Function {
+namespace Skork_Engine_Library.Function
+{
 
     /// <summary>
     /// The <see cref="SkorkWho"/> class.
     /// <para>When invoked on an <see cref="ISkorkEntity"/>, invokes the objects
     /// ToString() method and returns it.</para>
     /// </summary>
-    public class SkorkWho : ISkorkFunction {
+    public class SkorkWho : ISkorkFunction
+    {
 
         /// <summary>
         /// If the incoming <paramref name="obj"/> is of 
@@ -17,10 +19,13 @@ namespace Skork_Engine_Library.Function {
         /// </summary>
         /// <param name="obj">The object to get its string information.</param>
         /// <returns></returns>
-        public object Invoke(object obj) {
-            if (obj is ISkorkEntity) {
+        public object Invoke(object obj)
+        {
+            if (obj is ISkorkEntity)
+            {
                 return InvokeHelper(obj);
-            } else {
+            } else
+            {
                 return null;
             }
         }
@@ -30,7 +35,8 @@ namespace Skork_Engine_Library.Function {
         /// </summary>
         /// <param name="obj">An optional object.</param>
         /// <returns></returns>
-        private async Task<object> InvokeHelper(object obj) {
+        private async Task<object> InvokeHelper(object obj)
+        {
             return await Task.FromResult<string>(obj.ToString());
         }
     }

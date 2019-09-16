@@ -1,12 +1,12 @@
-﻿using System;
-
-namespace SkorkEngine.Exceptions {
+﻿namespace SkorkEngine.Exceptions
+{
 
     /// <summary>
     /// The root exception class for the <see cref="SkorkEngine"/>.
     /// <para>All other Skork exceptions are derived from this class.</para>
     /// </summary>
-    public class SkorkException : System.Exception {
+    public class SkorkException : System.Exception
+    {
 
         private string exceptionMsg;
 
@@ -15,21 +15,24 @@ namespace SkorkEngine.Exceptions {
         /// <para>The root level skork exception.</para>
         /// </summary>
         /// <param name="msg">The exception.</param>
-        public SkorkException(string msg) {
-            this.exceptionMsg = msg;
+        public SkorkException(string msg)
+        {
+            exceptionMsg = msg;
         }
 
         /// <summary>
         /// Returns the exception message.
         /// </summary>
         /// <returns></returns>
-        public override string ToString() {
-            return this.exceptionMsg;
+        public override string ToString()
+        {
+            return exceptionMsg;
         }
 
     }
 
-    public enum ExceptionDetails {
+    public enum ExceptionDetails
+    {
 
         EXISTING_TYPE,
 

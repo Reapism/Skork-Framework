@@ -1,11 +1,11 @@
-﻿using Skork.Language.Entities.Template;
+﻿using Skork.Language.Configurations;
+using Skork.Language.Entities.Template;
 using SkorkEngine.Exceptions.Runtime.Entity;
 using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using Skork.Language.Configurations;
 
 namespace Skork.Language.Entities.Controllable
 {
@@ -64,7 +64,7 @@ namespace Skork.Language.Entities.Controllable
             Name = name;
             Position = position;
 
-            var bitmap = new WriteableBitmap(SkorkProperties.SpriteWidth, 
+            WriteableBitmap bitmap = new WriteableBitmap(SkorkProperties.SpriteWidth,
                 SkorkProperties.SpriteHeight, 30, 30, PixelFormats.Rgb24,
                 BitmapPalettes.WebPalette);
 
@@ -136,9 +136,9 @@ namespace Skork.Language.Entities.Controllable
         {
             if (obj is SkorkSprite sprite)
             {
-                if (this.Name.Equals(sprite.Name) &&
-                        this.Position.Equals(sprite.Position) &&
-                        this.SpriteImage.Equals(sprite.SpriteImage))
+                if (Name.Equals(sprite.Name) &&
+                        Position.Equals(sprite.Position) &&
+                        SpriteImage.Equals(sprite.SpriteImage))
                 {
                     return true;
                 }
@@ -151,7 +151,7 @@ namespace Skork.Language.Entities.Controllable
         {
             int prime = 17;
             int prime2 = 23;
-            return prime * prime2 + this.Name.GetHashCode() + prime * prime2 + this.SpriteImage.GetHashCode();
+            return prime * prime2 + Name.GetHashCode() + prime * prime2 + SpriteImage.GetHashCode();
         }
 
         #endregion

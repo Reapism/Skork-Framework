@@ -30,7 +30,7 @@ namespace Skork.Window.Draw.Plane
                 Image = null
             };
 
-            ActiveEntities = new Queue<ISkorkEntity>(SkorkProperties.MaximumEntityInstances);           
+            ActiveEntities = new Queue<ISkorkEntity>(SkorkProperties.MaximumEntityInstances);
         }
 
 

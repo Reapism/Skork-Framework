@@ -1,7 +1,6 @@
 ﻿using Skork.Language.Util.Draw;
 using Skork.Window.Draw.Helpers;
 using System;
-using System.IO;
 using System.Windows;
 using System.Windows.Media.Imaging;
 
@@ -25,7 +24,7 @@ namespace Skork.Window.Draw.Plane
             throw new NotImplementedException();
         }
 
-        public unsafe static void GenerateDoubleGrid(SkorkPlaneProperties planeProperties)
+        public static unsafe void GenerateDoubleGrid(SkorkPlaneProperties planeProperties)
         {
             WriteableBitmap writableBitmap = BitmapFactory.New(planeProperties.Width, planeProperties.Height);
             writableBitmap.Clear(planeProperties.ColorSecondary);
@@ -41,7 +40,7 @@ namespace Skork.Window.Draw.Plane
 
             int numberOfLines = planeProperties.Height / 2;
 
-            using (var context = writableBitmap.GetBitmapContext())
+            using (BitmapContext context = writableBitmap.GetBitmapContext())
             {
                 int* pixels = context.Pixels;
 

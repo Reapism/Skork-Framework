@@ -1,4 +1,5 @@
-﻿namespace Skork_Engine_Library.Skork {
+﻿namespace Skork_Engine_Library.Skork
+{
 
     /// <summary>
     /// The <see cref="ISkorkMovable{Entity}"/> interface.
@@ -7,7 +8,8 @@
     /// <para>This interface <see langword="enforces"/> its type argument
     /// to be of type <see cref="ISkorkEntity"/>.</para>
     /// </summary>
-    public interface ISkorkMovable<Entity> where Entity : ISkorkEntity {
+    public interface ISkorkMovable<Entity> where Entity : ISkorkEntity
+    {
 
         /// <summary>
         /// Moves a particular <see cref="ISkorkEntity"/>

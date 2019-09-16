@@ -1,11 +1,13 @@
 ﻿using System.Windows;
 
-namespace Skork_Engine_Library.Skork {
+namespace Skork_Engine_Library.Skork
+{
 
     /// <summary>
     /// Fundamental properties for any <see cref="ISkorkEntity"/>.
     /// </summary>
-    public interface ISkorkEntity {
+    public interface ISkorkEntity
+    {
 
         /// <summary>
         /// The name associated with this entity.

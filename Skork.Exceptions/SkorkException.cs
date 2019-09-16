@@ -19,7 +19,7 @@ namespace Skork.Exceptions
         /// <param name="msg">The exception.</param>
         public SkorkException(string msg)
         {
-            this.exceptionMsg = msg;
+            exceptionMsg = msg;
         }
 
         /// <summary>
@@ -28,7 +28,7 @@ namespace Skork.Exceptions
         /// <returns></returns>
         public override string ToString()
         {
-            return this.exceptionMsg;
+            return exceptionMsg;
         }
     }
 }

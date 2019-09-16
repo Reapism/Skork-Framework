@@ -1,13 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.IO;
 using System.Windows.Media.Imaging;
 
 namespace Skork.Language.Util.Draw
 {
+    /// <summary>
+    /// Contains utility functions for <see cref="BitmapImage"/>
+    /// and <see cref="WriteableBitmap"/>.
+    /// </summary>
     public class BitmapUtil
     {
         /// <summary>
@@ -19,7 +18,7 @@ namespace Skork.Language.Util.Draw
         public static BitmapImage ConvertWriteableBitmapToBitmapImage(WriteableBitmap writableBitmap)
         {
             BitmapImage bitmapImage = new BitmapImage();
-            
+
             try
             {
                 using (MemoryStream stream = new MemoryStream())

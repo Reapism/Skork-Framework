@@ -1,12 +1,13 @@
-﻿using System.Drawing;
-using System.Windows;
+﻿using System.Windows;
 
-namespace Skork.Language.Entities.Template {
+namespace Skork.Language.Entities.Template
+{
 
     /// <summary>
     /// Fundamental properties for any <see cref="ISkorkEntity"/>.
     /// </summary>
-    public interface ISkorkEntity {
+    public interface ISkorkEntity
+    {
 
         /// <summary>
         /// The name associated with this entity.

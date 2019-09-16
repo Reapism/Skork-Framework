@@ -11,11 +11,11 @@
         private static int activeEntityInstances;
         private static int activeSpriteInstances;
 
-        public static int ActiveEntityInstances { get { return activeEntityInstances; } set { activeEntityInstances = value; } }
+        public static int ActiveEntityInstances { get => activeEntityInstances; set => activeEntityInstances = value; }
 
         public static int MaximumEntityInstances { get; set; }
 
-        public static int ActiveSpriteInstances { get { return activeSpriteInstances; } set { activeSpriteInstances = value; } }
+        public static int ActiveSpriteInstances { get => activeSpriteInstances; set => activeSpriteInstances = value; }
 
         public static int MaximumSpriteInstances { get; set; }
 

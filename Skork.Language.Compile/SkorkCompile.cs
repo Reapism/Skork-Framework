@@ -1,12 +1,14 @@
 ﻿using Skork.Language.Parse;
 
-namespace SkorkEngineAPI.Language.Compile {
+namespace SkorkEngineAPI.Language.Compile
+{
     /// <summary>
     /// The <see cref="SkorkCompile"/> class.
     /// <para>This class uses a <see cref="SkorkParser"/> instance
     /// to compile Skork code.</para>
     /// </summary>
-    public class SkorkCompile {
+    public class SkorkCompile
+    {
 
         private SkorkParser parser;
 
@@ -23,8 +25,9 @@ namespace SkorkEngineAPI.Language.Compile {
         /// <exception cref="SkorkInvalidNameException"></exception>
         /// <exception cref="SkorkException"></exception>
         /// <returns></returns>
-        public static int CompileSkorkCode(SkorkParser parser) {
-            
+        public static int CompileSkorkCode(SkorkParser parser)
+        {
+
 
             return 0;
 

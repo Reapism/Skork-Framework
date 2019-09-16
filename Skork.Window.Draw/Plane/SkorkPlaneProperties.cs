@@ -1,10 +1,5 @@
 ﻿using Skork.Window.Draw.Interfaces;
 using SkorkEngine.Exceptions.Runtime.Draw;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
@@ -27,7 +22,7 @@ namespace Skork.Window.Draw.Plane
         /// </summary>
         public int Width
         {
-            get => this.width; set { if (value > 0) { this.width = value; } }
+            get => width; set { if (value > 0) { width = value; } }
         }
 
         /// <summary>
@@ -35,7 +30,7 @@ namespace Skork.Window.Draw.Plane
         /// </summary>
         public int Height
         {
-            get => this.height; set { if (value > 0) { this.height = value; } }
+            get => height; set { if (value > 0) { height = value; } }
         }
 
         /// <summary>
@@ -88,11 +83,11 @@ namespace Skork.Window.Draw.Plane
                 throw new SkorkDrawException("The primary and secondary color must be non-null!");
             }
 
-            this.Width = width;
-            this.Height = height;
-            this.ColorPrimary = color1;
-            this.ColorSecondary = color2;
-            this.Image = null;
+            Width = width;
+            Height = height;
+            ColorPrimary = color1;
+            ColorSecondary = color2;
+            Image = null;
         }
 
         #endregion

@@ -1,6 +1,4 @@
-﻿using Skork.Exceptions;
-
-namespace Skork.Exceptions.Compile.Syntax
+﻿namespace Skork.Exceptions.Compile.Syntax
 {
     /// <summary>
     /// <para>Thrown when an invalid name for a variable
