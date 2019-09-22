@@ -15,7 +15,7 @@ namespace Skork.Language.Entities.Controllable
     /// Implements <seealso cref="ISkorkEntity"/>,
     /// <seealso cref="ISkorkMovable{Entity}"/>.
     /// </summary>
-    public class SkorkSprite : ISkorkEntity, ISkorkMovable<ISkorkEntity>
+    public class SkorkSprite : ISkorkMovable<ISkorkEntity>
     {
         #region Properties
 

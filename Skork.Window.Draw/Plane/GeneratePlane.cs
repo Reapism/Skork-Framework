@@ -16,7 +16,7 @@ namespace Skork.Window.Draw.Plane
         /// Generates an image using the virtual <see cref="SkorkPlane"/> 
         /// and returns an <see cref="Image"/> containing it.
         /// </summary>
-        /// <param name="plane">The <see cref="SkorkPlane"/> instance.</param>
+        /// <param name="plane">The <see cref="SkorkPlaneProperties"/> instance.</param>
         /// <returns></returns>
         public static void GenerateSingleGrid(SkorkPlaneProperties planeProperties)
         {
@@ -24,6 +24,12 @@ namespace Skork.Window.Draw.Plane
             throw new NotImplementedException();
         }
 
+        /// <summary>
+        /// Generates an image using the virtual <see cref="SkorkPlane"/> 
+        /// and returns an <see cref="Image"/> containing it.
+        /// </summary>
+        /// <param name="planeProperties">The <see cref="SkorkPlaneProperties"/> instance.</param>
+        /// <returns></returns>
         public static unsafe void GenerateDoubleGrid(SkorkPlaneProperties planeProperties)
         {
             WriteableBitmap writableBitmap = BitmapFactory.New(planeProperties.Width, planeProperties.Height);

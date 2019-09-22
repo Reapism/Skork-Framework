@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{B84E20DC-0AA4-4111-8FE2-E1D6973325B0}</ProjectGuid>
+    <ProjectGuid>{CDCB7307-7276-4821-A3A5-190588900C03}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Skork.Window.Draw</RootNamespace>
-    <AssemblyName>Skork.Window.Draw</AssemblyName>
+    <RootNamespace>SkorkEngine</RootNamespace>
+    <AssemblyName>SkorkEngine</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -21,8 +21,6 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-    <DocumentationFile>bin\Debug\Skork.Window.Draw.xml</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -31,10 +29,9 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -43,26 +40,23 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
-    <Reference Include="WindowsBase" />
-    <Reference Include="WriteableBitmapEx.Wpf, Version=1.6.2.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\WriteableBitmapEx.1.6.2\lib\net40\WriteableBitmapEx.Wpf.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Helpers\CoordinateHelper.cs" />
-    <Compile Include="Plane\GeneratePlane.cs" />
-    <Compile Include="Interfaces\I2DPlane.cs" />
-    <Compile Include="Plane\SkorkPlaneProperties.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Plane\SkorkPlane.cs" />
+    <Compile Include="SkorkEngineMain.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
+    <ProjectReference Include="..\Skork.Data\Skork.Data.csproj">
+      <Project>{4de5883c-cfe1-475e-8722-9a0de0d1b534}</Project>
+      <Name>Skork.Data</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Skork.Exceptions\Skork.Exceptions.csproj">
-      <Project>{A44FBC2F-8F80-4FA4-B4B5-B7C2B4CFFF33}</Project>
+      <Project>{a44fbc2f-8f80-4fa4-b4b5-b7c2b4cfff33}</Project>
       <Name>Skork.Exceptions</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Skork.Language.Compile\Skork.Language.Compile.csproj">
+      <Project>{f571416e-f156-4110-8c6a-496db590d6ae}</Project>
+      <Name>Skork.Language.Compile</Name>
     </ProjectReference>
     <ProjectReference Include="..\Skork.Language.Configurations\Skork.Language.Configurations.csproj">
       <Project>{105fc504-2030-4c77-b931-9faa26667a97}</Project>
@@ -72,10 +66,38 @@
       <Project>{93762cc5-3772-4c19-8cec-899fab94c2e6}</Project>
       <Name>Skork.Language.Entities</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Skork.Language.Functions\Skork.Language.Functions.csproj">
+      <Project>{c703a53b-73dd-4af2-ac9c-1fe0bd284ed8}</Project>
+      <Name>Skork.Language.Functions</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Skork.Language.Parse\Skork.Language.Parse.csproj">
+      <Project>{3e37ccc7-c9f1-413e-af0f-6bd44908be0a}</Project>
+      <Name>Skork.Language.Parse</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Skork.Language.Runtime\Skork.Language.Runtime.csproj">
+      <Project>{9fbc4ab8-c093-48aa-a82f-ef9c5f091999}</Project>
+      <Name>Skork.Language.Runtime</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Skork.Language.Util\Skork.Language.Util.csproj">
       <Project>{3d89cece-56d4-4da6-be0e-941bdf87082a}</Project>
       <Name>Skork.Language.Util</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Skork.Logging\Skork.Logging.csproj">
+      <Project>{86ecc9cd-2b74-4943-8941-f083ce64380d}</Project>
+      <Name>Skork.Logging</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Skork.Window.Draw\Skork.Window.Draw.csproj">
+      <Project>{b84e20dc-0aa4-4111-8fe2-e1d6973325b0}</Project>
+      <Name>Skork.Window.Draw</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Skork.Window.UI\Skork.Window.UI.csproj">
+      <Project>{af24dee6-040c-4859-a678-bc5276ce3f17}</Project>
+      <Name>Skork.Window.UI</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Data\" />
+    <Folder Include="Helpers\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
