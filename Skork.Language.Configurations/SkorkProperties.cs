@@ -1,27 +1,25 @@
 ﻿namespace Skork.Language.Configurations
 {
-    public static class SkorkProperties
+    public sealed class SkorkProperties
     {
-        static SkorkProperties()
+        /// <summary>
+        /// Retrieves single instance of <see cref="SkorkProperties"/>.
+        /// <para></para>
+        /// </summary>
+        public static SkorkProperties Instance { get => SkorkPropertiesNested.Instance; }
+
+        private SkorkProperties()
         {
-            activeEntityInstances = 0;
-            activeSpriteInstances = 0;
         }
 
-        private static int activeEntityInstances;
-        private static int activeSpriteInstances;
-
-        public static int ActiveEntityInstances { get => activeEntityInstances; set => activeEntityInstances = value; }
-
-        public static int MaximumEntityInstances { get; set; }
-
-        public static int ActiveSpriteInstances { get => activeSpriteInstances; set => activeSpriteInstances = value; }
-
-        public static int MaximumSpriteInstances { get; set; }
-
-        public static int SpriteWidth { get; set; }
-
-        public static int SpriteHeight { get; set; }
-
+        private class SkorkPropertiesNested
+        {
+            internal static readonly SkorkProperties Instance = new SkorkProperties();
+            
+            static SkorkPropertiesNested()
+            {
+                // intentionally left blank for compiler.
+            }
+        }
     }
 }

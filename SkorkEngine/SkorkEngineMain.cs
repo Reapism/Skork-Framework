@@ -10,9 +10,9 @@ namespace SkorkEngine
     {
         public Window SkorkWindow { get; internal set; }
 
-        public SkorkEngineMain(ref Window window)
+        public SkorkEngineMain(ref Type classType)
         {
-            if (!window.Tag.GetType().FullName.Equals(GetType().FullName))
+            if (!GetType().FullName.Equals(window.FullName))
             {
                 throw new InvalidCastException($"The {window.Tag.GetType().FullName} " +
                     $"window does not match the frameworks " +
