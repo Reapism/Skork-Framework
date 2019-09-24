@@ -47,8 +47,8 @@ namespace Skork.Language.Entities.Controllable
         /// </summary>
         ~SkorkSprite()
         {
-            int activeSpriteInstances = SkorkProperties.ActiveSpriteInstances;
-            SkorkProperties.ActiveSpriteInstances = Interlocked.Decrement(ref activeSpriteInstances);
+            int activeSpriteInstances = SkorkProperties.Instance.ActiveSpriteInstances;
+            SkorkProperties.Instance.ActiveSpriteInstances = Interlocked.Decrement(ref activeSpriteInstances);
         }
 
         /// <summary>
@@ -64,18 +64,18 @@ namespace Skork.Language.Entities.Controllable
             Name = name;
             Position = position;
 
-            WriteableBitmap bitmap = new WriteableBitmap(SkorkProperties.SpriteWidth,
-                SkorkProperties.SpriteHeight, 30, 30, PixelFormats.Rgb24,
+            WriteableBitmap bitmap = new WriteableBitmap(SkorkProperties.Instance.SpriteWidth,
+                SkorkProperties.Instance.SpriteHeight, 30, 30, PixelFormats.Rgb24,
                 BitmapPalettes.WebPalette);
 
-            if (SkorkProperties.ActiveSpriteInstances != SkorkProperties.MaximumEntityInstances)
+            if (SkorkProperties.Instance.ActiveSpriteInstances != SkorkProperties.Instance.MaximumEntityInstances)
             {
-                int activeSpriteInstances = SkorkProperties.ActiveSpriteInstances;
-                SkorkProperties.ActiveSpriteInstances = Interlocked.Increment(ref activeSpriteInstances);
+                int activeSpriteInstances = SkorkProperties.Instance.ActiveSpriteInstances;
+                SkorkProperties.Instance.ActiveSpriteInstances = Interlocked.Increment(ref activeSpriteInstances);
             } else
             {
                 throw new SkorkSpriteOverflowException($"Exceeded the maximum number of active sprites:" +
-                    $" { SkorkProperties.MaximumEntityInstances }.");
+                    $" { SkorkProperties.Instance.MaximumEntityInstances }.");
             }
         }
 
@@ -85,34 +85,22 @@ namespace Skork.Language.Entities.Controllable
 
         public void Up(ISkorkEntity entity, int units)
         {
-            if (entity is SkorkSprite sprite)
-            {
-                sprite.Position = new Point(sprite.Position.X, sprite.Position.Y + units);
-            }
+            entity.Position = new Point(entity.Position.X, entity.Position.Y + units);         
         }
 
         public void Down(ISkorkEntity entity, int units)
         {
-            if (entity is SkorkSprite sprite)
-            {
-                sprite.Position = new Point(sprite.Position.X, sprite.Position.Y - units);
-            }
+            entity.Position = new Point(entity.Position.X, entity.Position.Y - units);
         }
 
         public void Left(ISkorkEntity entity, int units)
         {
-            if (entity is SkorkSprite sprite)
-            {
-                sprite.Position = new Point(sprite.Position.X - units, sprite.Position.Y);
-            }
+            entity.Position = new Point(entity.Position.X - units, entity.Position.Y);
         }
 
         public void Right(ISkorkEntity entity, int units)
         {
-            if (entity is SkorkSprite sprite)
-            {
-                sprite.Position = new Point(sprite.Position.X + units, sprite.Position.Y);
-            }
+            entity.Position = new Point(entity.Position.X + units, entity.Position.Y);
         }
 
         /// <summary>
