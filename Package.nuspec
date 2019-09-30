@@ -30,4 +30,7 @@
 		</group>
     </dependencies>
   </metadata>
+  <files>
+	<file src="" target
+  </files>
 </package>
