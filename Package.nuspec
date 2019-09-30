@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>Skork-Engine-Framework</id>
+    <version>1.0.0</version>
+    <authors>Reapism</authors>
+    <owners>Reapism/Skork-Engine</owners>
+    <licenseUrl>https://github.com/Reapism/Skork-Engine/blob/master/LICENSE</licenseUrl>
+    <projectUrl>https://github.com/Reapism/Skork-Engine</projectUrl>
+    <iconUrl>https://camo.githubusercontent.com/d0bbe27736659b8004656a6c6cf8a1fa633d10c4/68747470733a2f2f692e696d6775722e636f6d2f796b37476d334f2e706e67</iconUrl>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <description>You may only use the Skork-Engine-Framework. You cannot modify the .dlls or redistribute them in any way.</description>
+    <releaseNotes>The work in progress framework.</releaseNotes>
+    <copyright>Copyright 2019</copyright>
+    <tags>framework programming-language</tags>
+    <dependencies>
+		<group>
+			<dependency id="Skork.Data" version="1.0" />
+			<dependency id="Skork.Exceptions" version="1.0" />
+			<dependency id="Skork.Language.Compile" version="1.0" />
+			<dependency id="Skork.Language.Configurations" version="1.0" />
+			<dependency id="Skork.Language.Entities" version="1.0" />
+			<dependency id="Skork.Language.Functions" version="1.0" />
+			<dependency id="Skork.Language.Parse" version="1.0" />
+			<dependency id="Skork.Language.Runtime" version="1.0" />
+			<dependency id="Skork.Language.Util" version="1.0" />
+			<dependency id="Skork.Logging" version="1.0" />
+			<dependency id="Skork.Window.Draw" version="1.0" />
+			<dependency id="Skork.Window.UI" version="1.0" />
+		</group>
+    </dependencies>
+  </metadata>
+</package>
