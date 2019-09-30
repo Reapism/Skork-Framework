@@ -58,7 +58,6 @@ namespace Skork.Language.Entities.Controllable
         /// <param name="name">The name of the sprite.</param>
         /// <param name="position">The position of the sprite.</param>
         /// <param name="color">The color of the sprite to add.</param>
-        /// <param name="plane">A reference to a <see cref="SkorkPlane"/>.</param>
         public SkorkSprite(string name, Point position, Color color)
         {
             Name = name;
@@ -83,21 +82,45 @@ namespace Skork.Language.Entities.Controllable
 
         #region Instance methods
 
+        /// <summary>
+        /// Move this <see cref="SkorkSprite"/> instance up 
+        /// by (<see langword="N"/>) units.
+        /// </summary>
+        /// <param name="entity">The entity to move.</param>
+        /// <param name="units">The amount of units to move the entity by.</param>
         public void Up(ISkorkEntity entity, int units)
         {
             entity.Position = new Point(entity.Position.X, entity.Position.Y + units);         
         }
 
+        /// <summary>
+        /// Move this <see cref="SkorkSprite"/> instance down 
+        /// by (<see langword="N"/>) units.
+        /// </summary>
+        /// <param name="entity">The entity to move.</param>
+        /// <param name="units">The amount of units to move the entity by.</param>
         public void Down(ISkorkEntity entity, int units)
         {
             entity.Position = new Point(entity.Position.X, entity.Position.Y - units);
         }
 
+        /// <summary>
+        /// Move this <see cref="SkorkSprite"/> instance left 
+        /// by (<see langword="N"/>) units.
+        /// </summary>
+        /// <param name="entity">The entity to move.</param>
+        /// <param name="units">The amount of units to move the entity by.</param>
         public void Left(ISkorkEntity entity, int units)
         {
             entity.Position = new Point(entity.Position.X - units, entity.Position.Y);
         }
 
+        /// <summary>
+        /// Move this <see cref="SkorkSprite"/> instance right 
+        /// by (<see langword="N"/>) units.
+        /// </summary>
+        /// <param name="entity">The entity to move.</param>
+        /// <param name="units">The amount of units to move the entity by.</param>
         public void Right(ISkorkEntity entity, int units)
         {
             entity.Position = new Point(entity.Position.X + units, entity.Position.Y);
@@ -135,6 +158,10 @@ namespace Skork.Language.Entities.Controllable
             return false;
         }
 
+        /// <summary>
+        /// Returns a hashcode using unique primes.
+        /// </summary>
+        /// <returns></returns>
         public override int GetHashCode()
         {
             int prime = 17;

@@ -10,7 +10,6 @@
     /// </summary>
     public interface ISkorkMovable<Entity> where Entity : ISkorkEntity
     {
-
         /// <summary>
         /// Moves a particular <see cref="ISkorkEntity"/>
         /// upwards by <see langword="N"/> <paramref name="units"/>.
