@@ -11,9 +11,12 @@ namespace Skork.Data.Models
         public string Password { get; set; }
         public string PasswordOld { get; set; }
         public int NumberOfPasswordChanges { get; set; }
-
-
-
+        public bool IsLocked { get; set; }
+        public int NumberOfLoginAttempts { get; set; }
+        public string Email { get; set; }
+        public DateTime DateOfBirth { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
 
         public DateTime DateModified { get; set; }
         public DateTime DateCreated { get; set; }

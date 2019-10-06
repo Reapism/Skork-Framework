@@ -45,7 +45,8 @@
   <ItemGroup>
     <Compile Include="Compile\Syntax\SkorkInvalidNameException.cs" />
     <Compile Include="Compile\Syntax\SkorkSyntaxException.cs" />
-    <Compile Include="Enums\ExceptionDetails.cs" />
+    <Compile Include="Enums\CompileExceptionDetails.cs" />
+    <Compile Include="Enums\RuntimeExceptionDetails.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Runtime\Draw\SkorkDrawException.cs" />
     <Compile Include="Runtime\Draw\SkorkOutOfBoundsException.cs" />

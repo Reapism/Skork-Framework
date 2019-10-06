@@ -52,6 +52,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Entities\UserContext.cs" />
     <Compile Include="Interfaces\ICreated.cs" />
     <Compile Include="Interfaces\IModification.cs" />
     <Compile Include="Interfaces\IModifiyBy.cs" />
@@ -59,7 +60,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Entities\" />
     <Folder Include="Repositories\" />
   </ItemGroup>
   <ItemGroup>

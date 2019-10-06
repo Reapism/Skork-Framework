@@ -25,12 +25,12 @@ namespace Skork.Window.Draw.Plane
             {
                 ColorPrimary = Colors.Black,
                 ColorSecondary = Colors.White,
-                Width = SkorkProperties.SpriteWidth,
-                Height = SkorkProperties.SpriteHeight,
+                Width = SkorkProperties.Instance.SpriteWidth,
+                Height = SkorkProperties.Instance.SpriteHeight,
                 Image = null
             };
 
-            ActiveEntities = new Queue<ISkorkEntity>(SkorkProperties.MaximumEntityInstances);
+            ActiveEntities = new Queue<ISkorkEntity>(SkorkProperties.Instance.MaximumEntityInstances);
         }
 
 
