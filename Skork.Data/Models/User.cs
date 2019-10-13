@@ -5,13 +5,13 @@ namespace Skork.Data.Models
 {
     public class User : IModification, IModifiyBy
     {
-        public int UserId { get; set; }
-        public string UserRole { get; set; }
-        public string Username { get; set; }
-        public string Password { get; set; }
-        public string PasswordOld { get; set; }
-        public int NumberOfPasswordChanges { get; set; }
-        public bool IsLocked { get; set; }
+        public int UserId { get; protected set; }
+        public string UserRole { get; protected set; }
+        public string Username { get; protected set; }
+        public string Password { get; protected set; }
+        public string PasswordOld { get; protected set; }
+        public int NumberOfPasswordChanges { get; protected set; }
+        public bool IsLocked { get; protected set; }
         public int NumberOfLoginAttempts { get; set; }
         public string Email { get; set; }
         public DateTime DateOfBirth { get; set; }
