@@ -1,5 +1,0 @@
-﻿[*.cs]
-
-# CS1591: Missing XML comment for publicly visible type or member
-# comment or uncomment when needed.
-# dotnet_diagnostic.CS1591.severity = silent
