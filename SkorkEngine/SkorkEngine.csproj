@@ -4,4 +4,23 @@
     <TargetFramework>netcoreapp3.0</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Skork.Data\Skork.Data.csproj" />
+    <ProjectReference Include="..\Skork.Exceptions\Skork.Exceptions.csproj" />
+    <ProjectReference Include="..\Skork.Language.Compile\Skork.Language.Compile.csproj" />
+    <ProjectReference Include="..\Skork.Language.Configurations\Skork.Language.Configurations.csproj" />
+    <ProjectReference Include="..\Skork.Language.Entities\Skork.Language.Entities.csproj" />
+    <ProjectReference Include="..\Skork.Language.Functions\Skork.Language.Functions.csproj" />
+    <ProjectReference Include="..\Skork.Language.Parse\Skork.Language.Parse.csproj" />
+    <ProjectReference Include="..\Skork.Language.Runtime\Skork.Language.Runtime.csproj" />
+    <ProjectReference Include="..\Skork.Language.Util\Skork.Language.Util.csproj" />
+    <ProjectReference Include="..\Skork.Logging\Skork.Logging.csproj" />
+    <ProjectReference Include="..\Skork.Window.Draw\Skork.Window.Draw.csproj" />
+    <ProjectReference Include="..\Skork.Window.UI\Skork.Window.UI.csproj" />
+  </ItemGroup>
+
 </Project>

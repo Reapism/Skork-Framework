@@ -4,4 +4,14 @@
     <TargetFramework>netcoreapp3.0</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Folder Include="Execute\" />
+    <Folder Include="Helpers\" />
+    <Folder Include="Manage\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Skork.Language.Parse\Skork.Language.Parse.csproj" />
+  </ItemGroup>
+
 </Project>
