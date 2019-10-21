@@ -23,7 +23,8 @@ namespace Skork.Language.Functions.External
             if (obj is ISkorkEntity)
             {
                 return InvokeHelper(obj);
-            } else
+            }
+            else
             {
                 return null;
             }
@@ -36,7 +37,7 @@ namespace Skork.Language.Functions.External
         /// <returns></returns>
         private async Task<object> InvokeHelper(object obj)
         {
-            return await Task.FromResult<string>(obj.ToString());
+            return await Task.FromResult(obj.ToString());
         }
     }
 }

@@ -9,10 +9,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.0.0" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\Skork.Exceptions\Skork.Exceptions.csproj" />
     <ProjectReference Include="..\Skork.Language.Configurations\Skork.Language.Configurations.csproj" />
   </ItemGroup>

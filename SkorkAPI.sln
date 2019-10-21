@@ -29,6 +29,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Skork.Window.UI", "API\Skor
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SkorkEngine", "API\SkorkEngine\SkorkEngine.csproj", "{C2601F3B-8F1C-4DF2-AECE-78A1D5849EF5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Skork.Domain", "Skork.Domain\Skork.Domain.csproj", "{0AE2820C-75C6-47BB-984E-2ED5FCCD370B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -87,6 +89,10 @@ Global
 		{C2601F3B-8F1C-4DF2-AECE-78A1D5849EF5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C2601F3B-8F1C-4DF2-AECE-78A1D5849EF5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C2601F3B-8F1C-4DF2-AECE-78A1D5849EF5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0AE2820C-75C6-47BB-984E-2ED5FCCD370B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0AE2820C-75C6-47BB-984E-2ED5FCCD370B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0AE2820C-75C6-47BB-984E-2ED5FCCD370B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0AE2820C-75C6-47BB-984E-2ED5FCCD370B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

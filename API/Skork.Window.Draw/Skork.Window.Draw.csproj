@@ -5,6 +5,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="SkiaSharp" Version="1.68.0" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\Skork.Exceptions\Skork.Exceptions.csproj" />
     <ProjectReference Include="..\Skork.Language.Configurations\Skork.Language.Configurations.csproj" />
     <ProjectReference Include="..\Skork.Language.Entities\Skork.Language.Entities.csproj" />
