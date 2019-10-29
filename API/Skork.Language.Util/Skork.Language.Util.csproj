@@ -6,6 +6,7 @@
 
   <ItemGroup>
     <Folder Include="Compile\" />
+    <Folder Include="Draw\" />
     <Folder Include="Entities\" />
     <Folder Include="Functions\" />
     <Folder Include="Logging\" />

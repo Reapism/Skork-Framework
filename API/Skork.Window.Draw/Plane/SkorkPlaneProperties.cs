@@ -1,21 +1,14 @@
-﻿using Skork.Window.Draw.Interfaces;
+﻿using SkiaSharp;
+using Skork.Window.Draw.Interfaces;
 using SkorkEngine.Exceptions.Runtime.Draw;
-using System.Windows;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
+using System.Drawing;
 
 namespace Skork.Window.Draw.Plane
 {
     public class SkorkPlaneProperties : I2DPlane
     {
-        #region Instance members
-
         private int width;
         private int height;
-
-        #endregion
-
-        #region Properties
 
         /// <summary>
         /// The width of the plane.
@@ -46,18 +39,14 @@ namespace Skork.Window.Draw.Plane
         /// <summary>
         /// The internal image representing the Skork grid pattern.
         /// </summary>
-        public BitmapImage Image { get; set; }
-
-        #endregion
-
-        #region Contructor(s).
+        public SKBitmap Image { get; set; }
 
         /// <summary>
         /// Default constructor initializing a <see cref="SkorkPlane"/> to 50x50
         /// using blank as a primary color, and blank as a 
         /// secondary color.
         /// </summary>
-        public SkorkPlaneProperties() : this(50, 50, Colors.DarkGray, Colors.GhostWhite)
+        public SkorkPlaneProperties() : this(50, 50, Color.DarkGray, Color.GhostWhite)
         {
 
         }
@@ -89,8 +78,6 @@ namespace Skork.Window.Draw.Plane
             ColorSecondary = color2;
             Image = null;
         }
-
-        #endregion
 
         /// <summary>
         /// Returns whether this instances <see cref="ColorPrimary"/> color is located

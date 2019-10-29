@@ -15,6 +15,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\Skork.Domain\Skork.Domain.csproj" />
+    <ProjectReference Include="..\Skork.Domain\Skork.Domain.csproj" />
   </ItemGroup>
 
 </Project>

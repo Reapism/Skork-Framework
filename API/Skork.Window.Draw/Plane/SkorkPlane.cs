@@ -1,7 +1,7 @@
 ﻿using Skork.Language.Configurations;
 using Skork.Language.Entities.Template;
 using System.Collections.Generic;
-using System.Windows.Media;
+using System.Drawing;
 
 namespace Skork.Window.Draw.Plane
 {
@@ -23,17 +23,14 @@ namespace Skork.Window.Draw.Plane
         {
             PlaneProperties = new SkorkPlaneProperties
             {
-                ColorPrimary = Colors.Black,
-                ColorSecondary = Colors.White,
-                Width = SkorkProperties.Instance.SpriteWidth,
-                Height = SkorkProperties.Instance.SpriteHeight,
+                ColorPrimary = Color.Black,
+                ColorSecondary = Color.White,
+                Width = SkorkEntityProperties.Instance.SpriteWidth,
+                Height = SkorkEntityProperties.Instance.SpriteHeight,
                 Image = null
             };
 
-            ActiveEntities = new Queue<ISkorkEntity>(SkorkProperties.Instance.MaximumEntityInstances);
+            ActiveEntities = new Queue<ISkorkEntity>(SkorkEntityProperties.Instance.MaximumEntityInstances);
         }
-
-
-
     }
 }

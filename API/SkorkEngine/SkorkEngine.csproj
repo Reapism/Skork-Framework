@@ -11,6 +11,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Skork.Data\Skork.Data.csproj" />
+    <ProjectReference Include="..\Skork.Domain\Skork.Domain.csproj" />
     <ProjectReference Include="..\Skork.Exceptions\Skork.Exceptions.csproj" />
     <ProjectReference Include="..\Skork.Language.Compile\Skork.Language.Compile.csproj" />
     <ProjectReference Include="..\Skork.Language.Configurations\Skork.Language.Configurations.csproj" />

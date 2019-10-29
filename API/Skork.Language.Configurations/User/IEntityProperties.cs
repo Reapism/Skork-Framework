@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Skork.Language.Configurations
+﻿namespace Skork.Language.Configurations
 {
     /// <summary>
     /// Represents generalized properties for an Entity.

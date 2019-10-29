@@ -1,12 +1,9 @@
-﻿using Skork.Language.Configurations;
+﻿using SkiaSharp;
+using Skork.Language.Configurations;
 using Skork.Language.Entities.Template;
 using SkorkEngine.Exceptions.Runtime.Entity;
 using System.Drawing;
 using System.Threading;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
 
 namespace Skork.Language.Entities.Controllable
 {
@@ -18,8 +15,6 @@ namespace Skork.Language.Entities.Controllable
     /// </summary>
     public class SkorkSprite : ISkorkMovable<ISkorkEntity>
     {
-        #region Properties
-
         /// <summary>
         /// The name of the sprite.
         /// <para>Implemented from <see cref="ISkorkEntity"/>.</para>
@@ -36,11 +31,7 @@ namespace Skork.Language.Entities.Controllable
         /// The display image for the sprite. Can be colors or
         /// any extension of the <see cref="Image"/> type.
         /// </summary>
-        public Image SpriteImage { get; set; }
-
-        #endregion
-
-        #region Contructors & Destructors
+        public SKBitmap SpriteImage { get; set; }
 
         /// <summary>
         /// When the garbage collector <see cref="SkorkSprite"/> invokes
@@ -48,8 +39,8 @@ namespace Skork.Language.Entities.Controllable
         /// </summary>
         ~SkorkSprite()
         {
-            int activeSpriteInstances = SkorkProperties.Instance.ActiveSpriteInstances;
-            SkorkProperties.Instance.ActiveSpriteInstances = Interlocked.Decrement(ref activeSpriteInstances);
+            int activeSpriteInstances = SkorkEntityProperties.Instance.ActiveSpriteInstances;
+            SkorkEntityProperties.Instance.ActiveSpriteInstances = Interlocked.Decrement(ref activeSpriteInstances);
         }
 
         /// <summary>
@@ -64,27 +55,26 @@ namespace Skork.Language.Entities.Controllable
             Name = name;
             Position = position;
 
-            WriteableBitmap bitmap = new WriteableBitmap(SkorkProperties.Instance.SpriteWidth,
-                                                         SkorkProperties.Instance.SpriteHeight,
-                                                         30,
-                                                         30,
-                                                         PixelFormats.Rgb24,
-                                                         BitmapPalettes.WebPalette);
+            SpriteImage = new SKBitmap(
+                new SKImageInfo(
+                    SkorkEntityProperties.Instance.SpriteWidth,
+                    SkorkEntityProperties.Instance.SpriteHeight,
+                    SKColorType.Alpha8,
+                    SKAlphaType.Premul
+                )
+            );
 
-            if (SkorkProperties.Instance.ActiveSpriteInstances != SkorkProperties.Instance.MaximumEntityInstances)
+            if (SkorkEntityProperties.Instance.ActiveSpriteInstances != SkorkEntityProperties.Instance.MaximumEntityInstances)
             {
-                int activeSpriteInstances = SkorkProperties.Instance.ActiveSpriteInstances;
-                SkorkProperties.Instance.ActiveSpriteInstances = Interlocked.Increment(ref activeSpriteInstances);
-            } else
+                int activeSpriteInstances = SkorkEntityProperties.Instance.ActiveSpriteInstances;
+                SkorkEntityProperties.Instance.ActiveSpriteInstances = Interlocked.Increment(ref activeSpriteInstances);
+            }
+            else
             {
                 throw new SkorkSpriteOverflowException($"Exceeded the maximum number of active sprites:" +
-                    $" { SkorkProperties.Instance.MaximumEntityInstances }.");
+                    $" { SkorkEntityProperties.Instance.MaximumEntityInstances }.");
             }
         }
-
-        #endregion
-
-        #region Instance methods
 
         /// <summary>
         /// Move this <see cref="SkorkSprite"/> instance up 
@@ -94,7 +84,7 @@ namespace Skork.Language.Entities.Controllable
         /// <param name="units">The amount of units to move the entity by.</param>
         public void Up(ISkorkEntity entity, int units)
         {
-            entity.Position = new Point(entity.Position.X, entity.Position.Y + units);         
+            entity.Position = new Point(entity.Position.X, entity.Position.Y + units);
         }
 
         /// <summary>
@@ -172,7 +162,5 @@ namespace Skork.Language.Entities.Controllable
             int prime2 = 23;
             return prime * prime2 + Name.GetHashCode() + prime * prime2 + SpriteImage.GetHashCode();
         }
-
-        #endregion
     }
 }

@@ -1,4 +1,4 @@
-﻿using System.Windows;
+﻿using System.Drawing;
 
 namespace Skork.Window.Draw.Helpers
 {
