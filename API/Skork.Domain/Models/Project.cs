@@ -1,5 +1,5 @@
-﻿using System;
-using Skork.Domain.Interfaces;
+﻿using Skork.Domain.Interfaces;
+using System;
 
 namespace Skork.Domain.Models
 {

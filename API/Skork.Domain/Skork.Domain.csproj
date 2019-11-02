@@ -4,4 +4,9 @@
     <TargetFramework>netcoreapp3.0</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Folder Include="Interfaces\Computer\PSU\" />
+    <Folder Include="Interfaces\Computer\Display\" />
+  </ItemGroup>
+
 </Project>
