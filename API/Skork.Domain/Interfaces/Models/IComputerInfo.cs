@@ -9,6 +9,7 @@ namespace Skork.Domain.Interfaces
     public interface IComputerInfo : ICpu, IGpu, IHdd, IRam, ISsd, ICreationModification
     {
         int ComputerInfoId { get; set; }
+
         string ComputerName { get; set; }
     }
 }

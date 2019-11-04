@@ -1,6 +1,4 @@
-﻿using Skork.Domain.Interfaces.Base;
-
-namespace Skork.Domain.Interfaces.Computer.GPU
+﻿namespace Skork.Domain.Interfaces.Computer.GPU
 {
     public interface IGpu
     {

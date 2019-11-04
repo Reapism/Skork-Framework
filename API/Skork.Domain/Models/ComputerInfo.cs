@@ -1,12 +1,12 @@
-﻿using System;
+﻿using Skork.Domain.Interfaces;
+using System;
 using System.ComponentModel.DataAnnotations;
-using Skork.Domain.Interfaces;
 
 namespace Skork.Domain.Models
 {
     public class ComputerInfo : IComputerInfo
     {
-        [Required]
+        [Key]
         public int ComputerInfoId { get; set; }
         [Display(Name = "Computer")]
         public string ComputerName { get; set; }
@@ -68,9 +68,9 @@ namespace Skork.Domain.Models
 
         [Timestamp]
         public DateTime DateCreated { get; set; }
-        public string CreatedBy { get; set; }     
+        public string CreatedBy { get; set; }
         [Timestamp]
-        public DateTime LastModified { get; set; }     
+        public DateTime LastModified { get; set; }
         public string ModifiedBy { get; set; }
     }
 }
