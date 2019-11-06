@@ -10,16 +10,16 @@
 
 **Skork Engine Framework [Private Repository]** is the sequel to the original [Skork](https://github.com/Reapism/Skork) project.
 
-## What is the Skork Engine
-**Skork** (SCORE-K) is a custom programming language for writing a game with rules *you define*. Skork allows you to test code in a 
-visual way using *sprites*. You can visual your code using primitive variables, loops, and sprites. My audience is anyone 
-interested enough to write in a simplified programming language, and visualize code in a different way! Feel free to fork it 
-and make any update/addition/deletion you want. 
+## What is Skork Engine?
+**Skork** (SCORE-K) is a custom programming language for writing a game with rules *you define*. Skork engine allows you to 
+test code in a visual way using *sprites*. You can visual your code using primitive variables, loops, and sprites. My audience 
+is anyone interested enough to write in a simplified programming language, and visualize code in a different way! Feel free to 
+fork it and make any update/addition/deletion you want. 
 
 > ***But remember to do all such activities in accordance to the [current license](https://github.com/Reapism/Skork-Engine/blob/master/LICENSE).***
 
-## All Skork related projects.
-Three distinct projects! 
+## All Skork related repositories
+* [~~Skork old discontinued project~~](https://github.com/Reapism/Skork)
 * [Windows based GUI](https://github.com/Reapism/Skork-Engine) implementation of the Skork Engine Framework.
 * **Skork Engine framework itself! (private)**
 * *Web based implementation of the Skork Engine Framework.* (COMING SOON)
@@ -46,8 +46,9 @@ and interact with! You can create a "game" with a ruleset you define statically 
 easy way to visualize a ruleset or function.
 
 ### Design goals?
-* Modularity (Separation of concern)
-* Lightweight
+* 100% S.O.L.I.D principles
+* Modularity (Multiple NuGet packages, use what you need)
+* Lightweight (Ties into modularity)
 * Simple (User friendly naming and documentation)
 
 ### What is Future of the Skork Engine
