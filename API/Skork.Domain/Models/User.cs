@@ -9,6 +9,7 @@ namespace Skork.Domain.Models
         [Key]
         public int UserId { get; set; }
         public string Username { get; set; }
+        [Index]
         public string Email { get; set; }
         public string Password { get; set; }
         public string PasswordOld { get; set; }

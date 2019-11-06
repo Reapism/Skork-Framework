@@ -1,11 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Configuration;
 
 namespace Skork.Data
 {
     internal static class SkorkConnection
     {
-        public static string GetConnectionString { get; set; }
+        static SkorkConnection()
+        {
+            GetConnectionString = ConfigurationManager.ConnectionStrings["skork_database"].ConnectionString;
+        }
+
+        public static string GetConnectionString { get; internal set; }
     }
 }
