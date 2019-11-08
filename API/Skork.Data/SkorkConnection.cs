@@ -9,6 +9,6 @@ namespace Skork.Data
             GetConnectionString = ConfigurationManager.ConnectionStrings["skork_database"].ConnectionString;
         }
 
-        public static string GetConnectionString { get; internal set; }
+        public static string GetConnectionString { get; }
     }
 }
