@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Skork.Domain.Models
 {
-    public class User : IUser
+    public class User : IUser, ICreationModification
     {
         [Key]
         public int UserId { get; set; }

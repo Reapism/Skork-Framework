@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Skork.Domain.Models
 {
-    public class ComputerInfo : IComputerInfo
+    public class ComputerInfo : IComputerInfo, ICreationModification
     {
         [Key]
         public int ComputerInfoId { get; set; }

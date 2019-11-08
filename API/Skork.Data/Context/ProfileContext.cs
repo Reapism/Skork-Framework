@@ -9,6 +9,7 @@ namespace Skork.Data.Context
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
+            optionsBuilder.UseSqlServer(SkorkConnection.GetConnectionString);
             base.OnConfiguring(optionsBuilder);
         }
 

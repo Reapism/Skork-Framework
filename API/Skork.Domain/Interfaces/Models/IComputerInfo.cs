@@ -6,7 +6,7 @@ using Skork.Domain.Interfaces.Computer.SSD;
 
 namespace Skork.Domain.Interfaces
 {
-    public interface IComputerInfo : ICpu, IGpu, IHdd, IRam, ISsd, ICreationModification
+    public interface IComputerInfo : ICpu, IGpu, IHdd, IRam, ISsd
     {
         int ComputerInfoId { get; set; }
 
