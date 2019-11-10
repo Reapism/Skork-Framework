@@ -7,15 +7,15 @@ namespace Skork.Language.Parse
 {
     public class SkorkParser : ISkorkParser
     {
-        public List<string> PotentialCode { get; set; }
+        public IEnumerable<string> PotentialCode { get; set; }
 
         public SkorkParser(params string[] codeStrArr) :
-            this(codeList: codeStrArr.ToList())
+            this(code: codeStrArr.ToList())
         { }
 
-        public SkorkParser(List<string> codeList)
+        public SkorkParser(IEnumerable<string> code)
         {
-            PotentialCode = codeList ??
+            PotentialCode = code ??
                 throw new ArgumentNullException("The argument cannot be null!");
         }
 
@@ -24,7 +24,7 @@ namespace Skork.Language.Parse
         /// <see langword="SkorkReadableFormat"/>.
         /// </summary>
         /// <returns></returns>
-        public List<string> Parse()
+        public IEnumerable<string> Parse()
         {
             throw new NotImplementedException();
         }

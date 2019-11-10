@@ -4,8 +4,8 @@ namespace Skork.Language.Parse.Interfaces
 {
     public interface ISkorkParser
     {
-        List<string> PotentialCode { get; set; }
+        IEnumerable<string> PotentialCode { get; set; }
 
-        List<string> Parse();
+        IEnumerable<string> Parse();
     }
 }
