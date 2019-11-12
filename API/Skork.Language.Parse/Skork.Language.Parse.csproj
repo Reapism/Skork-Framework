@@ -8,4 +8,8 @@
     <Folder Include="Helpers\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Skork.Language.Util\Skork.Language.Util.csproj" />
+  </ItemGroup>
+
 </Project>

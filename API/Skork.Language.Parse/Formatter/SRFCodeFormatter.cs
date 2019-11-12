@@ -1,6 +1,6 @@
 ﻿namespace Skork.Language.Parse.Formatter
 {
-    class SRFCodeFormatter
+    public class SRFCodeFormatter
     {
     }
 }

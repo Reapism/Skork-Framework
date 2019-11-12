@@ -38,14 +38,9 @@ namespace Skork.Language.Util.Parse
             if (string.IsNullOrEmpty(strValue))
                 throw new ArgumentNullException("String cannot be null or empty.");
 
-            for (int i = 0; i < strValue.Length; i++)
-            {
-                if (!charValues.Any(c=> c == strValue[i]))
-                {
+            for (int index = 0; index < strValue.Length; index++)
+                if (!charValues.Contains(strValue[index]))
                     return false;
-                }
-            }
-
             return true;
         }
 

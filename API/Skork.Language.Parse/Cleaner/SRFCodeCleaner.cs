@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿
+using System.Collections.Generic;
 
 namespace Skork.Language.Parse.Cleaner
 {
@@ -13,34 +14,16 @@ namespace Skork.Language.Parse.Cleaner
 
         public IEnumerable<string> ParseCodeIntoSRF()
         {
-            TrimExtraLines();
-            TrimSpaces();
-            Cleaner();
-
-            return _code;
+            return ParseCodeIntoSRFHelper();
         }
 
-        private void TrimExtraLines()
+        private IEnumerable<string> ParseCodeIntoSRFHelper()
         {
+            var codeQueue = new Queue<string>();
 
-            var trimmedCode = new List<string>();
+            //codeQueue = SRFSplitUtility.SplitLines(_code);
 
-            foreach (var line in _code)
-            {
-                //   if (line.Contains())
-            }
-
-
-        }
-
-        private void TrimSpaces()
-        {
-
-        }
-
-        private void Cleaner()
-        {
-
+            return codeQueue;
         }
     }
 }

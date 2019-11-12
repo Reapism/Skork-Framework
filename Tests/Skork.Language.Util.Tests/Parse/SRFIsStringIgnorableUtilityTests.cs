@@ -44,7 +44,7 @@ namespace Skork.Language.Util.Tests.Parse
         [TestCase(" \r\r")]
         [TestCase(" \t\t")]
         [TestCase(" \v\v")]
-        public void ShouldReturnTrueGivenQueueOfIgnorableStrings(string strValue)
+        public void ShouldReturnTrueGivenIgnorableString(string strValue)
         {
             Assert.IsTrue(
                 SRFIsStringIgnorableUtility.IsStringIgnorable(strValue)
@@ -88,7 +88,7 @@ namespace Skork.Language.Util.Tests.Parse
         [TestCase(" \r\r;")]
         [TestCase(" \t\t;")]
         [TestCase(" \v\v;")]
-        public void ShouldReturnFalseGivenQueueOfNonIgnorableStrings(string strValue)
+        public void ShouldReturnFalseGivenNonIgnorableString(string strValue)
         {
             Assert.IsFalse(
                 SRFIsStringIgnorableUtility.IsStringIgnorable(strValue)
