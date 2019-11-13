@@ -10,7 +10,7 @@
 
         static SRFIsStringIgnorableUtility()
         {
-            IgnorableCharacters = new char[] { ' ', '\f', '\n', '\r', '\t', '\v', };
+            IgnorableCharacters = new char[] { ' ', '\f', '\n', '\r', '\t', '\v' };
         }
 
         /// <summary>

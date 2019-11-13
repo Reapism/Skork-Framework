@@ -9,10 +9,21 @@ namespace Skork.Language.Parse
     {
         public IEnumerable<string> PotentialCode { get; set; }
 
+        /// <summary>
+        /// Constructs a <see cref="SkorkParser"/> with a
+        /// variable string array.
+        /// <para>Internally, it's converted to a <see cref="List{T}"/>.</para>
+        /// </summary>
+        /// <param name="codeStrArr">Variable number of strings.</param>
         public SkorkParser(params string[] codeStrArr) :
             this(code: codeStrArr.ToList())
         { }
 
+        /// <summary>
+        /// Constructs a <see cref="SkorkParser"/> instance with
+        /// an <see cref="IEnumerable{T}"/> potential code list.
+        /// </summary>
+        /// <param name="code"></param>
         public SkorkParser(IEnumerable<string> code)
         {
             PotentialCode = code ??
@@ -26,7 +37,10 @@ namespace Skork.Language.Parse
         /// <returns></returns>
         public IEnumerable<string> Parse()
         {
-            throw new NotImplementedException();
+            // first split
+            // trim
+            // replace ??
+
         }
     }
 }

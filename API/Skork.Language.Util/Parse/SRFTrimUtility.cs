@@ -4,6 +4,10 @@ namespace Skork.Language.Util.Parse
 {
     public static class SRFTrimUtility
     {
+        public static string TrimLeadingAndTrailingWhitespaces(string lineToTrim)
+        {
+            return lineToTrim.Trim(SRFIsStringIgnorableUtility.IgnorableCharacters);
+        }
 
         public static Queue<string> TrimLeadingAndTrailingWhitespaces(IEnumerable<string> linesToTrim)
         {
@@ -13,7 +17,7 @@ namespace Skork.Language.Util.Parse
             {
                 while (sequenceEnum.MoveNext())
                 {
-                    var trimmedString = sequenceEnum.Current.Trim(SRFIsStringIgnorableUtility.IgnorableCharacters);
+                    var trimmedString = TrimLeadingAndTrailingWhitespaces(sequenceEnum.Current);
 
                     lineQueue.Enqueue(trimmedString);
                 }

@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Linq;
-using System.Text.RegularExpressions;
 
 namespace Skork.Language.Util.Parse
 {
@@ -13,29 +11,30 @@ namespace Skork.Language.Util.Parse
                 throw new ArgumentNullException("Argument cannot be null.");
             }
 
-            var index = 0;
-            var strValueCharArray = strValue.ToCharArray();
-            bool skip = false;
-            char ch;
+            int current = 0;
+            char[] output = new char[strValue.Length];
+            bool skipped = false;
 
-            for (int i = 0; i < strValue.Length; i++)
+            foreach (char c in strValue.ToCharArray())
             {
-                ch = strValueCharArray[i];
-                if (strValueCharArray.Any(c => SRFIsStringIgnorableUtility.IgnorableCharacters.Contains(c)))
+                if (char.IsWhiteSpace(c))
                 {
-                    if (skip) continue;
-                    strValueCharArray[index++] = ch;
-                    skip = true;
+                    if (!skipped)
+                    {
+                        if (current > 0)
+                            output[current++] = ' ';
+
+                        skipped = true;
+                    }
                 }
                 else
                 {
-                    skip = false;
-                    strValueCharArray[index++] = ch;
+                    skipped = false;
+                    output[current++] = c;
                 }
-
             }
-            return strValueCharArray.ToString();
 
+            return new string(output, 0, current);
         }
     }
 }

@@ -9,7 +9,7 @@ namespace Skork.Language.Util.Parse
     {
         /// <summary>
         /// Returns a <see cref="Queue{T}"/>
-        /// containing only new lines.
+        /// containing only non ignorable lines.
         /// </summary>
         /// <param name="linesToSplit">A collection of
         /// <see cref="IEnumerable{string}"/>

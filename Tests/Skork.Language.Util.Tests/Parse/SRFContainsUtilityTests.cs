@@ -33,6 +33,7 @@ namespace Skork.Language.Util.Tests.Parse
         [TestCase("\\", '\\')]
         [TestCase("\\\\", '\\')]
         [TestCase("\"", '\"')]
+        [TestCase("\'", '\'')]
         public void ShouldReturnTrueGivenStringsAndCharacters(string strValue, char charValue)
         {
             Assert.IsTrue(SRFContainsUtility.ContainsOnly(strValue, charValue));
