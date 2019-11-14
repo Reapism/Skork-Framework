@@ -12,7 +12,7 @@ namespace Skork.Language.Util.Tests.Parse
         public void ShouldThrowExceptionGivenNullArgument()
         {
             Assert.Throws<ArgumentNullException>(() =>
-                SRFReplaceUtility.ReplaceWhitespacesWithSingleSpaces(null)
+                SRFReplaceUtility.ReplaceMultipleWhitespacesWithSingleSpace(null)
             );
         }
 
@@ -33,31 +33,31 @@ namespace Skork.Language.Util.Tests.Parse
         [TestCase("foo bar", "foo\fbar")]
         [TestCase("foo bar", "foo\rbar")]
         [TestCase("foo bar", "foo\nbar")]
-        [TestCase("int i = 0 ;", "int  i  =  0  ;")]
-        [TestCase("int i = 0 ;", "int   i   =   0   ;")]
-        [TestCase("int i = 0 ;", "int\ti\t=\t0\t;")]
-        [TestCase("int i = 0 ;", "int\vi\v=\v0\v;")]
-        [TestCase("int i = 0 ;", "int\fi\f=\f0\f;")]
-        [TestCase("int i = 0 ;", "int\ri\r=\r0\r;")]
-        [TestCase("int i = 0 ;", "int\ni\n=\n0\n;")]
-        [TestCase("int i = 0 ;", "int\t i\t =\t 0\t ;")]
-        [TestCase("int i = 0 ;", "int\v i\v =\v 0\v ;")]
-        [TestCase("int i = 0 ;", "int\f i\f =\f 0\f ;")]
-        [TestCase("int i = 0 ;", "int\r i\r =\r 0\r ;")]
-        [TestCase("int i = 0 ;", "int\n i\n =\n 0\n ;")]
-        [TestCase("int i = 0 ;", " int\ti\t=\t0\t; ")]
-        [TestCase("int i = 0 ;", " int\vi\v=\v0\v; ")]
-        [TestCase("int i = 0 ;", " int\fi\f=\f0\f; ")]
-        [TestCase("int i = 0 ;", " int\ri\r=\r0\r; ")]
-        [TestCase("int i = 0 ;", " int\ni\n=\n0\n; ")]
-        [TestCase("int i = 0 ;", "  int\ti\t=\t0\t;  ")]
+        [TestCase(@"int\i\=\\0\;\", "int  i  =  0  ;")]
+        [TestCase(@"int i = 0 ;", "int   i   =   0   ;")]
+        [TestCase(@"int i = 0 ;", "int\ti\t=\t0\t;")]
+        [TestCase(@"int i = 0 ;", "int\vi\v=\v0\v;")]
+        [TestCase(@"int i = 0 ;", "int\fi\f=\f0\f;")]
+        [TestCase(@"int i = 0 ;", "int\ri\r=\r0\r;")]
+        [TestCase(@"int i = 0 ;", "int\ni\n=\n0\n;")]
+        [TestCase(@"int i = 0 ;", "int\t i\t =\t 0\t ;")]
+        [TestCase(@"int i = 0 ;", "int\v i\v =\v 0\v ;")]
+        [TestCase(@"int i = 0 ;", "int\f i\f =\f 0\f ;")]
+        [TestCase(@"int i = 0 ;", "int\r i\r =\r 0\r ;")]
+        [TestCase(@"int i = 0 ;", "int\n i\n =\n 0\n ;")]
+        [TestCase(@"int i = 0 ;", " int\ti\t=\t0\t; ")]
+        [TestCase(@"int i = 0 ;", " int\vi\v=\v0\v; ")]
+        [TestCase(@"int i = 0 ;", " int\fi\f=\f0\f; ")]
+        [TestCase(@"int i = 0 ;", " int\ri\r=\r0\r; ")]
+        [TestCase(@"int i = 0 ;", " int\ni\n=\n0\n; ")]
+        [TestCase(@"int i = 0 ;", "  int\ti\t=\t0\t;  ")]
         [TestCase("int i = 0 ;", "  int\vi\v=\v0\v;  ")]
         [TestCase("int i = 0 ;", "  int\fi\f=\f0\f;  ")]
         [TestCase("int i = 0 ;", "  int\ri\r=\r0\r;  ")]
         [TestCase("int i = 0 ;", "  int\ni\n=\n0\n;  ")]
         public void ShouldThrowExceptionGivenNullArgument(string expectedStr, string actualStr)
         {
-            actualStr = SRFReplaceUtility.ReplaceWhitespacesWithSingleSpaces(actualStr);
+            actualStr = SRFReplaceUtility.ReplaceMultipleWhitespacesWithSingleSpace(actualStr);
             StringAssert.AreEqualIgnoringCase(expectedStr, actualStr);
         }
 
