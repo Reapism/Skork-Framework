@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Text;
+using System.Text.RegularExpressions;
 
 namespace Skork.Language.Util.Parse
 {
@@ -9,22 +9,16 @@ namespace Skork.Language.Util.Parse
         /// Replaces multiple whitespace character within 
         /// the inner part of a <see cref="string"/> and
         /// returns a new <see cref="string "/>.
+        /// <para>Returns <see langword="null"/> if empty string is provided.</para>
         /// </summary>
         /// <param name="strValue"></param>
         /// <returns></returns>
+        /// <exception cref="ArgumentException"></exception>
+        /// <exception cref="ArgumentNullException"></exception>
+        /// <exception cref="RegexMatchTimeoutException"></exception>
         public static string ReplaceMultipleWhitespacesWithSingleSpace(string strValue)
         {
-            if (strValue == null)
-                throw new ArgumentNullException("Argument cannot be null.");
-
-            StringBuilder stringBuilder = new StringBuilder(strValue.Length);
-            for (int i = 0; i < strValue.Length; i++)
-            {
-                char c = strValue[i];
-                if (i == 0 || !char.IsWhiteSpace(c) || (char.IsWhiteSpace(c) && !char.IsWhiteSpace(strValue[i - 1])))
-                    stringBuilder.Append(c);
-            }
-            return stringBuilder.ToString();
+            return Regex.Replace(strValue, @"(\s)\s+", "$1");// ?? throw new ArgumentNullException("Argument is null or empty.");
         }
     }
 }
