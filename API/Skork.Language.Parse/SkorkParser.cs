@@ -1,4 +1,6 @@
-﻿using Skork.Language.Parse.Interfaces;
+﻿using Skork.Language.Parse.Cleaner;
+using Skork.Language.Parse.Interfaces;
+using Skork.Language.Util.Parse;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -37,10 +39,22 @@ namespace Skork.Language.Parse
         /// <returns></returns>
         public IEnumerable<string> Parse()
         {
-            // first split
-            // trim
-            // replace ??
+            var codeLines = SRFGetCodeLines.GetCodeLines(PotentialCode);
+            
+            var codeQueue = SRFSplitUtility.SplitIgnorableLines(codeLines);
+            
+            codeQueue = SRFTrimUtility.TrimLeadingAndTrailingWhitespaces(codeQueue);
 
+            var srfCodeQueue = new Queue<string>();
+
+            foreach (var line in codeQueue)
+            {
+                var singleWhitespaceLine = SRFReplaceUtility.ReplaceMultipleWhitespacesWithSingleSpace(line);
+                var srfFormattedLine = SRFReplaceUtility.ReplaceSpacesWithBackslashes(singleWhitespaceLine);
+                srfCodeQueue.Enqueue(srfFormattedLine);
+            }
+
+            return srfCodeQueue;
         }
     }
 }

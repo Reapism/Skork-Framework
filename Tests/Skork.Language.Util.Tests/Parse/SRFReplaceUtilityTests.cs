@@ -49,15 +49,29 @@ namespace Skork.Language.Util.Tests.Parse
         [TestCase(" foo\nbar", "  foo\n\nbar")]
         [TestCase(" foo\tbar ", "  foo\t\tbar  ")]
         [TestCase(" foo\vbar ", "  foo\v\vbar  ")]
-        [TestCase(" foo\fbar ", "  foo\f\fbar  ")]
         [TestCase(" foo\rbar ", "  foo\r\rbar  ")]
+        [TestCase(" foo\fbar ", "  foo\f\fbar  ")]
         [TestCase(" foo\nbar ", "  foo\n\nbar  ")]
         [TestCase(" foo bar ", "  foo  bar  ")]
         [TestCase(" foo bar ", "  foo \n\n bar  ")]
         [TestCase("foo bar\n", "foo   bar\n\n")]
-        public void ShouldReturnExpectedStringWhenActualStringIsPassed(string expectedStr, string actualStr)
+        public void ShouldReplaceMultipleWhitespacesWithSingleSpaceWhenActualStringIsPassed(string expectedStr, string actualStr)
         {
             actualStr = SRFReplaceUtility.ReplaceMultipleWhitespacesWithSingleSpace(actualStr);
+            StringAssert.AreEqualIgnoringCase(expectedStr, actualStr);
+        }
+
+        [TestCase("", "")]
+        [TestCase(@"\", " ")]
+        [TestCase(@"\\", "  ")]
+        [TestCase(@"\int\", " int ")]
+        [TestCase(@"\int\i\", " int i ")]
+        [TestCase(@"\int\i\=\", " int i = ")]
+        [TestCase(@"\int\i\=\3\", " int i = 3 ")]
+        [TestCase(@"\int\i\=\3;\", " int i = 3;")]
+        public void ShouldReplaceSpacesWithBackslashesWhenActualStringIsPassed(string expectedStr, string actualStr)
+        {
+            actualStr = SRFReplaceUtility.ReplaceSpacesWithBackslashes(actualStr);
             StringAssert.AreEqualIgnoringCase(expectedStr, actualStr);
         }
 

@@ -18,7 +18,18 @@ namespace Skork.Language.Util.Parse
         /// <exception cref="RegexMatchTimeoutException"></exception>
         public static string ReplaceMultipleWhitespacesWithSingleSpace(string strValue)
         {
-            return Regex.Replace(strValue, @"(\s)\s+", "$1");// ?? throw new ArgumentNullException("Argument is null or empty.");
+            return Regex.Replace(strValue, @"(\s)\s+", "$1");
+        }
+
+        /// <summary>
+        /// Returns a string that replaces whitespaces with a backslash.
+        /// <para>E.g. "Hello World" -> "Hello\World"</para>
+        /// </summary>
+        /// <param name="strValue"></param>
+        /// <returns></returns>
+        public static string ReplaceSpacesWithBackslashes(string strValue)
+        {
+            return strValue.Replace(' ', '\\');
         }
     }
 }
