@@ -51,7 +51,7 @@ namespace Skork.Language.Parse
             {
                 var singleWhitespaceLine = SRFReplaceUtility.ReplaceMultipleWhitespacesWithSingleSpace(line);
                 var srfFormattedLine = SRFReplaceUtility.ReplaceSpacesWithBackslashes(singleWhitespaceLine);
-                srfCodeQueue.Enqueue(srfFormattedLine);
+                srfCodeQueue.Enqueue(singleWhitespaceLine);
             }
 
             return srfCodeQueue;

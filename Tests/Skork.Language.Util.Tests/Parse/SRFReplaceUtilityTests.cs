@@ -68,7 +68,7 @@ namespace Skork.Language.Util.Tests.Parse
         [TestCase(@"\int\i\", " int i ")]
         [TestCase(@"\int\i\=\", " int i = ")]
         [TestCase(@"\int\i\=\3\", " int i = 3 ")]
-        [TestCase(@"\int\i\=\3;\", " int i = 3;")]
+        [TestCase(@"\int\i\=\3;", " int i = 3;")]
         public void ShouldReplaceSpacesWithBackslashesWhenActualStringIsPassed(string expectedStr, string actualStr)
         {
             actualStr = SRFReplaceUtility.ReplaceSpacesWithBackslashes(actualStr);
