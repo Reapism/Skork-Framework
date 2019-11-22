@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace Skork.Language.Parse.Cleaner
@@ -6,7 +7,9 @@ namespace Skork.Language.Parse.Cleaner
     public static class SRFGetCodeLines
     {
         /// <summary>
-        /// 
+        /// Takes in an <see cref="IEnumerable{T}"/> of strings
+        /// and returns a <see cref="IEnumerable{T}"/> of strings
+        /// that are split by semicolons.
         /// </summary>
         /// <param name="code"></param>
         /// <returns></returns>
@@ -14,24 +17,14 @@ namespace Skork.Language.Parse.Cleaner
         {
             var newCodeQueue = new Queue<string>();
 
-            var lineBuilder = new StringBuilder(string.Empty);
-
-            using (var enumerator = code.GetEnumerator())
+            foreach (string s in code)
             {
-                while (enumerator.MoveNext())
-                {
-                    var index = enumerator.Current.IndexOf(';');
-                    if (index != -1)
-                    {
-                        lineBuilder.Append(enumerator.Current.Substring(0, index));
-                        newCodeQueue.Enqueue(lineBuilder.ToString());
-                    }
-                    else
-                        lineBuilder.Append(enumerator.Current);
-                }
+                var split = s.Split(';');
+                foreach (string ss in split)
+                    newCodeQueue.Enqueue(ss);
             }
-
             return newCodeQueue;
         }
+
     }
 }

@@ -9,10 +9,18 @@ namespace Skork.Language.Util.Tests.Parse
     public class SRFReplaceUtilityTests
     {
         [Test]
-        public void ShouldThrowExceptionGivenNullArgument()
+        public void ShouldThrowExceptionWhenReplaceMultipleWhitespacesWithSingleWhitespaceGivenNullArgument()
         {
             Assert.Throws<ArgumentNullException>(() =>
-                SRFReplaceUtility.ReplaceMultipleWhitespacesWithSingleSpace(null)
+                SRFReplaceUtility.ReplaceMultipleWhitespacesWithSingleWhitespace(null)
+            );
+        }
+
+        [Test]
+        public void ShouldThrowExceptionWhenReplaceSingleWhitespacesWithSingleSpaceGivenNullArgument()
+        {
+            Assert.Throws<ArgumentNullException>(() =>
+                SRFReplaceUtility.ReplaceSingleWhitespacesWithSingleSpaces(null)
             );
         }
 
@@ -25,39 +33,19 @@ namespace Skork.Language.Util.Tests.Parse
         [TestCase(" a ", " a  ")]
         [TestCase(" a ", "  a ")]
         [TestCase(" a ", "  a  ")]
-        [TestCase("\n", "\n  ")]
-        [TestCase("\t", "\t  ")]
-        [TestCase("\v", "\v  ")] //' ', '\f', '\n', '\r', '\t', '\v'
-        [TestCase("\f", "\f  ")]
-        [TestCase("\r", "\r  ")]
-        [TestCase("foo bar", "foo  bar")]
-        [TestCase("foo bar", "foo   bar")]
-        [TestCase("foo\tbar", "foo\tbar")]
-        [TestCase("foo\vbar", "foo\vbar")]
-        [TestCase("foo\fbar", "foo\fbar")]
-        [TestCase("foo\rbar", "foo\rbar")]
-        [TestCase("foo\nbar", "foo\nbar")]
-        [TestCase("foo\tbar", "foo\t\tbar")]
-        [TestCase("foo\vbar", "foo\v\vbar")]
-        [TestCase("foo\fbar", "foo\f\fbar")]
-        [TestCase("foo\rbar", "foo\r\rbar")]
-        [TestCase("foo\nbar", "foo\n\nbar")]
-        [TestCase(" foo\tbar", "  foo\t\tbar")]
-        [TestCase(" foo\vbar", "  foo\v\vbar")]
-        [TestCase(" foo\fbar", "  foo\f\fbar")]
-        [TestCase(" foo\rbar", "  foo\r\rbar")]
-        [TestCase(" foo\nbar", "  foo\n\nbar")]
-        [TestCase(" foo\tbar ", "  foo\t\tbar  ")]
-        [TestCase(" foo\vbar ", "  foo\v\vbar  ")]
-        [TestCase(" foo\rbar ", "  foo\r\rbar  ")]
-        [TestCase(" foo\fbar ", "  foo\f\fbar  ")]
-        [TestCase(" foo\nbar ", "  foo\n\nbar  ")]
-        [TestCase(" foo bar ", "  foo  bar  ")]
-        [TestCase(" foo bar ", "  foo \n\n bar  ")]
-        [TestCase("foo bar\n", "foo   bar\n\n")]
-        public void ShouldReplaceMultipleWhitespacesWithSingleSpaceWhenActualStringIsPassed(string expectedStr, string actualStr)
+        [TestCase("\n ", "\n  ")]
+        [TestCase("\t ", "\t  ")]
+        [TestCase("\v ", "\v  ")] //' ', '\f', '\n', '\r', '\t', '\v'
+        [TestCase("\f ", "\f  ")]
+        [TestCase("\r ", "\r  ")]
+        [TestCase("\n ", "\n\n  ")]
+        [TestCase("\t ", "\t\t  ")]
+        [TestCase("\v ", "\v\v  ")] 
+        [TestCase("\f ", "\f\f  ")]
+        [TestCase("\r ", "\r\r  ")]
+        public void ShouldReplaceMultipleWhitespacesWithSingleWhitespaceWhenActualStringIsPassed(string expectedStr, string actualStr)
         {
-            actualStr = SRFReplaceUtility.ReplaceMultipleWhitespacesWithSingleSpace(actualStr);
+            actualStr = SRFReplaceUtility.ReplaceMultipleWhitespacesWithSingleWhitespace(actualStr);
             StringAssert.AreEqualIgnoringCase(expectedStr, actualStr);
         }
 

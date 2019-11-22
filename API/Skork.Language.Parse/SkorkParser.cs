@@ -32,11 +32,7 @@ namespace Skork.Language.Parse
                 throw new ArgumentNullException("The argument cannot be null!");
         }
 
-        /// <summary>
-        /// Parses the <see cref="PotentialCode"/> into
-        /// <see langword="SkorkReadableFormat"/>.
-        /// </summary>
-        /// <returns></returns>
+        //TODO Use Skork.Language.Parse classes instead of calling each function in order this function is responsible for too many things.
         public IEnumerable<string> Parse()
         {
             var codeLines = SRFGetCodeLines.GetCodeLines(PotentialCode);
@@ -49,9 +45,10 @@ namespace Skork.Language.Parse
 
             foreach (var line in codeQueue)
             {
-                var singleWhitespaceLine = SRFReplaceUtility.ReplaceMultipleWhitespacesWithSingleSpace(line);
-                var srfFormattedLine = SRFReplaceUtility.ReplaceSpacesWithBackslashes(singleWhitespaceLine);
-                srfCodeQueue.Enqueue(singleWhitespaceLine);
+                var singleWhitespaceLine = SRFReplaceUtility.ReplaceMultipleWhitespacesWithSingleWhitespace(line);
+                var singleSpaceLine = SRFReplaceUtility.ReplaceMultipleWhitespacesWithSingleWhitespace(singleWhitespaceLine);
+                var srfFormattedLine = SRFReplaceUtility.ReplaceSpacesWithBackslashes(singleSpaceLine);
+                srfCodeQueue.Enqueue(srfFormattedLine);
             }
 
             return srfCodeQueue;
