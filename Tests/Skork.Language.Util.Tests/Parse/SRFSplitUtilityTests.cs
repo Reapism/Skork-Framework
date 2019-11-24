@@ -2,7 +2,6 @@
 using Skork.Language.Util.Parse;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace Skork.Language.Util.Tests.Parse
 {
@@ -49,7 +48,7 @@ namespace Skork.Language.Util.Tests.Parse
         public void ShouldSplitLinesGivenQueues()
         {
             _actualLineStringQueue = SRFSplitUtility.SplitIgnorableLines(_actualLineStringQueue);
-            
+
             for (int i = 0; i < _actualLineStringQueue.Count; i++)
             {
                 Assert.AreEqual(_expectedLineStringQueue.Dequeue(), _actualLineStringQueue.Dequeue());

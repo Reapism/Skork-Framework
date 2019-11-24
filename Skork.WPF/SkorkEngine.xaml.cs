@@ -1,18 +1,7 @@
 ﻿using Skork.Language.Parse;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
 using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace Skork.WPF
 {
@@ -51,7 +40,7 @@ namespace Skork.WPF
 
         private void menuParse_Click(object sender, RoutedEventArgs e)
         {
-            var parser = new SkorkParser(GetPotentialCode());
+            var parser = new SkorkSRFParser(GetPotentialCode());
 
             var parsedCode = parser.Parse();
 

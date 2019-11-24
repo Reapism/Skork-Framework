@@ -1,10 +1,8 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace Skork.Language.Parse.Cleaner
 {
-    public static class SRFGetCodeLines
+    public static class SRFGetPotentialCodeLines
     {
         /// <summary>
         /// Takes in an <see cref="IEnumerable{T}"/> of strings
@@ -13,15 +11,21 @@ namespace Skork.Language.Parse.Cleaner
         /// </summary>
         /// <param name="code"></param>
         /// <returns></returns>
-        public static IEnumerable<string> GetCodeLines(IEnumerable<string> code)
+        public static IEnumerable<string> GetPotentialCodeStatements(IEnumerable<string> code)
         {
             var newCodeQueue = new Queue<string>();
 
             foreach (string s in code)
             {
-                var split = s.Split(';');
-                foreach (string ss in split)
-                    newCodeQueue.Enqueue(ss);
+                var index = s.IndexOf(';');
+                var startIndex = 0;
+                var length = s.Length;
+                while (index != -1)
+                {
+                    newCodeQueue.Enqueue(s.Substring(startIndex, index - startIndex));
+                    startIndex = ++index;
+                    index = s.IndexOf(';', startIndex);
+                }
             }
             return newCodeQueue;
         }

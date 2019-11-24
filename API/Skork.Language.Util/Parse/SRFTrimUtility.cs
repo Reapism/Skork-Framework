@@ -9,7 +9,7 @@ namespace Skork.Language.Util.Parse
             return lineToTrim.Trim(SRFIsStringIgnorableUtility.IgnorableCharacters);
         }
 
-        public static Queue<string> TrimLeadingAndTrailingWhitespaces(IEnumerable<string> linesToTrim)
+        public static IEnumerable<string> TrimLeadingAndTrailingWhitespaces(IEnumerable<string> linesToTrim)
         {
             var lineQueue = new Queue<string>();
 

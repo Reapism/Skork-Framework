@@ -1,29 +1,29 @@
 ﻿
+using Skork.Language.Util.Parse;
 using System.Collections.Generic;
 
 namespace Skork.Language.Parse.Cleaner
 {
-    public class SRFCodeCleaner
+    public static class SRFCodeCleaner
     {
-        private IEnumerable<string> _code;
-
-        public SRFCodeCleaner(IEnumerable<string> code)
-        {
-            _code = code;
-        }
-
-        public IEnumerable<string> ParseCodeIntoSRF()
-        {
-            return ParseCodeIntoSRFHelper();
-        }
-
-        private IEnumerable<string> ParseCodeIntoSRFHelper()
+        /// <summary>
+        /// Cleans potential code lines by trimming leading and trailing whitespaces. 
+        /// </summary>
+        /// <param name="codeLines"></param>
+        /// <returns></returns>
+        public static IEnumerable<string> CleanPotentialCodeLines(IEnumerable<string> codeLines)
         {
             var codeQueue = new Queue<string>();
 
-            //codeQueue = SRFSplitUtility.SplitLines(_code);
+            foreach(var codeLine in codeLines)
+            {
+                var trimmedCodeStatementsEnumerable = SRFTrimUtility.TrimLeadingAndTrailingWhitespaces(codeLine);
+                var singleWhitespaceLine = SRFReplaceUtility.ReplaceMultipleWhitespacesWithSingleSpace(trimmedCodeStatementsEnumerable);
+                
+                codeQueue.Enqueue(singleWhitespaceLine);
+            }
 
             return codeQueue;
-        }
+        }      
     }
 }
