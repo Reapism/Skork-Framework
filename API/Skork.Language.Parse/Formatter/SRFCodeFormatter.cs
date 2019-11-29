@@ -1,5 +1,4 @@
 ﻿using Skork.Language.Util.Parse;
-using System;
 using System.Collections.Generic;
 
 namespace Skork.Language.Parse.Formatter
@@ -27,5 +26,6 @@ namespace Skork.Language.Parse.Formatter
 
             return codeQueue;
         }
+
     }
 }

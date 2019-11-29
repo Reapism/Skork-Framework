@@ -1,5 +1,4 @@
-﻿
-using Skork.Language.Util.Parse;
+﻿using Skork.Language.Util.Parse;
 using System.Collections.Generic;
 
 namespace Skork.Language.Parse.Cleaner
@@ -15,15 +14,15 @@ namespace Skork.Language.Parse.Cleaner
         {
             var codeQueue = new Queue<string>();
 
-            foreach(var codeLine in codeLines)
+            foreach (var codeLine in codeLines)
             {
                 var trimmedCodeStatementsEnumerable = SRFTrimUtility.TrimLeadingAndTrailingWhitespaces(codeLine);
                 var singleWhitespaceLine = SRFReplaceUtility.ReplaceMultipleWhitespacesWithSingleSpace(trimmedCodeStatementsEnumerable);
-                
-                codeQueue.Enqueue(singleWhitespaceLine);
+                var removedCommentsLine = SRFCommentUtility.RemoveCommentsFromCodeLine(singleWhitespaceLine);
+                codeQueue.Enqueue(removedCommentsLine);
             }
 
             return codeQueue;
-        }      
+        }
     }
 }

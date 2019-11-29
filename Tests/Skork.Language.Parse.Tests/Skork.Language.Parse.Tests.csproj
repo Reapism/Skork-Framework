@@ -13,10 +13,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Cleaner\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\..\API\Skork.Language.Parse\Skork.Language.Parse.csproj" />
   </ItemGroup>
 

@@ -10,6 +10,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\Skork.Language.Resources\Skork.Language.Resources.csproj" />
     <ProjectReference Include="..\Skork.Data\Skork.Data.csproj" />
     <ProjectReference Include="..\Skork.Domain\Skork.Domain.csproj" />
     <ProjectReference Include="..\Skork.Exceptions\Skork.Exceptions.csproj" />

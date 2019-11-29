@@ -1,0 +1,21 @@
+﻿= // Assignment
+. // Member access / invoke
++ // Add
+- // Subtract
+* // Multiply
+/ // Divide
+! // Logical negation / NOT
+? // Conditional true
+: // Conditional false
+^ // Boolean XOR
+% // Modulus
+== // Equality
+!= // Equality inversed
++= // Add assighment
+-= // Subtract assighment
+*= // Multiply assighment
+/= // Divide assighment
+[] // Indexer
+.. // Range
+&& // Conditional AND
+|| // Conditional OR
