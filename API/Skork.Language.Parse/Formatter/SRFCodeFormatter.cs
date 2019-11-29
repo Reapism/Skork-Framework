@@ -14,7 +14,7 @@ namespace Skork.Language.Parse.Formatter
         /// </summary>
         /// <param name="codeLines"></param>
         /// <returns></returns>
-        public static IEnumerable<string> SRFCodeFormatterFinal(IEnumerable<string> codeLines)
+        public static IEnumerable<string> SRFCodeFormatterFinal(IEnumerable<string> codeLines) 
         {
             var codeQueue = new Queue<string>();
 

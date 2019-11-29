@@ -7,6 +7,11 @@ namespace Skork.Language.Util.Tests.Parse
     [Author("Reapism")]
     public class SRFCommentUtilityTests
     {
+        [TestCase("", "// ")]
+        [TestCase("", "// /")]
+        [TestCase("", "// //")]
+        [TestCase("", "// ///")]
+        [TestCase("", "// // //")]
         [TestCase("", "//int m //= 0;//hello")]
         [TestCase(" ", " //int n //= 0;// hello")]
         [TestCase("/ ", "/ //int o //= 0;//  hello")]
