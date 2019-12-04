@@ -1,20 +1,21 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Skork.Language.Util.Resources
 {
-    public class ReadSkorkResourceUtility<T> where T : new()
+    public static class ReadSkorkResourceUtility
     {
-        public static string GetResourcePath(string resourceName)
+        private static string GetTextResourcePath(string resourceName)
         {
             // use path
             throw new NotImplementedException();
         }
 
-        public static T ReadSkorkResource(string resourceName)
+        public static IEnumerable<string> GetTextResource(string resourceName)
         {
-            // blas
-            return new T();
+            var path = GetTextResourcePath(resourceName);
+            throw new NotImplementedException();
         }
-
     }
 }

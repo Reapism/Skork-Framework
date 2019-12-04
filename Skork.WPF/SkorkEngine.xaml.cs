@@ -41,7 +41,6 @@ namespace Skork.WPF
         private void menuParse_Click(object sender, RoutedEventArgs e)
         {
             var parser = new SkorkSRFParser(GetPotentialCode());
-
             var parsedCode = parser.Parse();
 
             foreach (var line in parsedCode)
