@@ -6,7 +6,7 @@
 
   <ItemGroup>
     <Folder Include="Compile\TypeChecking\" />
-    <Folder Include="Enums\" />
+    <Folder Include="Parse\" />
   </ItemGroup>
 
 </Project>

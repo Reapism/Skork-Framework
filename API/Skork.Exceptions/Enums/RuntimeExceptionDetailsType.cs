@@ -3,7 +3,7 @@
     /// <summary>
     /// Contains all sorts of common exception details.
     /// </summary>
-    public enum RuntimeExceptionDetails
+    public enum RuntimeExceptionDetailsType
     {
         /// <summary>
         /// An exception was thrown because an expression or
