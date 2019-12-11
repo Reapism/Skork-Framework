@@ -22,7 +22,7 @@ namespace Skork.Language.Util.Parse
         }
 
         /// <summary>
-        /// Returns a string that replaces whitespaces with a backslash.
+        /// Returns a string that replaces spaces with a backslashes.
         /// <para>E.g. "Hello World" -> "Hello\World"</para>
         /// </summary>
         /// <param name="strValue"></param>

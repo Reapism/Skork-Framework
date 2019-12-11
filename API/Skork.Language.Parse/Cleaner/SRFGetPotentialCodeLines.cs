@@ -24,15 +24,7 @@ namespace Skork.Language.Parse.Cleaner
         /// <returns></returns>
         public static IEnumerable<string> GetPotentialCodeStatements(IEnumerable<string> originalCodeCollection)
         {
-            var newCodeQueue = new Queue<string>();
-
-            foreach (string s in originalCodeCollection)
-            {
-                if (IsCodeBlock(s))
-                    ParseCodeLineAsCodeBlock(originalCodeCollection, originalCodeCollection);
-                else
-                    ParseCodeLineAsCodeStatement(originalCodeCollection, s);
-            }
+            return GetPotentialCodeStatementsHelper(originalCodeCollection);
         }
 
         private static IEnumerable<string> GetPotentialCodeStatementsHelper(IEnumerable<string> originalCodeCollection)

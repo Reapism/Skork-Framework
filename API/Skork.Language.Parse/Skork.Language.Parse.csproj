@@ -5,11 +5,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Helpers\" />
+    <ProjectReference Include="..\Skork.Language.Util\Skork.Language.Util.csproj" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Skork.Language.Util\Skork.Language.Util.csproj" />
+    <Folder Include="Helpers\" />
   </ItemGroup>
 
 </Project>
