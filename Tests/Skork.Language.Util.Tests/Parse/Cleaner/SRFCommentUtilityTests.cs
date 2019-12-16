@@ -1,7 +1,7 @@
 ﻿using NUnit.Framework;
 using Skork.Language.Util.Parse;
 
-namespace Skork.Language.Util.Tests.Parse
+namespace Skork.Language.Util.Tests.Parse.Cleaner
 {
     [TestFixture]
     [Author("Reapism")]

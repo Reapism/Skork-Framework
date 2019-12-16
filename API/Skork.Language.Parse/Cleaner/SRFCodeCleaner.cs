@@ -13,7 +13,7 @@ namespace Skork.Language.Parse.Cleaner
         public static IEnumerable<string> CleanPotentialCodeLines(IEnumerable<string> codeLines)
         {
             var codeQueue = new Queue<string>();
-            
+
             foreach (var codeLine in codeLines)
             {
                 var trimmedCodeStatementsEnumerable = SRFTrimUtility.TrimLeadingAndTrailingWhitespaces(codeLine);

@@ -79,7 +79,7 @@ namespace Skork.Language.Parse.Cleaner
                 return true;
             else if (indexCodeStatement != -1)
                 return false;
-            else 
+            else
                 throw new ArgumentException("Code line doesn't ");
         }
     }

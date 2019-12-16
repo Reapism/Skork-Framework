@@ -2,7 +2,7 @@
 using Skork.Language.Util.Parse;
 using System;
 
-namespace Skork.Language.Util.Tests.Parse
+namespace Skork.Language.Util.Tests.Parse.Cleaner
 {
     [TestFixture]
     [Author("Reapism")]

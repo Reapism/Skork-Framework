@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
+using System.Reflection;
 
 namespace Skork.Language.Util.Parse.Formatter
 {
@@ -18,13 +20,24 @@ namespace Skork.Language.Util.Parse.Formatter
 
         static SRFOperatorUtility()
         {
+            var assembly = Assembly.GetExecutingAssembly();
+            var resourceName = assembly.GetFile("Operators.txt");
+
             OperatorDictionary = new Dictionary<string, string>();
+            using (var stream = assembly.GetManifestResourceStream(resourceName.Name))
+            {
+                using (var streamReader = new StreamReader(stream))
+                {
+                    var textFileString = streamReader.ReadToEnd();
+
+                    var getLines = textFileString.Split('\n', StringSplitOptions.RemoveEmptyEntries);
+                }
+            }
         }
 
         public static bool IsOperatorContained(string codeLine)
         {
             throw new NotImplementedException();
-            //return codeLine.IndexOf()
         }
     }
 }

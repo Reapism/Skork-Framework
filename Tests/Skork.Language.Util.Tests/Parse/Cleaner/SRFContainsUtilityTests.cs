@@ -2,7 +2,7 @@
 using Skork.Language.Util.Parse;
 using System;
 
-namespace Skork.Language.Util.Tests.Parse
+namespace Skork.Language.Util.Tests.Parse.Cleaner
 {
     [TestFixture]
     [Author("Reapism")]
@@ -103,7 +103,7 @@ namespace Skork.Language.Util.Tests.Parse
         [TestCase("\f\t", '\f')]
         [TestCase("\f\t", '\t')]
         [TestCase("\f\v", '\f')]
-        [TestCase("\f\v", '\v')]      
+        [TestCase("\f\v", '\v')]
         [TestCase("\n\f", '\n')]
         [TestCase("\n\f", '\f')]
         [TestCase("\n\r", '\n')]

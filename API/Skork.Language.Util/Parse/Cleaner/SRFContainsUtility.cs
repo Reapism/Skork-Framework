@@ -17,7 +17,7 @@ namespace Skork.Language.Util.Parse
         /// <returns></returns>
         /// <exception cref="ArgumentNullException">Thrown if the 
         /// <paramref name="strValue"/> is null or empty!</exception>
-        public static bool ContainsOnly(string strValue, char charValue)
+        public static bool ContainsOnly(in string strValue, char charValue)
         {
             if (string.IsNullOrEmpty(strValue))
                 throw new ArgumentNullException("String cannot be null or empty.");
@@ -33,7 +33,16 @@ namespace Skork.Language.Util.Parse
             return true;
         }
 
-        public static bool ContainsOnlyChars(string strValue, params char[] charValues)
+        /// <summary>
+        /// Returns whether a set of characters only
+        /// exists in each index of a <see langword="string"/>.
+        /// </summary>
+        /// <param name="strValue">The string to check.</param>
+        /// <param name="charValue">The character to check.</param>
+        /// <returns></returns>
+        /// <exception cref="ArgumentNullException">Thrown if the 
+        /// <paramref name="strValue"/> is null or empty!</exception>
+        public static bool ContainsOnlyChars(in string strValue, params char[] charValues)
         {
             if (string.IsNullOrEmpty(strValue))
                 throw new ArgumentNullException("String cannot be null or empty.");
