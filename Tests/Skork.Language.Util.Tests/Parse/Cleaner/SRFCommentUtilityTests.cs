@@ -1,5 +1,6 @@
 ﻿using NUnit.Framework;
 using Skork.Language.Util.Parse;
+using System;
 
 namespace Skork.Language.Util.Tests.Parse.Cleaner
 {
@@ -81,6 +82,20 @@ namespace Skork.Language.Util.Tests.Parse.Cleaner
         {
             var actual = SRFCommentUtility.RemoveCommentsFromCodeLine(actualStr);
             StringAssert.AreEqualIgnoringCase(expectedStr, actual);
+        }
+
+        [Test]
+        public void ShouldThrowExceptionGivenNullStringArgument()
+        {
+            Assert.Throws<ArgumentNullException>(() =>
+                SRFCommentUtility.RemoveCommentsFromCodeLine(null));
+        }
+
+        [Test]
+        public void ShouldThrowExceptionGivenEmptyStringArgument()
+        {
+            Assert.Throws<ArgumentNullException>(() =>
+                SRFCommentUtility.RemoveCommentsFromCodeLine(""));
         }
     }
 }
