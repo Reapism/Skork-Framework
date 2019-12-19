@@ -34,9 +34,9 @@ namespace Skork.Language.Parse.Cleaner
             foreach (string s in originalCodeCollection)
             {
                 if (IsCodeBlock(s))
-                {
                     ParseCodeLineAsCodeBlock(originalCodeCollection, originalCodeCollection);
-                }
+                else
+                    ParseCodeLineAsCodeStatement(originalCodeCollection, s);
 
                 var index = s.IndexOf(';');
                 var currentIndex = 0;
