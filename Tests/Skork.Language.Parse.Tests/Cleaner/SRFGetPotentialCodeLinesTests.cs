@@ -10,10 +10,9 @@ namespace Skork.Language.Parse.Tests.Cleaner
     [Author("Reapism")]
     public class SRFGetPotentialCodeLinesTests
     {
-        [TestCase("")]
         public void GivenStringWithSemiColonShouldReturnFalse(string actualStr)
         {
-            Assert.IsFalse(SRFGetPotentialCodeLines.)
+            throw new NotImplementedException();
         }
     }
 }
