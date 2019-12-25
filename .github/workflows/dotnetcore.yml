@@ -16,7 +16,7 @@ jobs:
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: 3.1.100
-    - name: Building using Skork.sln
-      run: dotnet build Skork.sln --configuration SkorkCI
+    - name: Building using SkorkAPI.sln
+      run: dotnet build SkorkAPI.sln --configuration SkorkCI
     - name: Running unit tests using SkorkTests.sln
       run: dotnet test SkorkTests.sln --configuration Debug
