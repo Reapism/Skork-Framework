@@ -1,4 +1,4 @@
-name: .NET Core Continuous Integration for SKORK
+name: Skork CI Builder/Test Runner
 
 on: [push]
 
