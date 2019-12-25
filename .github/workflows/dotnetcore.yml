@@ -17,6 +17,6 @@ jobs:
       with:
         dotnet-version: 3.1.100
     - name: Build with dotnet
-      run: dotnet build .\Skork.sln --configuration Release
+      run: dotnet build Skork.sln --configuration Release
     - name: Build with dotnet
-      run: dotnet test .\SkorkTests.sln--configuration Release
+      run: dotnet test SkorkTests.sln--configuration Release
