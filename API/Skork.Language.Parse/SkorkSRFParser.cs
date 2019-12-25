@@ -28,7 +28,7 @@ namespace Skork.Language.Parse
         /// <param name="code"></param>
         public SkorkSRFParser(IEnumerable<string> code)
         {
-            if (code == null || !code.Any()) 
+            if (code == null || !code.Any())
                 throw new ArgumentNullException("The argument cannot be null or empty!");
 
             PotentialCode = code;
