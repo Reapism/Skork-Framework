@@ -19,4 +19,4 @@ jobs:
     - name: Building using Skork.sln
       run: dotnet build Skork.sln --configuration SkorkCI
     - name: Running unit tests using Skork.sln
-      run: dotnet test SkorkTests.sln--configuration SkorkCI
+      run: dotnet test SkorkTests.sln --configuration SkorkCI
