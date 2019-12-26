@@ -12,11 +12,11 @@ jobs:
 
     steps:
     - uses: actions/checkout@v1
-    - name: Setup Skork CI
+    - name: Setting up Skork CI
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: 3.1.100
-    - name: Building using SkorkAPI.sln
+    - name: Building using SkorkAPI.sln with CI configuration
       run: dotnet build SkorkAPI.sln --configuration SkorkCI
-    - name: Running unit tests using SkorkTests.sln
-      run: dotnet test SkorkTests.sln --configuration Debug
+    - name: Running unit tests using SkorkTests.sln with CI configuration
+      run: dotnet test SkorkTests.sln --configuration SkorkCI
