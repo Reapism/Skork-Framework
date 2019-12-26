@@ -5,7 +5,16 @@
 
     <IsPackable>false</IsPackable>
 
-    <Configurations>Debug;Release;Skork</Configurations>
+    <Configurations>Debug;Release;SkorkCI;SkorkCD</Configurations>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='SkorkCI|AnyCPU'">
+    <Optimize>true</Optimize>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='SkorkCD|AnyCPU'">
+    <DocumentationFile>D:\All Files\Programs\C#\SkorkFramework\Tests\Skork.Language.Parse.Tests\Skork.Language.Parse.Tests.xml</DocumentationFile>
+    <Optimize>true</Optimize>
   </PropertyGroup>
 
   <ItemGroup>

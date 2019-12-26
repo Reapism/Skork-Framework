@@ -1,11 +1,20 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.0</TargetFramework>
 
     <IsPackable>false</IsPackable>
 
-    <Configurations>Debug;Release;Skork</Configurations>
+    <Configurations>Debug;Release;SkorkCI;SkorkCD</Configurations>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='SkorkCI|AnyCPU'">
+    <Optimize>true</Optimize>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='SkorkCD|AnyCPU'">
+    <Optimize>true</Optimize>
+    <DocumentationFile>D:\All Files\Programs\C#\SkorkFramework\Tests\Skork.Language.Configurations.Tests\Skork.Language.Configurations.Tests.xml</DocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>

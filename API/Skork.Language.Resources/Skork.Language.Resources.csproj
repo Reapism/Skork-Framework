@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.0</TargetFramework>
-    <Configurations>Debug;Release;Skork</Configurations>
+    <Configurations>Debug;Release;Skork;SkorkCD</Configurations>
   </PropertyGroup>
 
   <ItemGroup>
@@ -11,6 +11,13 @@
 
   <ItemGroup>
     <EmbeddedResource Include="Operators\Operators.txt" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.CodeAnalysis.FxCopAnalyzers" Version="2.9.8">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
   </ItemGroup>
 
 </Project>
