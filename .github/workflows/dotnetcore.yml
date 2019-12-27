@@ -1,6 +1,9 @@
 name: Skork CI Builder/Test Runner
 
-on: [push]
+on: 
+  push:
+    branches:
+      - master
 
 jobs:
   build:
