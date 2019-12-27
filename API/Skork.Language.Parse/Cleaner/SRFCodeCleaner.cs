@@ -1,5 +1,7 @@
 ﻿using Skork.Language.Util.Parse;
+using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Skork.Language.Parse.Cleaner
 {
@@ -12,6 +14,9 @@ namespace Skork.Language.Parse.Cleaner
         /// <returns></returns>
         public static IEnumerable<string> CleanPotentialCodeLines(IEnumerable<string> codeLines)
         {
+            if (codeLines == null || !codeLines.Any())
+                throw new ArgumentException("Argument cannot be null or empty.", nameof(codeLines));
+
             var codeQueue = new Queue<string>();
 
             foreach (var codeLine in codeLines)
