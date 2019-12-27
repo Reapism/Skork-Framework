@@ -5,9 +5,8 @@ on:
   push:
     branches:
       - develop
-    branches-ignore:
-      - 'feature/**'
-      - 'bugfix/**'
+      - '!feature/**'
+      - '!bugfix/**'
     paths:
       - '**.cs'
       - '!docs/**'
