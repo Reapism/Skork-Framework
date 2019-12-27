@@ -2,16 +2,48 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.0</TargetFramework>
+    <Configurations>Debug;Release;SkorkCI;SkorkCD</Configurations>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='SkorkCI|AnyCPU'">
+    <Optimize>true</Optimize>
+    <DocumentationFile></DocumentationFile>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='SkorkCD|AnyCPU'">
+    <DocumentationFile>D:\All Files\Programs\C#\SkorkFramework\API\Skork.Language.Util\Skork.Language.Util.xml</DocumentationFile>
+    <Optimize>true</Optimize>
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Compile\" />
-    <Folder Include="Entities\" />
-    <Folder Include="Functions\" />
-    <Folder Include="Logging\" />
-    <Folder Include="Draw\" />
-    <Folder Include="UI\" />
-    <Folder Include="Runtime\" />
+    <Compile Remove="Compile\**" />
+    <Compile Remove="Draw\**" />
+    <Compile Remove="Entities\**" />
+    <Compile Remove="Functions\**" />
+    <Compile Remove="Logging\**" />
+    <Compile Remove="Runtime\**" />
+    <Compile Remove="UI\**" />
+    <EmbeddedResource Remove="Compile\**" />
+    <EmbeddedResource Remove="Draw\**" />
+    <EmbeddedResource Remove="Entities\**" />
+    <EmbeddedResource Remove="Functions\**" />
+    <EmbeddedResource Remove="Logging\**" />
+    <EmbeddedResource Remove="Runtime\**" />
+    <EmbeddedResource Remove="UI\**" />
+    <None Remove="Compile\**" />
+    <None Remove="Draw\**" />
+    <None Remove="Entities\**" />
+    <None Remove="Functions\**" />
+    <None Remove="Logging\**" />
+    <None Remove="Runtime\**" />
+    <None Remove="UI\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.CodeAnalysis.FxCopAnalyzers" Version="2.9.8">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
   </ItemGroup>
 
 </Project>

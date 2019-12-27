@@ -1,5 +1,6 @@
 ﻿using NUnit.Framework;
 using Skork.Language.Util.Parse;
+using System;
 
 namespace Skork.Language.Util.Tests.Parse.Cleaner
 {
@@ -95,5 +96,18 @@ namespace Skork.Language.Util.Tests.Parse.Cleaner
             );
         }
 
+        [Test]
+        public void ShouldThrowExceptionGivenNullString()
+        {
+            Assert.Throws<ArgumentNullException>(() =>
+                SRFIsStringIgnorableUtility.IsStringIgnorable(null));
+        }
+
+        [Test]
+        public void ShouldThrowExceptionGivenEmptyString()
+        {
+            Assert.Throws<ArgumentNullException>(() =>
+                SRFIsStringIgnorableUtility.IsStringIgnorable(""));
+        }
     }
 }

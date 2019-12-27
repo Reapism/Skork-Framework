@@ -18,7 +18,7 @@ namespace Skork.Language.Parse
         /// </summary>
         /// <param name="codeStrArr">Variable number of strings.</param>
         public SkorkSRFParser(params string[] codeStrArr) :
-            this(code: codeStrArr.ToList())
+            this(code: codeStrArr.ToList() ?? new List<string>())
         { }
 
         /// <summary>
@@ -28,15 +28,20 @@ namespace Skork.Language.Parse
         /// <param name="code"></param>
         public SkorkSRFParser(IEnumerable<string> code)
         {
-            PotentialCode = code ?? throw new ArgumentNullException("The argument cannot be null!");
+            if (code == null || !code.Any())
+                throw new ArgumentNullException("The argument cannot be null or empty!");
+
+            PotentialCode = code;
         }
 
+        /// <summary>
+        /// Returns potential skork code parsed into <see langword="SkorkReadableFormat"/>.
+        /// </summary>
+        /// <returns></returns>
         public IEnumerable<string> Parse()
         {
             var potentialCodeStatementsEnumerable = SRFGetPotentialCodeLines.GetPotentialCodeStatements(PotentialCode);
-
             var cleanedPotentialCodeEnumerable = SRFCodeCleaner.CleanPotentialCodeLines(potentialCodeStatementsEnumerable);
-
             var srfCodeFormattedEnumerable = SRFCodeFormatter.SRFCodeFormatterFinal(cleanedPotentialCodeEnumerable);
 
             return srfCodeFormattedEnumerable;

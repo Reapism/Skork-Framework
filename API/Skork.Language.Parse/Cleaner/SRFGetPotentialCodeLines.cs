@@ -34,9 +34,9 @@ namespace Skork.Language.Parse.Cleaner
             foreach (string s in originalCodeCollection)
             {
                 if (IsCodeBlock(s))
-                {
                     ParseCodeLineAsCodeBlock(originalCodeCollection, originalCodeCollection);
-                }
+                else
+                    ParseCodeLineAsCodeStatement(originalCodeCollection, s);
 
                 var index = s.IndexOf(';');
                 var currentIndex = 0;
@@ -52,24 +52,12 @@ namespace Skork.Language.Parse.Cleaner
         }
 
         /// <summary>
-        /// Determines whether a given line begins as a code
-        /// statement or not.
-        /// </summary>
-        /// <param name="codeLine"></param>
-        /// <returns></returns>
-        private static bool IsCodeStatement(string codeLine)
-        {
-            int indexSemicolon = codeLine.IndexOf(';');
-
-            return (indexSemicolon != -1) ? true : false;
-        }
-
-        /// <summary>
-        /// Determines whether a given line begins as a code
+        /// Determines whether a given line contains a code
         /// block or as a code statement.
         /// </summary>
         /// <param name="codeLine"></param>
         /// <returns></returns>
+        /// <exception cref="ArgumentException"></exception>
         private static bool IsCodeBlock(string codeLine)
         {
             int indexCodeBlock = codeLine.IndexOf('{');
@@ -80,7 +68,7 @@ namespace Skork.Language.Parse.Cleaner
             else if (indexCodeStatement != -1)
                 return false;
             else
-                throw new ArgumentException("Code line doesn't ");
+                throw new ArgumentException("Code line doesn't neither a ; or {.");
         }
     }
 }

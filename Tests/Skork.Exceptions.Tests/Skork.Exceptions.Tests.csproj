@@ -4,6 +4,17 @@
     <TargetFramework>netcoreapp3.0</TargetFramework>
 
     <IsPackable>false</IsPackable>
+
+    <Configurations>Debug;Release;SkorkCI;SkorkCD</Configurations>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='SkorkCI|AnyCPU'">
+    <Optimize>true</Optimize>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='SkorkCD|AnyCPU'">
+    <Optimize>true</Optimize>
+    <DocumentationFile>D:\All Files\Programs\C#\SkorkFramework\Tests\Skork.Exceptions.Tests\Skork.Exceptions.Tests.xml</DocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>

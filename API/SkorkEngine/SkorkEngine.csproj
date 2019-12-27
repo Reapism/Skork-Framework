@@ -1,16 +1,30 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.0</TargetFramework>
+    <Configurations>Debug;Release;SkorkCI;SkorkCD</Configurations>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='SkorkCI|AnyCPU'">
+    <Optimize>true</Optimize>
+    <DocumentationFile></DocumentationFile>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='SkorkCD|AnyCPU'">
+    <Optimize>true</Optimize>
+    <DocumentationFile>D:\All Files\Programs\C#\SkorkFramework\API\SkorkEngine\SkorkEngine.xml</DocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.CodeAnalysis.FxCopAnalyzers" Version="2.9.8">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.0" />
-    <PackageReference Include="SkiaSharp" Version="1.68.1" />
+    <PackageReference Include="SkiaSharp" Version="1.68.1.1" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Skork.Language.Resources\Skork.Language.Resources.csproj" />
     <ProjectReference Include="..\Skork.Data\Skork.Data.csproj" />
     <ProjectReference Include="..\Skork.Domain\Skork.Domain.csproj" />
     <ProjectReference Include="..\Skork.Exceptions\Skork.Exceptions.csproj" />
@@ -19,6 +33,7 @@
     <ProjectReference Include="..\Skork.Language.Entities\Skork.Language.Entities.csproj" />
     <ProjectReference Include="..\Skork.Language.Functions\Skork.Language.Functions.csproj" />
     <ProjectReference Include="..\Skork.Language.Parse\Skork.Language.Parse.csproj" />
+    <ProjectReference Include="..\Skork.Language.Resources\Skork.Language.Resources.csproj" />
     <ProjectReference Include="..\Skork.Language.Runtime\Skork.Language.Runtime.csproj" />
     <ProjectReference Include="..\Skork.Language.Util\Skork.Language.Util.csproj" />
     <ProjectReference Include="..\Skork.Logging\Skork.Logging.csproj" />
