@@ -18,7 +18,22 @@ namespace Skork.Language.Util.Parse
         /// <exception cref="RegexMatchTimeoutException"></exception>
         public static string ReplaceMultipleWhitespacesWithSingleSpace(string strValue)
         {
-            return Regex.Replace(strValue, @"(\s)\s+", " ");
+            return Regex.Replace(strValue, @"\s+", " ");
+        }
+
+        /// <summary>
+        /// Replaces multiple whitespace character within 
+        /// the inner part of a <see cref="string"/> and
+        /// returns a new <see cref="string "/> wtih a single whitespace. 
+        /// </summary>
+        /// <param name="strValue"></param>
+        /// <returns></returns>
+        /// <exception cref="ArgumentException"></exception>
+        /// <exception cref="ArgumentNullException"></exception>
+        /// <exception cref="RegexMatchTimeoutException"></exception>
+        public static string ReplaceMultipleWhitespacesWithSingleWhitespace(string strValue)
+        {
+            return Regex.Replace(strValue, @"(\s)\s+", "$1");
         }
 
         /// <summary>

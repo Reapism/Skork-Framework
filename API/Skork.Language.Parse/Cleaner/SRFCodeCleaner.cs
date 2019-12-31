@@ -12,6 +12,7 @@ namespace Skork.Language.Parse.Cleaner
         /// </summary>
         /// <param name="codeLines"></param>
         /// <returns></returns>
+        /// <exception cref="ArgumentException"></exception>
         public static IEnumerable<string> CleanPotentialCodeLines(IEnumerable<string> codeLines)
         {
             if (codeLines == null || !codeLines.Any())
@@ -21,13 +22,26 @@ namespace Skork.Language.Parse.Cleaner
 
             foreach (var codeLine in codeLines)
             {
-                var trimmedCodeStatementsEnumerable = SRFTrimUtility.TrimLeadingAndTrailingWhitespaces(codeLine);
-                var singleWhitespaceLine = SRFReplaceUtility.ReplaceMultipleWhitespacesWithSingleSpace(trimmedCodeStatementsEnumerable);
-                var removedCommentsLine = SRFCommentUtility.RemoveCommentsFromCodeLine(singleWhitespaceLine);
-                codeQueue.Enqueue(removedCommentsLine);
+                var cleanedCodeLine = CleanPotentialCodeLine(codeLine);
+                codeQueue.Enqueue(cleanedCodeLine);
             }
 
             return codeQueue;
+        }
+
+        /// <summary>
+        /// Cleans potential code line by trimming leading and trailing whitespaces. 
+        /// </summary>
+        /// <param name="codeLine"></param>
+        /// <returns></returns>
+        public static string CleanPotentialCodeLine(string codeLine)
+        {
+            var singleWhitespaceLine = SRFReplaceUtility.ReplaceMultipleWhitespacesWithSingleWhitespace(codeLine);
+            var singleSpaceLine = SRFReplaceUtility.ReplaceMultipleWhitespacesWithSingleSpace(singleWhitespaceLine);
+            var trimmedCodeStatementsEnumerable = SRFTrimUtility.TrimLeadingAndTrailingWhitespaces(singleSpaceLine);
+            var removedCommentsLine = SRFCommentUtility.RemoveCommentsFromCodeLine(trimmedCodeStatementsEnumerable);
+
+            return removedCommentsLine;
         }
     }
 }

@@ -1,18 +1,48 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Text;
 
 namespace Skork.Language.Parse.Cleaner
 {
     public static class SRFGetPotentialCodeLines
     {
-        private static void ParseCodeLineAsCodeBlock(IEnumerable<string> originalCodeCollection, IEnumerable<string> codeLines)
+        private static string GetCodeBlock(ref IEnumerable<string> codeLines)
         {
+            var codeBlockBuilder = new StringBuilder(codeLines.GetEnumerator().Current);
 
+            while (codeLines.GetEnumerator().MoveNext() && !IsEndingCodeBlock(codeBlockBuilder.ToString()))
+            {
+                if (codeLines.GetEnumerator().MoveNext())
+                    codeBlockBuilder.Append(codeLines.GetEnumerator().Current);
+            }
+
+            var codeBlock = codeBlockBuilder.ToString();
+
+            return codeBlock;
         }
 
-        private static void ParseCodeLineAsCodeStatement(IEnumerable<string> originalCodeCollection, string codeLine)
+        private static IEnumerable<string> GetCodeStatements(string potentialCodeLine)
         {
+            var codeStatementsQueue = new Queue<string>();
+            var index = potentialCodeLine.IndexOf(';');
+            var currentIndex = 0;
+            while (index != -1)
+            {
+                var codeLineSubstring = GetCodeStatementSubstring(potentialCodeLine, currentIndex);
+                codeStatementsQueue.Enqueue(codeLineSubstring);
+                currentIndex = ++index;
+                index = potentialCodeLine.IndexOf(';', currentIndex);
+            }
 
+            return codeStatementsQueue;
+        }
+
+        private static string GetCodeStatementSubstring(string potentialCodeLine, int currentIndex)
+        {
+            var index = potentialCodeLine.IndexOf(';', currentIndex);
+            var substring = potentialCodeLine[currentIndex..index];
+
+            return substring;
         }
 
         /// <summary>
@@ -22,6 +52,7 @@ namespace Skork.Language.Parse.Cleaner
         /// </summary>
         /// <param name="code"></param>
         /// <returns></returns>
+        /// <exception cref="ArgumentException"></exception>
         public static IEnumerable<string> GetPotentialCodeStatements(IEnumerable<string> originalCodeCollection)
         {
             return GetPotentialCodeStatementsHelper(originalCodeCollection);
@@ -31,21 +62,19 @@ namespace Skork.Language.Parse.Cleaner
         {
             var newCodeQueue = new Queue<string>();
 
-            foreach (string s in originalCodeCollection)
+            foreach (string potentialCodeLine in originalCodeCollection)
             {
-                if (IsCodeBlock(s))
-                    ParseCodeLineAsCodeBlock(originalCodeCollection, originalCodeCollection);
-                else
-                    ParseCodeLineAsCodeStatement(originalCodeCollection, s);
-
-                var index = s.IndexOf(';');
-                var currentIndex = 0;
-                var length = s.Length;
-                while (index != -1)
+                if (IsCodeBlock(potentialCodeLine))
                 {
-                    newCodeQueue.Enqueue(s.Substring(currentIndex, index - currentIndex));
-                    currentIndex = ++index;
-                    index = s.IndexOf(';', currentIndex);
+                    var codeBlock = GetCodeBlock(ref originalCodeCollection);
+                    newCodeQueue.Enqueue(codeBlock);
+                }
+
+                var codeStatements = GetCodeStatements(potentialCodeLine);
+
+                foreach (var codeLine in codeStatements)
+                {
+                    newCodeQueue.Enqueue(codeLine);
                 }
             }
             return newCodeQueue;
@@ -68,7 +97,14 @@ namespace Skork.Language.Parse.Cleaner
             else if (indexCodeStatement != -1)
                 return false;
             else
-                throw new ArgumentException("Code line doesn't neither a ; or {.");
+                throw new ArgumentException("Code line doesn't contain neither a ; or {.");
+        }
+
+        private static bool IsEndingCodeBlock(string codeLine)
+        {
+            int indexEndingCodeBlock = codeLine.IndexOf('}');
+
+            return (indexEndingCodeBlock != -1) ? true : false;
         }
     }
 }

@@ -2,7 +2,7 @@
 
 namespace Skork.Language.Parse.Interfaces
 {
-    public interface ISkorkSRFParser
+    public interface ISkorkParser
     {
         IEnumerable<string> PotentialCode { get; set; }
 

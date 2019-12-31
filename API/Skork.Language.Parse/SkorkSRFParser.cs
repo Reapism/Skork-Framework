@@ -7,7 +7,7 @@ using System.Linq;
 
 namespace Skork.Language.Parse
 {
-    public class SkorkSRFParser : ISkorkSRFParser
+    public class SkorkSRFParser : ISkorkParser
     {
         public IEnumerable<string> PotentialCode { get; set; }
 
