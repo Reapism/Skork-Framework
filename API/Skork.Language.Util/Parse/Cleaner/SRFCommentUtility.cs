@@ -12,8 +12,8 @@ namespace Skork.Language.Util.Parse
         /// <returns></returns>
         public static string RemoveCommentsFromCodeLine(string codeLine)
         {
-            if (string.IsNullOrEmpty(codeLine))
-                throw new ArgumentNullException("Argument cannot be null or empty.");
+            if (codeLine == null)
+                throw new ArgumentNullException("Argument cannot be null.");
 
             int index = codeLine.IndexOf("//");
 

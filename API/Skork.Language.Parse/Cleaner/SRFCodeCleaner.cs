@@ -8,7 +8,7 @@ namespace Skork.Language.Parse.Cleaner
     public static class SRFCodeCleaner
     {
         /// <summary>
-        /// Cleans potential code lines by trimming leading and trailing whitespaces. 
+        /// Cleans potential code lines by trimming leading, trailing, and multiple whitespaces.
         /// </summary>
         /// <param name="codeLines"></param>
         /// <returns></returns>
@@ -30,10 +30,11 @@ namespace Skork.Language.Parse.Cleaner
         }
 
         /// <summary>
-        /// Cleans potential code line by trimming leading and trailing whitespaces. 
+        /// Cleans potential code line by trimming leading, trailing, and multiple whitespaces.
         /// </summary>
         /// <param name="codeLine"></param>
         /// <returns></returns>
+        /// <exception cref="ArgumentException"></exception>
         public static string CleanPotentialCodeLine(string codeLine)
         {
             var singleWhitespaceLine = SRFReplaceUtility.ReplaceMultipleWhitespacesWithSingleWhitespace(codeLine);

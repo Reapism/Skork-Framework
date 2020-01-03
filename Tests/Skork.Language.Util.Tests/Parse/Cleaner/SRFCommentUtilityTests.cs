@@ -8,6 +8,7 @@ namespace Skork.Language.Util.Tests.Parse.Cleaner
     [Author("Reapism")]
     public class SRFCommentUtilityTests
     {
+        [TestCase("", "")]
         [TestCase("", "// ")]
         [TestCase("", "// /")]
         [TestCase("", "// //")]
@@ -89,13 +90,6 @@ namespace Skork.Language.Util.Tests.Parse.Cleaner
         {
             Assert.Throws<ArgumentNullException>(() =>
                 SRFCommentUtility.RemoveCommentsFromCodeLine(null));
-        }
-
-        [Test]
-        public void ShouldThrowExceptionGivenEmptyStringArgument()
-        {
-            Assert.Throws<ArgumentNullException>(() =>
-                SRFCommentUtility.RemoveCommentsFromCodeLine(""));
         }
     }
 }
