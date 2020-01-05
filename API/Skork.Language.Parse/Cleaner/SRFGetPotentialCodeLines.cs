@@ -1,24 +1,34 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Linq;
 
 namespace Skork.Language.Parse.Cleaner
 {
     public static class SRFGetPotentialCodeLines
     {
-        private static string GetCodeBlock(ref IEnumerable<string> codeLines)
+        private static string GetCodeStatementFromCodeBlock(ref string[] codeLinesArray, int startingIndex, out int currentIndex)
         {
-            var codeBlockBuilder = new StringBuilder(codeLines.GetEnumerator().Current);
+            int indexer;
+            int internalIndex = startingIndex;
+            var codeLineBuilder = new StringBuilder(codeLinesArray[internalIndex]);
 
-            while (codeLines.GetEnumerator().MoveNext() && !IsEndingCodeBlock(codeBlockBuilder.ToString()))
+            for (indexer = ++internalIndex; indexer < codeLinesArray.Length; indexer++)
             {
-                if (codeLines.GetEnumerator().MoveNext())
-                    codeBlockBuilder.Append(codeLines.GetEnumerator().Current);
+                if (IsEndingCodeBlock(codeLinesArray[indexer]))
+                {
+                    codeLineBuilder.Append(codeLinesArray[indexer]);
+                    break;
+                }
+
+                if (!IsCodeBlock(codeLinesArray[indexer]))
+                    codeLineBuilder.Append(codeLinesArray[indexer]);
             }
 
-            var codeBlock = codeBlockBuilder.ToString();
+            var codeLine = codeLineBuilder.ToString();
+            currentIndex = indexer;
 
-            return codeBlock;
+            return codeLine;
         }
 
         private static IEnumerable<string> GetCodeStatements(string potentialCodeLine)
@@ -26,6 +36,7 @@ namespace Skork.Language.Parse.Cleaner
             var codeStatementsQueue = new Queue<string>();
             var index = potentialCodeLine.IndexOf(';');
             var currentIndex = 0;
+
             while (index != -1)
             {
                 var codeLineSubstring = GetCodeStatementSubstring(potentialCodeLine, currentIndex);
@@ -55,22 +66,25 @@ namespace Skork.Language.Parse.Cleaner
         /// <exception cref="ArgumentException"></exception>
         public static IEnumerable<string> GetPotentialCodeStatements(IEnumerable<string> originalCodeCollection)
         {
-            return GetPotentialCodeStatementsHelper(originalCodeCollection);
+            return GetPotentialCodeStatementsHelper(originalCodeCollection.ToArray());
         }
 
-        private static IEnumerable<string> GetPotentialCodeStatementsHelper(IEnumerable<string> originalCodeCollection)
+        private static IEnumerable<string> GetPotentialCodeStatementsHelper(string[] originalCodeArray)
         {
             var newCodeQueue = new Queue<string>();
+            int index;
 
-            foreach (string potentialCodeLine in originalCodeCollection)
+            for (index = 0; index < originalCodeArray.Length; index++)
             {
-                if (IsCodeBlock(potentialCodeLine))
+                if (IsCodeBlock(originalCodeArray[index]))
                 {
-                    var codeBlock = GetCodeBlock(ref originalCodeCollection);
+                    var codeBlock = GetCodeStatementFromCodeBlock(ref originalCodeArray, index, out int currentIndex);
+                    index = currentIndex;
                     newCodeQueue.Enqueue(codeBlock);
+                    continue;
                 }
 
-                var codeStatements = GetCodeStatements(potentialCodeLine);
+                var codeStatements = GetCodeStatements(originalCodeArray[index]);
 
                 foreach (var codeLine in codeStatements)
                 {
