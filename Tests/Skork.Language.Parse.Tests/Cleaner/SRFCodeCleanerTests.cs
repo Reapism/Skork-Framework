@@ -48,7 +48,7 @@ namespace Skork.Language.Parse.Tests.Cleaner
         [Test]
         public void ShouldThrowException_GivenNullString_WhenCleaningCodeLine()
         {
-            Assert.Throws<ArgumentException>(() => SRFCodeCleaner.CleanPotentialCodeLine(null));
+            Assert.Throws<ArgumentNullException>(() => SRFCodeCleaner.CleanPotentialCodeLine(null));
         }
 
         [Test]
