@@ -30,7 +30,7 @@ namespace Skork.Language.Parse.Cleaner
         }
 
         /// <summary>
-        /// Cleans potential code line by trimming leading, trailing, and multiple whitespaces.
+        /// Cleans a potential code line by trimming leading, trailing, and multiple whitespaces.
         /// </summary>
         /// <param name="codeLine"></param>
         /// <returns></returns>
