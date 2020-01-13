@@ -39,4 +39,8 @@
     <None Remove="UI\**" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Parse\Cleaner\" />
+  </ItemGroup>
+
 </Project>

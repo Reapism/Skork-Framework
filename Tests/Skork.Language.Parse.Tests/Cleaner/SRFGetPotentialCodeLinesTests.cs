@@ -10,13 +10,12 @@ namespace Skork.Language.Parse.Tests.Cleaner
     [Author("Reapism")]
     public class SRFGetPotentialCodeLinesTests
     {
-
         private IEnumerable<IEnumerable<string>> _listOfPotentialCodeLines;
 
         [SetUp]
         public void SetUp()
         {
-            
+
         }
 
         [Test]
@@ -38,7 +37,6 @@ namespace Skork.Language.Parse.Tests.Cleaner
                 StringAssert.AreEqualIgnoringCase(expectedCodeLinesList[i], actualCodeLinesList[i]);
             }
         }
-        
 
         private List<string> GetPotentialCodeLines()
         {
@@ -54,7 +52,11 @@ namespace Skork.Language.Parse.Tests.Cleaner
                 "\t \v loop(i\t\n=> \rx) {",
                 "\n\t int\n\t i\n\t = \t\t\n 0\n \t;",
                 "\t\v}",
-                "\n\t int\n\t i\n\t = \t\t\n 0\n \t;"
+                "\n\t int\n\t i\n\t = \t\t\n 0\n \t;",
+                "\t\t \n\r loop\r\r(i\t\n=> \rx) \t\r\n{",
+                "\n\t int\n\t i\n\t = \t\t\n 0\n \t;",
+                "\t \v",
+                "\v \t\n}"
             };
             return lst;
         }
@@ -63,15 +65,16 @@ namespace Skork.Language.Parse.Tests.Cleaner
         {
             var lst = new List<string>
             {
-                "\n\t int\n\t i\n\t = \t\t\n 0\n \t",
-                "\n  int\n\t i\n\t = \t\t\n 0\n \t",
-                "\n\t int \n\t i\n\t = \t\t\n 0\n \t",
-                "\n\t int\n\t i \n\t = \t\t \n 0\n \t",
-                " \n\t int\n\t i\n\t = \t \t\n 0\n \t",
-                "\n \t int\n\t i\n\t = \t \t\n 0\n \t",
-                " \v \n\t int\n\t i\n\t = \t \t\n 0\n \t",
+                "\n\t int\n\t i\n\t = \t\t\n 0\n \t;",
+                "\n  int\n\t i\n\t = \t\t\n 0\n \t;",
+                "\n\t int \n\t i\n\t = \t\t\n 0\n \t;",
+                "\n\t int\n\t i \n\t = \t\t \n 0\n \t;",
+                " \n\t int\n\t i\n\t = \t \t\n 0\n \t;",
+                "\n \t int\n\t i\n\t = \t \t\n 0\n \t;",
+                " \v \n\t int\n\t i\n\t = \t \t\n 0\n \t;",
                 "\t \v loop(i\t\n=> \rx) {\n\t int\n\t i\n\t = \t\t\n 0\n \t;\t\v}",
-                "\n\t int\n\t i\n\t = \t\t\n 0\n \t",
+                "\n\t int\n\t i\n\t = \t\t\n 0\n \t;",
+                "\t\t \n\r loop\r\r(i\t\n=> \rx) \t\r\n{\n\t int\n\t i\n\t = \t\t\n 0\n \t;\t \v\v \t\n}",
             };
             return lst;
         }

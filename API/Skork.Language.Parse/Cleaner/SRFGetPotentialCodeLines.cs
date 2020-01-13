@@ -51,7 +51,12 @@ namespace Skork.Language.Parse.Cleaner
         private static string GetCodeStatementSubstring(string potentialCodeLine, int currentIndex)
         {
             var index = potentialCodeLine.IndexOf(';', currentIndex);
-            var substring = potentialCodeLine[currentIndex..index];
+            var substring = string.Empty;
+            
+            if (index + 1 >= potentialCodeLine.Length)
+                substring = potentialCodeLine[currentIndex..index];
+            else
+                substring = potentialCodeLine[currentIndex..++index];
 
             return substring;
         }
@@ -59,7 +64,7 @@ namespace Skork.Language.Parse.Cleaner
         /// <summary>
         /// Takes in an <see cref="IEnumerable{T}"/> of strings
         /// and returns a <see cref="IEnumerable{T}"/> of strings
-        /// that are split by semicolons.
+        /// that are split potential code lines.
         /// </summary>
         /// <param name="code"></param>
         /// <returns></returns>
