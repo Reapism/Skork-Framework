@@ -42,21 +42,15 @@ namespace Skork.Language.Parse.Tests.Cleaner
         {
             var lst = new List<string>
             {
-                "\n\t int\n\t i\n\t = \t\t\n 0\n \t;",
-                "\n  int\n\t i\n\t = \t\t\n 0\n \t;",
-                "\n\t int \n\t i\n\t = \t\t\n 0\n \t;",
-                "\n\t int\n\t i \n\t = \t\t \n 0\n \t;",
-                " \n\t int\n\t i\n\t = \t \t\n 0\n \t;",
-                "\n \t int\n\t i\n\t = \t \t\n 0\n \t;",
-                " \v \n\t int\n\t i\n\t = \t \t\n 0\n \t;",
-                "\t \v loop(i\t\n=> \rx) {",
-                "\n\t int\n\t i\n\t = \t\t\n 0\n \t;",
-                "\t\v}",
-                "\n\t int\n\t i\n\t = \t\t\n 0\n \t;",
-                "\t\t \n\r loop\r\r(i\t\n=> \rx) \t\r\n{",
-                "\n\t int\n\t i\n\t = \t\t\n 0\n \t;",
-                "\t \v",
-                "\v \t\n}"
+                "\t int \r\v  i \t\n\n=\n \r\t 0;",
+                "loop(x => y) {",
+                "\t int i = 1;",
+                "}",
+                "\t int \r\v  i \t\n\n=\n \r\t 2;",
+                "loop(x => y) {",
+                "\t int i = 3;",
+                "\r\n int \n \ti = 3\r;",
+                "}",
             };
             return lst;
         }
@@ -65,16 +59,10 @@ namespace Skork.Language.Parse.Tests.Cleaner
         {
             var lst = new List<string>
             {
-                "\n\t int\n\t i\n\t = \t\t\n 0\n \t;",
-                "\n  int\n\t i\n\t = \t\t\n 0\n \t;",
-                "\n\t int \n\t i\n\t = \t\t\n 0\n \t;",
-                "\n\t int\n\t i \n\t = \t\t \n 0\n \t;",
-                " \n\t int\n\t i\n\t = \t \t\n 0\n \t;",
-                "\n \t int\n\t i\n\t = \t \t\n 0\n \t;",
-                " \v \n\t int\n\t i\n\t = \t \t\n 0\n \t;",
-                "\t \v loop(i\t\n=> \rx) {\n\t int\n\t i\n\t = \t\t\n 0\n \t;\t\v}",
-                "\n\t int\n\t i\n\t = \t\t\n 0\n \t;",
-                "\t\t \n\r loop\r\r(i\t\n=> \rx) \t\r\n{\n\t int\n\t i\n\t = \t\t\n 0\n \t;\t \v\v \t\n}",
+                "\t int \r\v  i \t\n\n=\n \r\t 0",
+                "loop(x => y) {\t int i = 1;}",
+                "\t int \r\v  i \t\n\n=\n \r\t 2",
+                "loop(x => y) {\t int i = 3;\r\n int \n \ti = 3\r;}",
             };
             return lst;
         }

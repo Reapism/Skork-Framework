@@ -14,6 +14,7 @@
                         <MenuItem x:Name="menuCompile" Header="Compile" Click="menuCompile_Click"/>
                         <MenuItem x:Name="menuClean" Header="Clean" Click="menuClean_Click"/>
                         <MenuItem x:Name="menuParse" Header="Parse" Click="menuParse_Click" />
+                        <MenuItem x:Name="menuGetPotentialCodeLines" Header="GetPotentialCodeLines" Click="menuGetPotentialCodeLines_Click" />
                         <MenuItem x:Name="menuCustom" Header="Custom..." Click="menuCustom_Click"/>
                     </ContextMenu>
                 </RichTextBox.ContextMenu>
