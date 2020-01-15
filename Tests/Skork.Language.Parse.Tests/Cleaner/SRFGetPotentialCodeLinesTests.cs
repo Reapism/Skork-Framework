@@ -51,6 +51,14 @@ namespace Skork.Language.Parse.Tests.Cleaner
                 "\t int i = 3;",
                 "\r\n int \n \ti = 3\r;",
                 "}",
+                "loop(x => y) {",
+                "\t int i = 3;",
+                "\r\n int \n \ti = 3\r;",
+                "}",                
+                "loop(x => y) {",
+                "\t int i = 3;",
+                "\r\n int \n \ti = 3\r;",
+                "}"
             };
             return lst;
         }
@@ -62,6 +70,8 @@ namespace Skork.Language.Parse.Tests.Cleaner
                 "\t int \r\v  i \t\n\n=\n \r\t 0",
                 "loop(x => y) {\t int i = 1;}",
                 "\t int \r\v  i \t\n\n=\n \r\t 2",
+                "loop(x => y) {\t int i = 3;\r\n int \n \ti = 3\r;}",
+                "loop(x => y) {\t int i = 3;\r\n int \n \ti = 3\r;}",
                 "loop(x => y) {\t int i = 3;\r\n int \n \ti = 3\r;}",
             };
             return lst;

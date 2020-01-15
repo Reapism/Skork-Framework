@@ -7,6 +7,44 @@ namespace Skork.Language.Parse.Cleaner
 {
     public static class SRFGetPotentialCodeLines
     {
+        /// <summary>
+        /// Takes in an <see cref="IEnumerable{T}"/> of strings
+        /// and returns a <see cref="IEnumerable{T}"/> of strings
+        /// that are split potential code lines.
+        /// </summary>
+        /// <param name="code"></param>
+        /// <returns></returns>
+        /// <exception cref="ArgumentException"></exception>
+        public static IEnumerable<string> GetPotentialCodeStatements(IEnumerable<string> originalCodeCollection)
+        {
+            return GetPotentialCodeStatementsHelper(originalCodeCollection.ToArray());
+        }
+
+        private static IEnumerable<string> GetPotentialCodeStatementsHelper(string[] originalCodeArray)
+        {
+            var newCodeQueue = new Queue<string>();
+            int index;
+
+            for (index = 0; index < originalCodeArray.Length; index++)
+            {
+                if (IsCodeBlock(originalCodeArray[index]))
+                {
+                    var codeBlock = GetCodeStatementFromCodeBlock(ref originalCodeArray, index, out int currentIndex);
+                    index = currentIndex;
+                    newCodeQueue.Enqueue(codeBlock);
+                    continue;
+                }
+
+                var codeStatements = GetCodeStatements(originalCodeArray[index]);
+
+                foreach (var codeLine in codeStatements)
+                {
+                    newCodeQueue.Enqueue(codeLine);
+                }
+            }
+            return newCodeQueue;
+        }
+
         private static string GetCodeStatementFromCodeBlock(ref string[] codeLinesArray, int startingIndex, out int currentIndex)
         {
             int indexer;
@@ -61,51 +99,6 @@ namespace Skork.Language.Parse.Cleaner
             return substring;
         }
 
-        /// <summary>
-        /// Takes in an <see cref="IEnumerable{T}"/> of strings
-        /// and returns a <see cref="IEnumerable{T}"/> of strings
-        /// that are split potential code lines.
-        /// </summary>
-        /// <param name="code"></param>
-        /// <returns></returns>
-        /// <exception cref="ArgumentException"></exception>
-        public static IEnumerable<string> GetPotentialCodeStatements(IEnumerable<string> originalCodeCollection)
-        {
-            return GetPotentialCodeStatementsHelper(originalCodeCollection.ToArray());
-        }
-
-        private static IEnumerable<string> GetPotentialCodeStatementsHelper(string[] originalCodeArray)
-        {
-            var newCodeQueue = new Queue<string>();
-            int index;
-
-            for (index = 0; index < originalCodeArray.Length; index++)
-            {
-                if (IsCodeBlock(originalCodeArray[index]))
-                {
-                    var codeBlock = GetCodeStatementFromCodeBlock(ref originalCodeArray, index, out int currentIndex);
-                    index = currentIndex;
-                    newCodeQueue.Enqueue(codeBlock);
-                    continue;
-                }
-
-                var codeStatements = GetCodeStatements(originalCodeArray[index]);
-
-                foreach (var codeLine in codeStatements)
-                {
-                    newCodeQueue.Enqueue(codeLine);
-                }
-            }
-            return newCodeQueue;
-        }
-
-        /// <summary>
-        /// Determines whether a given line contains a code
-        /// block or as a code statement.
-        /// </summary>
-        /// <param name="codeLine"></param>
-        /// <returns></returns>
-        /// <exception cref="ArgumentException"></exception>
         private static bool IsCodeBlock(string codeLine)
         {
             int indexCodeBlock = codeLine.IndexOf('{');
