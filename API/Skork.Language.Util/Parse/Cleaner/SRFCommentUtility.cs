@@ -10,19 +10,20 @@ namespace Skork.Language.Util.Parse
         /// </summary>
         /// <param name="codeLine">The line to check.</param>
         /// <returns></returns>
+        /// <exception cref="ArgumentNullException"></exception>
         public static string RemoveCommentsFromCodeLine(string codeLine)
         {
             if (codeLine == null)
                 throw new ArgumentNullException("Argument cannot be null.");
 
-            int index = codeLine.IndexOf("//");
+             int commentIndex = codeLine.IndexOf("//");
+            int newLineIndex = codeLine.IndexOf("\n");
 
-            if (index != -1)
-            {
-                return codeLine.Substring(0, index);
-            }
+            if (commentIndex != -1 && newLineIndex != -1)
+                return codeLine.Substring(0, newLineIndex);
 
-            return codeLine;
+            if (commentIndex != -1)
+                return codeLine.Substring(0, commentIndex);
         }
     }
 }

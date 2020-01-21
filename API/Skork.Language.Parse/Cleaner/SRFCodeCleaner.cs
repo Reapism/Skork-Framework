@@ -37,12 +37,12 @@ namespace Skork.Language.Parse.Cleaner
         /// <exception cref="ArgumentException"></exception>
         public static string CleanPotentialCodeLine(string codeLine)
         {
-            var singleWhitespaceLine = SRFReplaceUtility.ReplaceMultipleWhitespacesWithSingleWhitespace(codeLine);
-            var singleSpaceLine = SRFReplaceUtility.ReplaceMultipleWhitespacesWithSingleSpace(singleWhitespaceLine);
-            var trimmedCodeStatementsEnumerable = SRFTrimUtility.TrimLeadingAndTrailingWhitespaces(singleSpaceLine);
-            var removedCommentsLine = SRFCommentUtility.RemoveCommentsFromCodeLine(trimmedCodeStatementsEnumerable);
+            var removedCommentsLine = SRFCommentUtility.RemoveCommentsFromCodeLine(codeLine);
+            var trimmedCodeStatement = SRFTrimUtility.TrimLeadingAndTrailingWhitespaces(removedCommentsLine);
+            var singleWhitespaceLine = SRFReplaceUtility.ReplaceMultipleWhitespacesWithSingleWhitespace(trimmedCodeStatement);
+            var cleanedCodeLine = SRFReplaceUtility.ReplaceMultipleWhitespacesWithSingleSpace(singleWhitespaceLine);
 
-            return removedCommentsLine;
+            return cleanedCodeLine;
         }
     }
 }
