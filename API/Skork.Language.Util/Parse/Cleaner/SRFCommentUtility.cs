@@ -16,7 +16,7 @@ namespace Skork.Language.Util.Parse
             if (codeLine == null)
                 throw new ArgumentNullException("Argument cannot be null.");
 
-             int commentIndex = codeLine.IndexOf("//");
+            int commentIndex = codeLine.IndexOf("//");
             int newLineIndex = codeLine.IndexOf("\n");
 
             if (commentIndex != -1 && newLineIndex != -1)
@@ -24,6 +24,8 @@ namespace Skork.Language.Util.Parse
 
             if (commentIndex != -1)
                 return codeLine.Substring(0, commentIndex);
+
+            return codeLine;
         }
     }
 }
